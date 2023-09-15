@@ -1,0 +1,52 @@
+const axios = require('axios');
+
+const options = {
+  method: 'GET',
+  url: 'https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchFlights',
+  params: {
+    sourceAirportCode: 'BOM',
+    destinationAirportCode: 'DEL',
+    date: '2023-09-21',
+    itineraryType: 'ONE_WAY',
+    sortOrder: 'PRICE',
+    numAdults: '1',
+    numSeniors: '0',
+    classOfService: 'ECONOMY',
+    pageNumber: '1',
+    currencyCode: 'USD'
+  },
+  headers: {
+    'X-RapidAPI-Key': '82eb53c5f0msh3e139914fe42ebfp189497jsn76ca6ac2e1b4',
+    'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+  }
+};
+
+try {
+	const response = await axios.request(options);
+	console.log(response.data);
+} catch (error) {
+	console.error(error);
+}
+
+--------------------------------------------------------------------------------
+const axios = require('axios');
+
+const options = {
+  method: 'GET',
+  url: 'https://booking-com.p.rapidapi.com/v1/hotels/locations',
+  params: {
+    name: 'Berlin',
+    locale: 'en-gb'
+  },
+  headers: {
+    'X-RapidAPI-Key': '82eb53c5f0msh3e139914fe42ebfp189497jsn76ca6ac2e1b4',
+    'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+  }
+};
+
+try {
+	const response = await axios.request(options);
+	console.log(response.data);
+} catch (error) {
+	console.error(error);
+}
