@@ -16,10 +16,11 @@ const options = {
     currencyCode: 'USD'
   },
   headers: {
-    'X-RapidAPI-Key': '82eb53c5f0msh3e139914fe42ebfp189497jsn76ca6ac2e1b4',
+    'X-RapidAPI-Key': '1910A848793D4D0596C1D099AEB0A2C9',
     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
   }
 };
+
 
 try {
 	const response = await axios.request(options);
@@ -28,6 +29,16 @@ try {
 	console.error(error);
 }
 
+// OntarioTECK VBA Developers
+// Key: 1910A848793D4D0596C1D099AEB0A2C9
+
+Example:
+const options = {method: 'GET', headers: {accept: 'application/json'}};
+
+fetch('https://api.content.tripadvisor.com/api/v1/location/locationId/details?language=en&currency=USD&key=1910A848793D4D0596C1D099AEB0A2C9', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
 --------------------------------------------------------------------------------
 const axios = require('axios');
 
