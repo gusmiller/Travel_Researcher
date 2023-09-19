@@ -13,6 +13,10 @@
  */
 
 $(document).ready(function () {
+      // Use this key to retrieve data from API. This key belongs to OntarioTECK but we 
+      // can use it for the course. It will be deleted once we complete the assignment
+      const aviationAPI = "bc62d3c507d8b552c56639324618f98b";
+
       function testingAPI() {
             // We are using template literals to build strings (backtick + ${variable}
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
