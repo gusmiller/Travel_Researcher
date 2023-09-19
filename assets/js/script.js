@@ -13,6 +13,30 @@
  */
 
 $(document).ready(function () {
+
+
+      function hotelApi() {
+
+            var options = {
+                  method: 'GET',
+                  headers: {
+                        'X-RapidAPI-Key': 'your api key here',
+                        'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+                  }
+            };
+      
+            fetch("https://booking-com.p.rapidapi.com/v1/static/hotels?page=0", options).then(function (response) {
+                  if (response.ok) {
+                        return response.json().then(function (data) {
+                              console.log(data.result.slice(0, 100))
+                        })
+                  }
+            }).catch(function (error) {
+                  console.log(error)
+            })
+      }
+
+
       function testingAPI() {
             // We are using template literals to build strings (backtick + ${variable}
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
