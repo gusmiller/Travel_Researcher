@@ -1,7 +1,7 @@
 var flightsApiKey = "bc62d3c507d8b552c56639324618f98b";
 var departureCitySelectEl = document.querySelector("#departure-city");
 var destinationCitySelectEl = document.querySelector("#destination-city");
-var departureDateInputEl = document.querySelector("#departure-date-input");
+var departureDateSelectEl = document.querySelector("#departure-date-input");
 var searchFlightButtonEl = document.querySelector("#search-flight-button");
 var flightInformationRowsEl = document.querySelector(".flight-information-row");
 var selectmenuDepartureEl = document.querySelector("#departure-city");
@@ -28,12 +28,12 @@ var cityCodes = {
 var searchedFlights = {};
 
 var storeSearchedFlights = function() {
-    localStorage.setItem("Store-searched-flights", JSON.stringify(searchedFlights));
+    localStorage.setItem("Searched-flights", JSON.stringify(searchedFlights));
 }
 
-var startingWithCapital = function(str) {
-    return str.replace(/\b\w/g, x => x.toUpperCase());
-}
+// var startingWithCapital = function(str) {
+//     return str.replace(/\b\w/g, x => x.toUpperCase());
+// }
 
 var renderSelectmenuOptions = function() {
     for (code in cityCodes) {
@@ -49,28 +49,26 @@ renderSelectmenuOptions()
 
 // YYYY-MM-DD departure date format
 var searchParameters = function() {
-    var departureCityInput = departureCityInputEl.value;
-    var departureCityCapital = startingWithCapital(departureCityInput);
-    var destinationCityInput = destinationCityInputEl.value;
-    var destinationCityCapital = startingWithCapital(destinationCityInput);
-    var departureDateInput = departureDateInputEl.value;
-    return [departureCityCapital, destinationCityCapital, departureDateInput]
+    var departureCitySelect = departureCitySelectEl.value;
+    var destinationCitySelect = destinationCitySelectEl.value;
+    var departureDateSelect = departureDateSelectEl.value;
+    return [departureCitySelect, destinationCitySelect, departureDateSelect]
 }
 
 var searchFlights = function(event) {
     event.preventDefault();
-    let [departureCityCapital, destinationCityCapital, departureDateInput] = searchParameters();
-    if (!departureCityCapital || !destinationCityCapital || !departureDateInput) {
+    let [departureCitySelect, destinationCitySelect, departureDateSelect] = searchParameters();
+    if (!departureCitySelect || !destinationCitySelect || !departureDateSelect) {
         return; 
         // pop up message will show
     }
-    saveSearchedFlights(departureCityCapital, destinationCityCapital, departureDateInput)
+    saveSearchedFlights(departureCitySelect, destinationCitySelect, departureDateSelect)
 }
 
-var saveSearchedFlights = function(departureCityCapital, destinationCityCapital, departureDateInput) {
-    searchedFlights["departure-city"] = departureCityCapital;
-    searchedFlights["destination-city"] = destinationCityCapital;
-    searchedFlights["departure-date"] = departureDateInput;
+var saveSearchedFlights = function(departureCitySelect, destinationCitySelect, departureDateSelect) {
+    searchedFlights["departure-city"] = departureCitySelect;
+    searchedFlights["destination-city"] = destinationCitySelect;
+    searchedFlights["departure-date"] = departureDateSelect;
     storeSearchedFlights();
 }
 
