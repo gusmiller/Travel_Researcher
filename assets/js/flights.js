@@ -39,6 +39,13 @@ var init = function() {
     renderSelectmenuOptions();
 }
 
+var getIataCodeByCityName = function(object, city) {
+    var code = Object.keys(object).find(key => object[key] === city);
+    console.log(code)
+}
+
+getIataCodeByCityName(cityCodes, "Vancouver")
+
 var renderSelectmenuOptions = function() {
     for (code in cityCodes) {
         var selectmenuDeparturesOptionEl = document.createElement("option");
@@ -50,8 +57,6 @@ var renderSelectmenuOptions = function() {
     }
 }
 
-
-// YYYY-MM-DD departure date format
 var searchParameters = function() {
     var departureCitySelect = departureCitySelectEl.value;
     var destinationCitySelect = destinationCitySelectEl.value;
@@ -76,8 +81,8 @@ var saveSearchedFlights = function(departureCitySelect, destinationCitySelect, d
     storeSearchedFlights();
 }
 
-// var getFlightData = function() {
-//     var flightApiUrl = "https://api.aviationstack.com/v1/flights?access_key=" + flightsApiKey + "flight_date" + departureDateInput +;
+// var getFlightData = function(departureDateSelect) {
+//     var flightApiUrl = "https://api.aviationstack.com/v1/flights?access_key=" + flightsApiKey + "flight_date=" + departureDateSelect + "dep_iata=" + ;
 
 //     fetch(flightApiUrl)
 //     .then(function(response) {
