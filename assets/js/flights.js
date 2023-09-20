@@ -28,12 +28,16 @@ var cityCodes = {
 var searchedFlights = {};
 
 var storeSearchedFlights = function() {
-    localStorage.setItem("Searched-flights", JSON.stringify(searchedFlights));
+    localStorage.setItem("searchedFlights", JSON.stringify(searchedFlights));
 }
 
 // var startingWithCapital = function(str) {
 //     return str.replace(/\b\w/g, x => x.toUpperCase());
 // }
+
+var init = function() {
+    renderSelectmenuOptions();
+}
 
 var renderSelectmenuOptions = function() {
     for (code in cityCodes) {
@@ -45,7 +49,7 @@ var renderSelectmenuOptions = function() {
         selectmenuDestinationEl.appendChild(selectmenuDestinationsOptionEl);
     }
 }
-renderSelectmenuOptions()
+
 
 // YYYY-MM-DD departure date format
 var searchParameters = function() {
@@ -86,3 +90,4 @@ var saveSearchedFlights = function(departureCitySelect, destinationCitySelect, d
 
 
 searchFlightButtonEl.addEventListener("click", searchFlights);
+init();
