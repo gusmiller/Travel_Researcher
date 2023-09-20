@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Travel Researcher</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        fieldset {
+          border: 0;
+        }
+        label {
+          display: block;
+          margin: 30px 0 0 0;
+        }
+        .overflow {
+          height: 200px;
+        }
+      </style>
+
+      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+      <script>
+        $( function() {
+            $( "#departure-city").selectmenu();
+            $( "#destination-city").selectmenu();
+        })
+        $( function() {
+            $( "#datepicker" ).datepicker();
+  } );
+        </script>
 </head>
 
 <body>
@@ -12,11 +36,15 @@
 
     <main>
         <section>
-            <form class="flights-search-form">
-                <label id="departure-city-label">Departure City:</label>
-                <input name="departure-city-name" type="text" id="departure-city-input" placeholder="Enter name of the departure city"/>
-                <label id="destination-city-label">Destination City:</label>
-                <input name="destination-city-name" type="text" id="destination-city-input" placeholder="Enter name of the destination city"/>
+            <form class="flights-search-form" action="#">
+                <fieldset>
+                    <label for="departure-city" id="departure-city-label">Departure City:</label>
+                    <select name="departure-city" id="departure-city"></select>
+                    <!-- <input name="departure-city-name" type="text" id="departure-city-input" placeholder="Enter name of the departure city"/> -->
+                    <label for="destination-city" id="destination-city-label">Destination City:</label>
+                    <!-- <input name="destination-city-name" type="text" id="destination-city-input" placeholder="Enter name of the destination city"/> -->
+                    <select name="destination-city" id="destination-city"></select>
+                </fieldset>
                 <label id="departure-date-label">Departure date:</label>
                 <input name="departure-date-name" type="text" id="departure-date-input" placeholder="Enter departure date"/>
                 <button id="search-flight-button">Search flights</button>
@@ -46,6 +74,9 @@
             </div> 
         </section>
     </main>
-    <script src="./assets/js/flights.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+
+    <!-- <script src="./assets/js/flights.js"></script> -->
 </body>
 </html>
