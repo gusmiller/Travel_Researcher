@@ -6,6 +6,21 @@ var searchFlightButtonEl = document.querySelector("#search-flight-button");
 
 
 
+var cityCodes = {
+    "YYC": "Calgary",
+    "YEG": "Edmonton",
+    "YFC": "Fredericton",
+    "YQX": "Gander",
+    "YHZ": "Halifax",
+    "YQM": "Moncton",
+    "YUL": "Montreal",
+    "YOW": "Ottawa",
+    "YQB": "Quebec City",
+    "YYT": "St. John's",
+    "YYZ": "Toronto",
+    "YVR": "Vancouver",
+    "YWG": "Winnipeg",
+}
 
 var searchedFlights = {};
 
@@ -17,6 +32,7 @@ var startingWithCapital = function(str) {
     return str.replace(/\b\w/g, x => x.toUpperCase());
 }
 
+// YYYY-MM-DD departure date format
 var searchParameters = function() {
     var departureCityInput = departureCityInputEl.value.trim();
     var departureCityCapital = startingWithCapital(departureCityInput);
@@ -41,6 +57,18 @@ var saveSearchedFlights = function(departureCityCapital, destinationCityCapital,
     searchedFlights["destination-city"] = destinationCityCapital;
     searchedFlights["departure-date"] = departureDateInput;
     storeSearchedFlights();
+}
+
+var getFlightData = function() {
+    var flightApiUrl = "https://api.aviationstack.com/v1/flights?access_key=" + flightsApiKey + "flight_date" + departureDateInput +;
+
+    fetch(flightApiUrl)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+    })
 }
 
 
