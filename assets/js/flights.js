@@ -1,8 +1,11 @@
 var flightsApiKey = "bc62d3c507d8b552c56639324618f98b";
-var departureCityInputEl = document.querySelector("#departure-city-input");
-var destinationCityInputEl = document.querySelector("#destination-city-input");
+var departureCitySelectEl = document.querySelector("#departure-city");
+var destinationCitySelectEl = document.querySelector("#destination-city");
 var departureDateInputEl = document.querySelector("#departure-date-input");
 var searchFlightButtonEl = document.querySelector("#search-flight-button");
+var flightInformationRowsEl = document.querySelector(".flight-information-row");
+var selectmenuDepartureEl = document.querySelector("#departure-city");
+var selectmenuDestinationEl = document.querySelector("#destination-city");
 
 
 
@@ -32,13 +35,25 @@ var startingWithCapital = function(str) {
     return str.replace(/\b\w/g, x => x.toUpperCase());
 }
 
+var renderSelectmenuOptions = function() {
+    for (code in cityCodes) {
+        var selectmenuDeparturesOptionEl = document.createElement("option");
+        selectmenuDeparturesOptionEl.textContent = cityCodes[code];
+        selectmenuDepartureEl.appendChild(selectmenuDeparturesOptionEl);
+        var selectmenuDestinationsOptionEl = document.createElement("option");
+        selectmenuDestinationsOptionEl.textContent = cityCodes[code];
+        selectmenuDestinationEl.appendChild(selectmenuDestinationsOptionEl);
+    }
+}
+renderSelectmenuOptions()
+
 // YYYY-MM-DD departure date format
 var searchParameters = function() {
-    var departureCityInput = departureCityInputEl.value.trim();
+    var departureCityInput = departureCityInputEl.value;
     var departureCityCapital = startingWithCapital(departureCityInput);
-    var destinationCityInput = destinationCityInputEl.value.trim();
+    var destinationCityInput = destinationCityInputEl.value;
     var destinationCityCapital = startingWithCapital(destinationCityInput);
-    var departureDateInput = departureDateInputEl.value.trim();
+    var departureDateInput = departureDateInputEl.value;
     return [departureCityCapital, destinationCityCapital, departureDateInput]
 }
 
@@ -59,17 +74,17 @@ var saveSearchedFlights = function(departureCityCapital, destinationCityCapital,
     storeSearchedFlights();
 }
 
-var getFlightData = function() {
-    var flightApiUrl = "https://api.aviationstack.com/v1/flights?access_key=" + flightsApiKey + "flight_date" + departureDateInput +;
+// var getFlightData = function() {
+//     var flightApiUrl = "https://api.aviationstack.com/v1/flights?access_key=" + flightsApiKey + "flight_date" + departureDateInput +;
 
-    fetch(flightApiUrl)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-    })
-}
+//     fetch(flightApiUrl)
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data){
+//         console.log(data);
+//     })
+// }
 
 
 searchFlightButtonEl.addEventListener("click", searchFlights);

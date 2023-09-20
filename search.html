@@ -6,6 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Travel Researcher</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        fieldset {
+          border: 0;
+        }
+        label {
+          display: block;
+          margin: 30px 0 0 0;
+        }
+        .overflow {
+          height: 200px;
+        }
+      </style>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
@@ -29,10 +41,15 @@
             <form class="flights-search-form" action="#">
                 <fieldset>
                     <label for="departure-city" id="departure-city-label">Departure City:</label>
-                    <select name="departure-city" id="departure-city">Departure City</select>
+                    <select name="departure-city" id="departure-city">
+                        <option>Select city from the list:</option>
+                    </select>
                     <label for="destination-city" id="destination-city-label">Destination City:</label>
-                    <select name="destination-city" id="destination-city">Destination City</select>
+                    <select name="destination-city" id="destination-city">
+                        <option>Select city from the list:</option>
+                    </select>
                 </fieldset>
+
                 <label id="departure-date-label">Departure date:</label>
                 <input name="departure-date-name" type="text" id="departure-date-input" placeholder="Enter departure date"/>
                 <button id="search-flight-button">Search flights</button>
@@ -40,26 +57,18 @@
         </section>
 
         <section>
-            <div>
-                <div>
-                    <h2 id="departure-and-arrival-time">Departure and Arrival Time</h2>
-                </div>
-                <div>
-                    <h2 id="airline">Airline</h2>
-                </div>
-                <div>
-                    <h2 id="flight-duration">Flight Duration</h2>
-                </div>
-                <div>
-                    <h2 id="flight-price">Flight Price</h2>
-                </div>
-                <div>
-                    <h2 id="flight-number">Flight Number</h2>
-                </div>
-                <div>
-                    <button id="save-flight-button">Save flight</button>
-                </div>
-            </div> 
+            <table>
+                <tr class="table-header-row">
+                    <th id="departure-and-arrival-time">Departure and Arrival Time</th>
+                    <th id="airline">Airline</th>
+                    <th id="flight-duration">Flight Duration</th>
+                    <th id="flight-price">Flight Price</th>
+                    <th id="flight-number">Flight Number</th>  
+                </tr>
+                <tr class="flight-information-row">
+                     <!-- <button id="save-flight-button">Save flight</button> -->
+                </tr>
+            </table> 
         </section>
     </main>
 
