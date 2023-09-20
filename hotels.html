@@ -2,17 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Travel Researcher</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap"
         rel="stylesheet">
-    <link rel = "stylesheet" src = "./assets/css/hotelstyle.css">
+
+    <link rel = "stylesheet" href = "./assets/css/hotelstyle.css">
+
     <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+
     <script>
         $( function() {
           $( "#datepicker" ).datepicker();
@@ -21,8 +35,12 @@
           });
         } );
     </script>
+
 </head>
+
+
 <body>
+
 <header class="w-screen mt-5 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
         <div>
             
@@ -36,12 +54,55 @@
         </div>
         <div>
             <nav class="flex items-center justify-center text-base md:ml-auto">
-                <a href="#" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Home</a>
+                <a href="index.html" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Home</a>
             </nav>
         </div>
     </header>
 
-    <p>Date: <input type="text" id="datepicker" size="30"></p>
+    <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+        <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
+          <table class="">
+            <thead>
+              <tr class="border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500">
+                <th class="px-6 py-3">Flight No</th>
+                <th class="px-6 py-3">Date Flight</th>
+                <th class="px-6 py-3">Airline</th>
+                <th class="px-6 py-3">Destination</th>
+                <th class="px-6 py-3"></th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              
+              <tr id="AC458" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">AC458</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">01/10/2023</td>
+                <td class="px-6 text-blue-900 leading-5">Air Canada</td>
+                <td class="px-6 text-blue-900 leading-5">London</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition">Select Flight</button>
+                </td>
+              </tr>
+    
+              
+              <tr id="2342" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5">2342</td>
+                <td class="px-6 text-blue-900 text-sm leading-5">01/1/2023</td>
+                <td class="px-6 text-blue-900 leading-5">Cathay Pacific</td>
+                <td class="tablerow px-6 text-blue-900 leading-5">London</td>
+              </tr>
+    
+              
+              <tr id="57858" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5">57858</td>
+                <td class="px-6 text-blue-900 text-sm leading-5">01/1/2023</td>
+                <td class="px-6 text-blue-900 leading-5">SF Airline</td>
+                <td class="tablerow px-6 text-blue-900 leading-5">London</td>
+              </tr>
+    
+            </tbody>
+          </table>
+        </div>
+      </div>
  
 
    
