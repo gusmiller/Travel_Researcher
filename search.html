@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel Researcher</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#departure-city").selectmenu();
+            $("#destination-city").selectmenu();
+        })
+    </script>
+    <script>
+        $(function() {
+            $( "#departure-date-input").datepicker();
+        });
+    </script>
+</head>
+
+<body>
+    <header></header>    
+
+    <main>
+        <section>
+            <form class="flights-search-form" action="#">
+                <fieldset>
+                    <label for="departure-city" id="departure-city-label">Departure City:</label>
+                    <select name="departure-city" id="departure-city">Departure City</select>
+                    <label for="destination-city" id="destination-city-label">Destination City:</label>
+                    <select name="destination-city" id="destination-city">Destination City</select>
+                </fieldset>
+                <label id="departure-date-label">Departure date:</label>
+                <input name="departure-date-name" type="text" id="departure-date-input" placeholder="Enter departure date"/>
+                <button id="search-flight-button">Search flights</button>
+            </form>
+        </section>
+
+        <section>
+            <div>
+                <div>
+                    <h2 id="departure-and-arrival-time">Departure and Arrival Time</h2>
+                </div>
+                <div>
+                    <h2 id="airline">Airline</h2>
+                </div>
+                <div>
+                    <h2 id="flight-duration">Flight Duration</h2>
+                </div>
+                <div>
+                    <h2 id="flight-price">Flight Price</h2>
+                </div>
+                <div>
+                    <h2 id="flight-number">Flight Number</h2>
+                </div>
+                <div>
+                    <button id="save-flight-button">Save flight</button>
+                </div>
+            </div> 
+        </section>
+    </main>
+
+    <script src="./assets/js/flights.js"></script>
+</body>
+</html>
