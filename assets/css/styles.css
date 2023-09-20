@@ -9,11 +9,59 @@
  * Author: Jacob Martin, Sonja Gorin, Anthony Gooneratne and Gustavo Miller
  * Date: September 2023
  */
+:root {
+    --main-height: 200px:
+}
 
- .lobster {
+
+.lobster {
     font-family: "Lobster", "helvetica"
- }
+}
 
- .fatface {
+.fatface {
     font-family: "Abril-Fatface", "helvetica"
- }
+}
+
+.our-team {
+    height: 200px;
+}
+
+.descrip {
+    height: 200px;
+}
+
+.about-me {
+    height: 450px;
+}
+
+.team-member {
+    width: 300px;
+    height: 300px;
+}
+
+@media screen and (max-width: 1084px) {
+    .about-me {
+        display: !important;
+
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .links {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .links {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 1012px) {
+    .about-me {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
