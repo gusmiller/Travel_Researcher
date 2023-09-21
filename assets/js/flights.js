@@ -95,11 +95,20 @@ var getFlightData = function(departureDateSelect, departureCode, destinationCode
         }
     })
     .then(function(response) {
-        console.log(response);
         return response.json();
     })
     .then(function(data){
         console.log(data);
+        var departureTimeData = data["data"][0]["local_departure"]
+        var departureTime = departureTimeData.split("T")[1].slice(0, 5)
+        var arrivalTimeData = data["data"][0]["local_arrival"]
+        var arrivalTime = arrivalTimeData.split("T")[1].slice(0, 5)
+        var flightDurationData = data["data"][0]["duration"]["total"]
+        var flightDurationHours = Math.trunc((flightDurationData/60)/60)
+        var flightDurationMinutes = (flightDurationData/60) % 60
+        var flightDuration = flightDurationHours.toString() + ":" + flightDurationMinutes.toString()
+        var flightPrice = data["data"][0]["price"].toString()
+        var flightNumber = data["data"][0]["route"][0]["flight_no"].toString()
     })
 }
 
