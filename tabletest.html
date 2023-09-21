@@ -2,51 +2,111 @@
 
 <head>
   <meta charset="utf-8">
-  <link href=https://unpkg.com/tailwindcss@1.5.2/dist/tailwind.min.css rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@0.7.4/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
-
 <body>
+
+  <div id="popup"
+    class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+    <div class="bg-white p-6 rounded shadow-lg">
+      <div class="mb-4">
+        <h2 class="text-2xl font-semibold">Selected Flight</h2>
+      </div>
+
+      <div class="flex items-center justify-center">
+        <div class="grid grid-cols-2 grid-rows-3 gap-4">
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Departure Time</label>
+            <input id="departureTime"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Departure Time" readonly>
+          </div>
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Arrival Time</label>
+            <input id="arrivalTime"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Arrival Time" readonly>
+          </div>
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Airline</label>
+            <input id="airline"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Airline" readonly>
+          </div>
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Duration</label>
+            <input id="flightDuration"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Duration Time" readonly>
+          </div>
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Price</label>
+            <input id="price"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Price" readonly>
+          </div>
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Number</label>
+            <input id="flightNumber"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Flight Number" readonly>
+          </div>
+        </div>
+      </div>
+
+      <button id="searchHotels" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Search Hotels</button>
+      <button id="close-popup" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Close Popup</button>
+    </div>
+  </div>
+
   <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
     <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
       <table class="">
         <thead>
           <tr class="border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500">
-            <th class="px-6 py-3">Flight No</th>
-            <th class="px-6 py-3">Date Flight</th>
+            <th class="px-6 py-3">Departure Time</th>
+            <th class="px-6 py-3">Arrival Time</th>
             <th class="px-6 py-3">Airline</th>
-            <th class="px-6 py-3">Destination</th>
+            <th class="px-6 py-3">Flight Duration</th>
+            <th class="px-6 py-3">Flight Price</th>
+            <th class="px-6 py-3">Flight Number</th>
             <th class="px-6 py-3"></th>
           </tr>
         </thead>
         <tbody class="bg-white">
           <!-- Flight row -->
-          <tr id="AC458" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
-            <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">AC458</a></td>
-            <td class="px-6 text-blue-900 text-sm leading-5">01/10/2023</td>
-            <td class="px-6 text-blue-900 leading-5">Air Canada</td>
-            <td class="px-6 text-blue-900 leading-5">London</td>
-            <td class="tablerow px-6 text-blue-900 leading-5" hidden>
-              <button class="listbutton transition">Select Flight</button>
-            </td>
+          <tr id="AC234" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+            <td class="px-6 text-blue-900 text-sm leading-5">09/20/2023 08:00</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/21/2023 07:45</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">Air Canada</td>
+            <td class="px-6 text-blue-900 leading-5">12:45 hrs</td>
+            <td class="px-6 text-blue-900 leading-5">$1,1500</td>
+            <td class="px-6 text-blue-900 leading-5">AC234</td>
+            <td class="px-6 text-blue-900 leading-5"></td>
           </tr><!-- End Flight row -->
 
           <!-- Flight row -->
           <tr id="2342" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
-            <td class="px-6 text-blue-900 text-sm leading-5">2342</td>
-            <td class="px-6 text-blue-900 text-sm leading-5">01/1/2023</td>
-            <td class="px-6 text-blue-900 leading-5">Cathay Pacific</td>
-            <td class="tablerow px-6 text-blue-900 leading-5">London</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/20/2023 08:00</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/21/2023 07:45</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">Air Canada</td>
+            <td class="px-6 text-blue-900 leading-5">11:50 hrs</td>
+            <td class="px-6 text-blue-900 leading-5">$750</td>
+            <td class="px-6 text-blue-900 leading-5">2342</td>
+            <td class="px-6 text-blue-900 leading-5"></td>
           </tr><!-- End Flight row -->
 
           <!-- Flight row -->
           <tr id="57858" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
-            <td class="px-6 text-blue-900 text-sm leading-5">57858</td>
-            <td class="px-6 text-blue-900 text-sm leading-5">01/1/2023</td>
-            <td class="px-6 text-blue-900 leading-5">SF Airline</td>
-            <td class="tablerow px-6 text-blue-900 leading-5">London</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/20/2023 08:00</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/21/2023 07:45</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">Air Canada</td>
+            <td class="px-6 text-blue-900 leading-5">11:15 hrs</td>
+            <td class="px-6 text-blue-900 leading-5">$1,3500</td>
+            <td class="px-6 text-blue-900 leading-5">57858</td>
+            <td class="px-6 text-blue-900 leading-5"></td>
           </tr><!-- End Flight row -->
 
         </tbody>
