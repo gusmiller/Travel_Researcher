@@ -76,7 +76,12 @@ var searchFlights = function(event) {
 
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect)
     var destinationCode = getDestinationIataCodeByCityName(cityCodes, destinationCitySelect)
+    cleanupFlightsTable();
     getFlightData(departureDateSelect, departureCode, destinationCode)
+}
+
+var cleanupFlightsTable = function() {
+    $(flightsTableEl).find('tr').not('.table-header-row').remove();
 }
 
 var getFlightData = function(departureDateSelect, departureCode, destinationCode) {
@@ -170,16 +175,16 @@ var renderAllRows = function(allFlightData) {
 var saveChosenFlight = function(event) {
     event.preventDefault();
     let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
-        searchedFlights["departureCity"] = departureCity;
-        searchedFlights["destinationCity"] = destinationCity;
-        searchedFlights["departureDate"] = departureDate;
-        searchedFlights["departureTime"] = departureTime;
-        searchedFlights["arrivalTime"] = arrivalTime;
-        searchedFlights["flightDuration"] = flightDuration;
-        searchedFlights["flightPrice"] = flightPrice;
-        searchedFlights["flightNumber"] = flightNumber;
-        searchedFlightsList.push(searchedFlights)
-        storeSearchedFlights();
+    searchedFlights["departureCity"] = departureCity;
+    searchedFlights["destinationCity"] = destinationCity;
+    searchedFlights["departureDate"] = departureDate;
+    searchedFlights["departureTime"] = departureTime;
+    searchedFlights["arrivalTime"] = arrivalTime;
+    searchedFlights["flightDuration"] = flightDuration;
+    searchedFlights["flightPrice"] = flightPrice;
+    searchedFlights["flightNumber"] = flightNumber;
+    searchedFlightsList.push(searchedFlights)
+    storeSearchedFlights();
 }
 
 var chosenFlightInfo = function(button) {
