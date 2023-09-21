@@ -99,21 +99,38 @@ var getFlightData = function(departureDateSelect, departureCode, destinationCode
     })
     .then(function(data){
         console.log(data);
-        var departureTimeData = data["data"][0]["local_departure"]
-        var departureTime = departureTimeData.split("T")[1].slice(0, 5)
-        var arrivalTimeData = data["data"][0]["local_arrival"]
-        var arrivalTime = arrivalTimeData.split("T")[1].slice(0, 5)
-        var flightDurationData = data["data"][0]["duration"]["total"]
-        var flightDurationHours = Math.trunc((flightDurationData/60)/60)
-        var flightDurationMinutes = (flightDurationData/60) % 60
-        var flightDuration = flightDurationHours.toString() + ":" + flightDurationMinutes.toString()
-        var flightPrice = data["data"][0]["price"].toString()
-        var flightNumber = data["data"][0]["route"][0]["flight_no"].toString()
+
+        var flightData = getFlightData(data)
     })
 }
 
-var renderOneFlightRow = function() {
+var getFlightData = function(data) {
+    var flightData = []
+    for (var i = 0; i < data["data"].length; i++) {
+        var departureTimeData = data["data"][i]["local_departure"];
+        var departureTime = departureTimeData.split("T")[1].slice(0, 5);
+        var arrivalTimeData = data["data"][i]["local_arrival"];
+        var arrivalTime = arrivalTimeData.split("T")[1].slice(0, 5);
+        var flightDurationData = data["data"][i]["duration"]["total"];
+        var flightDurationHours = Math.trunc((flightDurationData/60)/60);
+        var flightDurationMinutes = (flightDurationData/60) % 60;
+        var flightDuration = flightDurationHours.toString() + ":" + flightDurationMinutes.toString();
+        var flightPrice = data["data"][i]["price"].toString();
+        var flightNumber = data["data"][i]["route"][0]["flight_no"].toString();
+        flightData.push({
+            "departureTime": departureTime,
+            "arrivalTime": arrivalTime,
+            "flightDuration": flightDuration,
+            "flightPrice": flightPrice,
+            "flightNumber": flightNumber,
+        })
+    }
+    return flightData
+}
 
+var renderOneFlightRow = function(flightData) {
+    var tableRow = document.createElement("tr");
+    
 }
 
 
