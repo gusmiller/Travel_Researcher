@@ -125,8 +125,8 @@ var readFlightData = function(data) {
             "departureTime": departureTime,
             "arrivalTime": arrivalTime,
             "flightDuration": flightDuration,
-            "flightPrice": flightPrice,
             "flightNumber": flightNumber,
+            "flightPrice": flightPrice,
         })
     }
     return allFlightData
@@ -145,12 +145,12 @@ var renderOneFlightRow = function(flightData) {
     var flightDurationEl = document.createElement("td");
     flightDurationEl.textContent = flightData["flightDuration"];
     tableRowEl.appendChild(flightDurationEl)
-    var flightPriceEl = document.createElement("td");
-    flightPriceEl.textContent = flightData["flightPrice"].toString();
-    tableRowEl.appendChild(flightPriceEl)
     var flightNumber = document.createElement("td");
     flightNumber.textContent = flightData["flightNumber"].toString();
     tableRowEl.appendChild(flightNumber)
+    var flightPriceEl = document.createElement("td");
+    flightPriceEl.textContent = flightData["flightPrice"].toString();
+    tableRowEl.appendChild(flightPriceEl)
     var saveFlightButtonEl = document.createElement("button");
     saveFlightButtonEl.setAttribute("data-departure-city", flightData["departureCity"])
     saveFlightButtonEl.setAttribute("data-destination-city", flightData["destinationCity"])
@@ -158,8 +158,8 @@ var renderOneFlightRow = function(flightData) {
     saveFlightButtonEl.setAttribute("data-departure-time", departureTimeEl.textContent)
     saveFlightButtonEl.setAttribute("data-arrival-time", arrivalTimeEl.textContent)
     saveFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent)
-    saveFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent)
     saveFlightButtonEl.setAttribute("data-flight-number", flightNumber.textContent)
+    saveFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent)
     saveFlightButtonEl.textContent = "Save Flight"
     tableRowEl.appendChild(saveFlightButtonEl)
     saveFlightButtonEl.addEventListener("click", saveChosenFlight)
@@ -181,8 +181,8 @@ var saveChosenFlight = function(event) {
     searchedFlights["departureTime"] = departureTime;
     searchedFlights["arrivalTime"] = arrivalTime;
     searchedFlights["flightDuration"] = flightDuration;
-    searchedFlights["flightPrice"] = flightPrice;
     searchedFlights["flightNumber"] = flightNumber;
+    searchedFlights["flightPrice"] = flightPrice;
     searchedFlightsList.push(searchedFlights)
     storeSearchedFlights();
 }
