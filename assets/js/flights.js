@@ -6,6 +6,7 @@ var searchFlightButtonEl = document.querySelector("#search-flight-button");
 var flightInformationRowsEl = document.querySelector(".flight-information-row");
 var selectmenuDepartureEl = document.querySelector("#departure-city");
 var selectmenuDestinationEl = document.querySelector("#destination-city");
+var flightsTableEl = document.querySelector(".flights-table")
 
 
 
@@ -100,24 +101,25 @@ var getFlightData = function(departureDateSelect, departureCode, destinationCode
     .then(function(data){
         console.log(data);
 
-        var flightData = getFlightData(data)
+        var allFlightData = readFlightData(data)
+        renderAllRows(allFlightData)
     })
 }
 
-var getFlightData = function(data) {
-    var flightData = []
+var readFlightData = function(data) {
+    var allFlightData = []
     for (var i = 0; i < data["data"].length; i++) {
         var departureTimeData = data["data"][i]["local_departure"];
-        var departureTime = departureTimeData.split("T")[1].slice(0, 5);
+        var departureTime = departureTimeData.split("T");
         var arrivalTimeData = data["data"][i]["local_arrival"];
-        var arrivalTime = arrivalTimeData.split("T")[1].slice(0, 5);
+        var arrivalTime = arrivalTimeData.split("T");
         var flightDurationData = data["data"][i]["duration"]["total"];
         var flightDurationHours = Math.trunc((flightDurationData/60)/60);
         var flightDurationMinutes = (flightDurationData/60) % 60;
         var flightDuration = flightDurationHours.toString() + ":" + flightDurationMinutes.toString();
-        var flightPrice = data["data"][i]["price"].toString();
-        var flightNumber = data["data"][i]["route"][0]["flight_no"].toString();
-        flightData.push({
+        var flightPrice = data["data"][i]["price"];
+        var flightNumber = data["data"][i]["route"][0]["flight_no"];
+        allFlightData.push({
             "departureTime": departureTime,
             "arrivalTime": arrivalTime,
             "flightDuration": flightDuration,
@@ -125,14 +127,38 @@ var getFlightData = function(data) {
             "flightNumber": flightNumber,
         })
     }
-    return flightData
+    return allFlightData
 }
 
 var renderOneFlightRow = function(flightData) {
     var tableRow = document.createElement("tr");
-    
+    tableRow.setAttribute("class", "flight-information-row");
+    var departureTimeEl = document.createElement("td");
+    departureTimeEl.textContent = flightData["departureTime"][1].slice(0, 5);
+    tableRow.appendChild(departureTimeEl);
+    var arrivalTimeEl = document.createElement("td");
+    arrivalTimeEl.textContent = flightData["arrivalTime"][1].slice(0, 5);
+    tableRow.appendChild(arrivalTimeEl)
+    var flightDurationEl = document.createElement("td");
+    flightDurationEl.textContent = flightData["flightDuration"];
+    tableRow.appendChild(flightDurationEl)
+    var flightPriceEl = document.createElement("td");
+    flightPriceEl.textContent = flightData["flightPrice"].toString();
+    tableRow.appendChild(flightPriceEl)
+    var flightNumber = document.createElement("td");
+    flightNumber.textContent = flightData["flightNumber"].toString();
+    tableRow.appendChild(flightNumber)
+    var saveFlightButton = document.createElement("button");
+    saveFlightButton.textContent = "Save Flight"
+    tableRow.appendChild(saveFlightButton)
+    return tableRow
 }
 
+var renderAllRows = function(allFlightData) {
+    for (var i = 0; i < allFlightData.length; i++){
+        flightsTableEl.appendChild(renderOneFlightRow(allFlightData[i]))
+    }
+}
 
 
 searchFlightButtonEl.addEventListener("click", searchFlights);
