@@ -9,8 +9,6 @@ var selectmenuDestinationEl = document.querySelector("#destination-city");
 var flightsTableEl = document.querySelector(".flights-table")
 var rowsTableSectionEl =  document.querySelector(".rows-table-section")
 
-
-
 var cityCodes = {
     "YYC": "Calgary",
     "YEG": "Edmonton",
@@ -31,11 +29,19 @@ var searchedFlightsList = []
 var searchedFlights = {};
 
 var storeSearchedFlights = function() {
-    localStorage.setItem("searchedFlights", JSON.stringify(searchedFlightsList));
+    localStorage.setItem("savedFlights", JSON.stringify(searchedFlightsList));
 }
 
 var init = function() {
+    loadSavedFlights();
     renderSelectmenuOptions();
+}
+
+var loadSavedFlights = function() {
+    var storedFlights = JSON.parse(localStorage.getItem("savedFlights"));
+    if (storedFlights != null) {
+        searchedFlightsList = storedFlights;
+    }
 }
 
 var getDepartureIataCodeByCityName = function(object, city) {
