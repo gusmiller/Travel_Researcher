@@ -31,20 +31,19 @@ var storeSearchedFlights = function() {
     localStorage.setItem("searchedFlights", JSON.stringify(searchedFlights));
 }
 
-// var startingWithCapital = function(str) {
-//     return str.replace(/\b\w/g, x => x.toUpperCase());
-// }
-
 var init = function() {
     renderSelectmenuOptions();
 }
 
-var getIataCodeByCityName = function(object, city) {
-    var code = Object.keys(object).find(key => object[key] === city);
-    console.log(code)
+var getDepartureIataCodeByCityName = function(object, city) {
+    var departureCode = Object.keys(object).find(key => object[key] === city);
+    return departureCode
 }
 
-getIataCodeByCityName(cityCodes, "Vancouver")
+var getDestinationIataCodeByCityName = function(object, city) {
+    var destinationCode = Object.keys(object).find(key => object[key] === city);
+    return destinationCode
+}
 
 var renderSelectmenuOptions = function() {
     for (code in cityCodes) {
@@ -72,6 +71,9 @@ var searchFlights = function(event) {
         // pop up message will show
     }
     saveSearchedFlights(departureCitySelect, destinationCitySelect, departureDateSelect)
+    var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect)
+    var destinationCode = getDestinationIataCodeByCityName(cityCodes, destinationCitySelect)
+    getFlightData(departureDateSelect, departureCode, destinationCode)
 }
 
 var saveSearchedFlights = function(departureCitySelect, destinationCitySelect, departureDateSelect) {
@@ -81,18 +83,32 @@ var saveSearchedFlights = function(departureCitySelect, destinationCitySelect, d
     storeSearchedFlights();
 }
 
-// var getFlightData = function(departureDateSelect) {
-//     var flightApiUrl = "https://api.aviationstack.com/v1/flights?access_key=" + flightsApiKey + "flight_date=" + departureDateSelect + "dep_iata=" + ;
+var getFlightData = function(departureDateSelect, departureCode, destinationCode) {
+    var flightApiUrl = "https://api.tequila.kiwi.com/v2/search?" + "fly_from=" + departureCode + "&fly_to=" + destinationCode + "&date_from=" + departureDateSelect + "&date_to=" + departureDateSelect + "&limit=10" + "&curr=CAD";
+    console.log(departureCode)
+    console.log(destinationCode)
+    console.log(departureDateSelect)
+    console.log(flightApiUrl);
+    fetch(flightApiUrl, {
+        headers: {
+            "apikey": "28KlXgTIJqrzQn9w0jUTkn75Yvb2HwDH",
+        }
+    })
+    .then(function(response) {
+        console.log(response);
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+    })
+}
 
-//     fetch(flightApiUrl)
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .then(function(data){
-//         console.log(data);
-//     })
-// }
+var renderOneFlightRow = function() {
+
+}
+
 
 
 searchFlightButtonEl.addEventListener("click", searchFlights);
 init();
+
