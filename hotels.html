@@ -28,13 +28,24 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 
     <script>
-        $( function() {
-          $( "#datepicker" ).datepicker();
-          $( "#anim" ).on( "change", function() {
-            $( "#datepicker" ).datepicker( "option", "showAnim", $( this ).val() );
-          });
-        } );
-    </script>
+      $(function() {
+          $("#destination-city").selectmenu();
+      })
+  </script>
+  <script>
+    $(function() {
+        $( "#checkin-date-input").datepicker({
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+<script>
+  $(function() {
+      $( "#checkout-date-input").datepicker({
+          dateFormat: "dd/mm/yy"
+      });
+  });
+</script>
 
 </head>
 
@@ -59,6 +70,28 @@
         </div>
     </header>
 
+    <section class = "flex space-evenly" id = "search-form">
+      <form class="hotels-search-form" action="#">
+        <label id="checkin-date-label">Check in date:</label>
+        <input name="checkin-date-name" type="text" id="checkin-date-input" placeholder="Enter check in date"/>
+        
+
+        <label id="checkout-date-label">Check out date:</label>
+        <input name="checkout-date-name" type="text" id="checkout-date-input" placeholder="Enter check out date"/>
+        
+        
+        <fieldset>
+              <label for="destination-city" id="destination-city-label">Destination City:</label>
+              <select name="destination-city" id="destination-city">
+                  <option>Select city from the list:</option>
+              </select>
+        </fieldset>
+        
+      </form>
+  </section>
+
+  
+
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
         <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
           <table class="">
@@ -75,31 +108,128 @@
             </thead>
             <tbody class="bg-white">
               
-              <tr id="AC458" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
                 <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
-                <td class="px-6 text-blue-900 text-sm leading-5">Toronto</td>
-                <td class="px-6 text-blue-900 leading-5">Air Canada</td>
-                <td class="px-6 text-blue-900 leading-5">London</td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
                 <td class="tablerow px-6 text-blue-900 leading-5" hidden>
-                  <button class="listbutton transition">Select Flight</button>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
+                </td>
+              </tr>
+
+              <tr id="row1" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+                <td class="px-6 text-blue-900 text-sm leading-5"> <a class="underline" href="">Ontario</a></td>
+                <td class="px-6 text-blue-900 text-sm leading-5">sdfdsf</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="px-6 text-blue-900 leading-5">ghjghj</td>
+                <td class="tablerow px-6 text-blue-900 leading-5" hidden>
+                  <button class="listbutton transition"></button>
                 </td>
               </tr>
     
               
-              <tr id="2342" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
-                <td class="px-6 text-blue-900 text-sm leading-5">Quebec</td>
-                <td class="px-6 text-blue-900 text-sm leading-5">Montreal</td>
-                <td class="px-6 text-blue-900 leading-5">Cathay Pacific</td>
-                <td class="tablerow px-6 text-blue-900 leading-5">London</td>
-              </tr>
-    
               
-              <tr id="57858" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
-                <td class="px-6 text-blue-900 text-sm leading-5">Alberta</td>
-                <td class="px-6 text-blue-900 text-sm leading-5">Edmonton</td>
-                <td class="px-6 text-blue-900 leading-5">SF Airline</td>
-                <td class="tablerow px-6 text-blue-900 leading-5">London</td>
-              </tr>
     
             </tbody>
           </table>
