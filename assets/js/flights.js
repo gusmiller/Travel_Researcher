@@ -72,27 +72,15 @@ var searchFlights = function(event) {
         return; 
         // pop up message will show
     }
-    
-    saveSearchedFlights(departureCitySelect, destinationCitySelect, departureDateSelect)
+
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect)
     var destinationCode = getDestinationIataCodeByCityName(cityCodes, destinationCitySelect)
     getFlightData(departureDateSelect, departureCode, destinationCode)
 
 }
 
-var saveSearchedFlights = function(departureCitySelect, destinationCitySelect, departureDateSelect) {
-    searchedFlights["departure-city"] = departureCitySelect;
-    searchedFlights["destination-city"] = destinationCitySelect;
-    searchedFlights["departure-date"] = departureDateSelect;
-    storeSearchedFlights();
-}
-
 var getFlightData = function(departureDateSelect, departureCode, destinationCode) {
     var flightApiUrl = "https://api.tequila.kiwi.com/v2/search?" + "fly_from=" + departureCode + "&fly_to=" + destinationCode + "&date_from=" + departureDateSelect + "&date_to=" + departureDateSelect + "&limit=10" + "&curr=CAD";
-    console.log(departureCode)
-    console.log(destinationCode)
-    console.log(departureDateSelect)
-    console.log(flightApiUrl);
     fetch(flightApiUrl, {
         headers: {
             "apikey": "28KlXgTIJqrzQn9w0jUTkn75Yvb2HwDH",
@@ -122,7 +110,13 @@ var readFlightData = function(data) {
         var flightDuration = flightDurationHours.toString() + ":" + flightDurationMinutes.toString();
         var flightPrice = data["data"][i]["price"];
         var flightNumber = data["data"][i]["route"][0]["flight_no"];
+        var departureCity = data["data"][i]["cityFrom"];
+        var destinationCity = data["data"][i]["cityTo"];
+        var departureDateRaw = data["data"][i]["local_departure"];
         allFlightData.push({
+            "departureCity": departureCity,
+            "destinationCity": destinationCity,
+            "departureDate": departureDateRaw,
             "departureTime": departureTime,
             "arrivalTime": arrivalTime,
             "flightDuration": flightDuration,
@@ -136,6 +130,7 @@ var readFlightData = function(data) {
 var renderOneFlightRow = function(flightData) {
     var tableRowEl = document.createElement("tr");
     tableRowEl.setAttribute("class", "flight-information-row");
+    var departureDate = flightData["departureDate"][0].slice(0, 11)
     var departureTimeEl = document.createElement("td");
     departureTimeEl.textContent = flightData["departureTime"][1].slice(0, 5);
     tableRowEl.appendChild(departureTimeEl);
@@ -152,6 +147,9 @@ var renderOneFlightRow = function(flightData) {
     flightNumber.textContent = flightData["flightNumber"].toString();
     tableRowEl.appendChild(flightNumber)
     var saveFlightButtonEl = document.createElement("button");
+    saveFlightButtonEl.setAttribute("data-departure-city", flightData["departureCity"])
+    saveFlightButtonEl.setAttribute("data-destination-city", flightData["destinationCity"])
+    saveFlightButtonEl.setAttribute("departureDate", departureDate)
     saveFlightButtonEl.setAttribute("data-departure-time", departureTimeEl.textContent)
     saveFlightButtonEl.setAttribute("data-arrival-time", arrivalTimeEl.textContent)
     saveFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent)
@@ -164,7 +162,6 @@ var renderOneFlightRow = function(flightData) {
 }
 
 var renderAllRows = function(allFlightData) {
-    // var tableRow = renderOneFlightRow(allFlightData)
     for (var i = 0; i < allFlightData.length; i++){
         flightsTableEl.appendChild(renderOneFlightRow(allFlightData[i]));
     }
@@ -172,8 +169,10 @@ var renderAllRows = function(allFlightData) {
 
 var saveChosenFlight = function(event) {
     event.preventDefault();
-    console.log(event);
-    let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber] = chosenFlightInfo(event.target);
+    let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
+    searchedFlights["departureCity"] = departureCity;
+    searchedFlights["destinationCity"] = destinationCity;
+    searchedFlights["departureDate"] = departureDate;
     searchedFlights["departureTime"] = departureTime;
     searchedFlights["arrivalTime"] = arrivalTime;
     searchedFlights["flightDuration"] = flightDuration;
@@ -183,7 +182,7 @@ var saveChosenFlight = function(event) {
 }
 
 var chosenFlightInfo = function(button) {
-    return [button.dataset.departureTime, button.dataset.arrivalTime, button.dataset.flightDuration, button.dataset.flightPrice, button.dataset.flightNumber]
+    return [button.dataset.departureTime, button.dataset.arrivalTime, button.dataset.flightDuration, button.dataset.flightPrice, button.dataset.flightNumber, button.dataset.departureCity, button.dataset.destinationCity, button.dataset.departureDate]
 }
 
 
