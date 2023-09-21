@@ -17,3 +17,8 @@
  .fatface {
     font-family: "Abril-Fatface", "helvetica"
  }
+
+ /* Apply transition to the popup */
+#popup {
+   transition: opacity 0.2s ease-in-out;
+ }
