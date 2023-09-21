@@ -26,11 +26,12 @@ var cityCodes = {
     "YVR": "Vancouver",
     "YWG": "Winnipeg",
 }
+var searchedFlightsList = []
 
 var searchedFlights = {};
 
 var storeSearchedFlights = function() {
-    localStorage.setItem("searchedFlights", JSON.stringify(searchedFlights));
+    localStorage.setItem("searchedFlights", JSON.stringify(searchedFlightsList));
 }
 
 var init = function() {
@@ -76,7 +77,6 @@ var searchFlights = function(event) {
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect)
     var destinationCode = getDestinationIataCodeByCityName(cityCodes, destinationCitySelect)
     getFlightData(departureDateSelect, departureCode, destinationCode)
-
 }
 
 var getFlightData = function(departureDateSelect, departureCode, destinationCode) {
@@ -170,15 +170,16 @@ var renderAllRows = function(allFlightData) {
 var saveChosenFlight = function(event) {
     event.preventDefault();
     let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
-    searchedFlights["departureCity"] = departureCity;
-    searchedFlights["destinationCity"] = destinationCity;
-    searchedFlights["departureDate"] = departureDate;
-    searchedFlights["departureTime"] = departureTime;
-    searchedFlights["arrivalTime"] = arrivalTime;
-    searchedFlights["flightDuration"] = flightDuration;
-    searchedFlights["flightPrice"] = flightPrice;
-    searchedFlights["flightNumber"] = flightNumber;
-    storeSearchedFlights();
+        searchedFlights["departureCity"] = departureCity;
+        searchedFlights["destinationCity"] = destinationCity;
+        searchedFlights["departureDate"] = departureDate;
+        searchedFlights["departureTime"] = departureTime;
+        searchedFlights["arrivalTime"] = arrivalTime;
+        searchedFlights["flightDuration"] = flightDuration;
+        searchedFlights["flightPrice"] = flightPrice;
+        searchedFlights["flightNumber"] = flightNumber;
+        searchedFlightsList.push(searchedFlights)
+        storeSearchedFlights();
 }
 
 var chosenFlightInfo = function(button) {
