@@ -1,7 +1,10 @@
+const openflightModal = document.getElementById('openModal');
+const closeflightModal = document.getElementById('closeModal');
+const closeModal = document.getElementById('close-popup');
+const warning = document.getElementById('warningModal');
+
 $(document).ready(function () {
 
-      // Jquery selector to retrieve popup
-      const popup = $("#popup");
 
       /**
        * This function will trigger the select flight. The information in the <tr> will be 
@@ -10,7 +13,7 @@ $(document).ready(function () {
       function selectRow() {
 
             // Jquery selector using ID to retrieve the row element
-            const row = $("#" + this.parentElement.parentElement.id); 
+            const row = $("#" + this.parentElement.parentElement.id);
 
             // Retrieve items using JQuery traversing; moving though the html
             // https://www.w3schools.com/jquery/jquery_traversing.asp
@@ -20,7 +23,11 @@ $(document).ready(function () {
             $("#flightDuration").val(row.children().eq(3).text());
             $("#price").val(row.children().eq(4).text());
             $("#flightNumber").val(row.children().eq(5).text());
-            popup.classList.remove('hidden');
+
+            // Remove hidden class from modalscreen
+            // https://www.w3schools.com/jquery/html_removeclass.asp
+            $("#popup").removeClass("hidden");
+
       }
 
       /**
@@ -31,7 +38,7 @@ $(document).ready(function () {
 
             // Remove all buttons from area - there is only 1 button
             // https://developer.mozilla.org/en-US/docs/Web/API/Element/remove
-            $("#selectFlight").remove(); 
+            $("#selectFlight").remove();
       }
 
       /**
@@ -43,7 +50,7 @@ $(document).ready(function () {
             var buttonArea = $("#" + this.id); // Create variable using JQuery selctor
 
             // Jquer to create new button
-            var newElement = $("<button></button>") 
+            var newElement = $("<button></button>")
             newElement.attr("id", "selectFlight"); // Assign an ID
             newElement.attr("type", "button"); // Assign an ID
             newElement.text("Select Flight"); // Add text to button
@@ -54,7 +61,7 @@ $(document).ready(function () {
 
             // The button is added to section dynamically. Validate whether the button is are already existing
             if (buttonArea.children().eq(buttonArea.children().length - 1).children().length == 0) {
-                  
+
                   // Appends button using the append class
                   // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
                   buttonArea.children().eq(buttonArea.children().length - 1).append(newElement); // Append new button      
@@ -74,11 +81,29 @@ $(document).ready(function () {
             // Assign an event to ALL buttons added dynamically into the DOM. These buttons originally
             // will NOT be there. To reset the array use the inspect to delete the LocalStorage
             // https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
-            $(".tablerow").on("mouseover", revealButton);               // SONJA: the row NEEDS to have a dummy class - tablerow
-            $(".tablerow").on("mouseleave", removeButton);              // SONJA: the row NEEDS to have a dummy class - tablerow
-            $("#close-popup").on("click", function () {
-                  popup.classList.add('hidden');
+            $(".tablerow").on("mouseover", revealButton);
+            $(".tablerow").on("mouseleave", removeButton);
+
+            // Warning modal code
+            // Javascript: Reveal modal event listener, will show the modal form
+            openflightModal.addEventListener('click', () => {
+                  $("#errorTitle").text("No data Found!");
+                  $("#errorMessage").text("An error will be displayed here! please try again");
+                  warning.classList.remove('hidden');
             });
+
+            // Javascript: Close modal event listener, will close the modal form
+            closeflightModal.addEventListener('click', () => {
+                  warning.classList.add('hidden');
+            });
+            // End of Warning modal code
+
+            // Javascript: flight modal Close event listener, will close the flight modal form
+            closeModal.addEventListener("click", function () {
+                  const modal = document.getElementById('popup');
+                  modal.classList.add('hidden')
+            });
+
       }
 
       init();

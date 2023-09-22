@@ -8,9 +8,10 @@
 
 <body>
 
+  <!-- Modal flight container -->
   <div id="popup"
-    class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-    <div class="bg-white p-6 rounded shadow-lg">
+    class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
+    <div class="modal-dialog bg-gray-300 p-6 rounded shadow-lg">
       <div class="mb-4">
         <h2 class="text-2xl font-semibold">Selected Flight</h2>
       </div>
@@ -60,6 +61,25 @@
       <button id="close-popup" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Close Popup</button>
     </div>
   </div>
+  <!-- End of Modal flight container -->
+
+  <!-- Modal warning container -->
+  <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+    <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2>
+        <p id="errorMessage" class="text-red-500 mb-4"></p>
+        <!-- Your form goes here -->
+        <!-- Add form elements and actions here -->
+        <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+      </div>
+    </div>
+  </div>
+  <!-- End of Modal warning container -->
+
+  <!-- Trigger button for the modal -->
+  <button id="openModal" class="bg-blue-500 text-white py-2 px-4 rounded">Open Modal</button>
 
   <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
     <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
