@@ -192,6 +192,9 @@ var saveChosenFlight = function(event) {
     searchedFlights["flightDuration"] = flightDuration;
     searchedFlights["flightNumber"] = flightNumber;
     searchedFlights["flightPrice"] = flightPrice;
+
+
+    
     searchedFlightsList.push(searchedFlights);
     storeSearchedFlights();
 }
