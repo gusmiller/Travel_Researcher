@@ -176,6 +176,9 @@ var renderAllRows = function(allFlightData) {
     for (var i = 0; i < allFlightData.length; i++){
         flightsTableEl.appendChild(renderOneFlightRow(allFlightData[i]));
     }
+    if (allFlightData.length === 0) {
+        // pop up shows
+    }
 }
 
 var saveChosenFlight = function(event) {
@@ -199,4 +202,3 @@ var chosenFlightInfo = function(button) {
 
 searchFlightButtonEl.addEventListener("click", searchFlights);
 init();
-
