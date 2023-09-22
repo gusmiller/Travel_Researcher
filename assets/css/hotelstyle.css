@@ -2,6 +2,18 @@
     font-family: "Lobster", "helvetica";
 }
 
-.search-form {
-    height: 500px;
+#search-form {
+    height: 200px;
+}
+
+#checkin {
+    height: 60px;
+}
+
+#checkout {
+    height: 60px;
+}
+
+#city {
+    height: 60px;
 }
