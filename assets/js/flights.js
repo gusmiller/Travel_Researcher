@@ -125,13 +125,13 @@ var readFlightData = function(data) {
         var destinationCity = data["data"][i]["cityTo"];
         var departureDateRaw = data["data"][i]["local_departure"].split("T");
         allFlightData.push({
+            "flightNumber": flightNumber,
             "departureCity": departureCity,
             "destinationCity": destinationCity,
             "departureDate": departureDateRaw,
             "departureTime": departureTime,
             "arrivalTime": arrivalTime,
             "flightDuration": flightDuration,
-            "flightNumber": flightNumber,
             "flightPrice": flightPrice,
         })
     }
@@ -142,6 +142,9 @@ var renderOneFlightRow = function(flightData) {
     var tableRowEl = document.createElement("tr");
     tableRowEl.setAttribute("class", "flight-information-row");
     var departureDate = flightData["departureDate"][0].slice(0, 11);
+    var flightNumber = document.createElement("td");
+    flightNumber.textContent = flightData["flightNumber"].toString();
+    tableRowEl.appendChild(flightNumber);
     var departureTimeEl = document.createElement("td");
     departureTimeEl.textContent = flightData["departureTime"][1].slice(0, 5);
     tableRowEl.appendChild(departureTimeEl);
@@ -151,9 +154,6 @@ var renderOneFlightRow = function(flightData) {
     var flightDurationEl = document.createElement("td");
     flightDurationEl.textContent = flightData["flightDuration"];
     tableRowEl.appendChild(flightDurationEl);
-    var flightNumber = document.createElement("td");
-    flightNumber.textContent = flightData["flightNumber"].toString();
-    tableRowEl.appendChild(flightNumber);
     var flightPriceEl = document.createElement("td");
     flightPriceEl.textContent = flightData["flightPrice"].toString();
     tableRowEl.appendChild(flightPriceEl);
