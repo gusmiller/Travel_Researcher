@@ -123,7 +123,7 @@ var readFlightData = function(data) {
         var flightNumber = data["data"][i]["route"][0]["flight_no"];
         var departureCity = data["data"][i]["cityFrom"];
         var destinationCity = data["data"][i]["cityTo"];
-        var departureDateRaw = data["data"][i]["local_departure"];
+        var departureDateRaw = data["data"][i]["local_departure"].split("T");
         allFlightData.push({
             "departureCity": departureCity,
             "destinationCity": destinationCity,
@@ -160,7 +160,7 @@ var renderOneFlightRow = function(flightData) {
     var saveFlightButtonEl = document.createElement("button");
     saveFlightButtonEl.setAttribute("data-departure-city", flightData["departureCity"]);
     saveFlightButtonEl.setAttribute("data-destination-city", flightData["destinationCity"]);
-    saveFlightButtonEl.setAttribute("departureDate", departureDate);
+    saveFlightButtonEl.setAttribute("data-departure-date", departureDate);
     saveFlightButtonEl.setAttribute("data-departure-time", departureTimeEl.textContent);
     saveFlightButtonEl.setAttribute("data-arrival-time", arrivalTimeEl.textContent);
     saveFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
