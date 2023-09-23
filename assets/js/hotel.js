@@ -45,26 +45,28 @@ var fetchHotels = function (city) {
                 })
                 .then(function (data) {
 
-                    readHotelData(data);
+                    var newData = data.result.slice(0, 10)
+                    readHotelData(newData);
                     console.log(data);
-
+                    
                 })
             console.log(locationData);
-
+            
         })
 }
 
-var readHotelData = function (data) {
+var readHotelData = function (newData) {
 
     var allHotelData = []
 
-    for (var i = 0; i < data.result[10]; i++) {
-        var cityName = data.result[i].city;
-        var hotelName = data.result[i].hotel_name;
-        var hotelAddress = data.result[i].address
+
+    for (var i = 0; i < newData.length; i++) {
+        var cityName = newData[i].city;
+        var hotelName = newData[i].hotel_name;
+        var hotelAddress = newData[i].address
         var checkin = checkIn.value
         var checkout = checkOut.value
-        var totalPrice = data.result[i].price_breakdown.gross_price
+        var totalPrice = newData[i].price_breakdown.gross_price
         allHotelData.push({
             "cityname": cityName,
             "hotelname": hotelName,
@@ -73,8 +75,9 @@ var readHotelData = function (data) {
             "checkout": checkout,
             "totalprice": totalPrice
         })
-        console.log(allHotelData)
+        
     }
+    console.log(allHotelData)
 return allHotelData
     
 }
