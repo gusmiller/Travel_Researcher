@@ -44,6 +44,10 @@ var renderTableRows = function(storedFlights) {
         var flightPriceEl = document.createElement("td");
         flightPriceEl.textContent = storedFlights[i]["flightPrice"];
         tableRowEl.appendChild(flightPriceEl);
+        var bookFlightButtonEl = document.createElement("button");
+        bookFlightButtonEl.setAttribute("id", "book-flight-button");
+        bookFlightButtonEl.textContent = "Book Flight"
+        tableRowEl.appendChild(bookFlightButtonEl)
         bookmarkedFlightsTableEl.appendChild(tableRowEl);
     }
 }
