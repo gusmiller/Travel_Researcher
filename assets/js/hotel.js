@@ -6,15 +6,13 @@ var searchButton = document.querySelector("#searchbtn")
 
 var checkInValue = checkIn.value
 var checkOutValue = checkOut.value
-var cityValue = city.value
-
 
 
 searchButton.addEventListener("click", (event) => {
 
     event.preventDefault();
 
-    fetchHotels(cityValue);
+    fetchHotels(city.value);
 })
 
 
