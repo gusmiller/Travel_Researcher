@@ -26,8 +26,6 @@ var cityCodes = {
 }
 var searchedFlightsList = [];
 
-var searchedFlights = {};
-
 var storeSearchedFlights = function() {
     localStorage.setItem("savedFlights", JSON.stringify(searchedFlightsList));
 }
@@ -184,18 +182,16 @@ var renderAllRows = function(allFlightData) {
 var saveChosenFlight = function(event) {
     event.preventDefault();
     let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
-    searchedFlights["departureCity"] = departureCity;
-    searchedFlights["destinationCity"] = destinationCity;
-    searchedFlights["departureDate"] = departureDate;
-    searchedFlights["departureTime"] = departureTime;
-    searchedFlights["arrivalTime"] = arrivalTime;
-    searchedFlights["flightDuration"] = flightDuration;
-    searchedFlights["flightNumber"] = flightNumber;
-    searchedFlights["flightPrice"] = flightPrice;
-
-
-    
-    searchedFlightsList.push(searchedFlights);
+    var flight = {}
+    flight["departureCity"] = departureCity;
+    flight["destinationCity"] = destinationCity;
+    flight["departureDate"] = departureDate;
+    flight["departureTime"] = departureTime;
+    flight["arrivalTime"] = arrivalTime;
+    flight["flightDuration"] = flightDuration;
+    flight["flightNumber"] = flightNumber;
+    flight["flightPrice"] = flightPrice;
+    searchedFlightsList.push(flight);
     storeSearchedFlights();
 }
 

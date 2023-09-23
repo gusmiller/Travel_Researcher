@@ -2,7 +2,7 @@ var bookmarkedFlightsTableEl = document.querySelector(".bookmarked-flights-table
 
 var savedFlightDestinationList = []
 
-var savedFlightDestination = {}
+
 
 var init = function() {
     var storedFlights = loadSavedFlights();
@@ -69,6 +69,7 @@ var renderTableRows = function(storedFlights) {
 
 var saveDestination = function(event) {
     event.preventDefault();
+    var savedFlightDestination = {}
     let destinationCity = bookedFlightDestination(event.target);
     savedFlightDestination["destinationCity"] = destinationCity;
 
