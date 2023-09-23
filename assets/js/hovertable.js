@@ -98,6 +98,7 @@ $(document).ready(function () {
             });
             // End of Warning modal code
 
+            // Flight Modal
             // Javascript: flight modal Close event listener, will close the flight modal form
             closeModal.addEventListener("click", function () {
                   const modal = document.getElementById('popup');
