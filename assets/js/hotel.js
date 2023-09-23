@@ -18,7 +18,7 @@ searchButton.addEventListener("click", (event) => {
 })
 
 
-var fetchHotels = function (city) {
+var fetchHotels = function (cityValue) {
 
 
     var hotelLocationApiUrl = "https://booking-com.p.rapidapi.com/v1/hotels/locations?name=" + cityValue + "&locale=en-us";
