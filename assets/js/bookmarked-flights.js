@@ -1,8 +1,13 @@
 var bookmarkedFlightsTableEl = document.querySelector(".bookmarked-flights-table")
 
+var savedFlightDestinationList = []
+
+var savedFlightDestination = {}
+
 var init = function() {
     var storedFlights = loadSavedFlights();
     renderTableRows(storedFlights);
+    loadSavedDestinations();
 }
 
 var loadSavedFlights = function() {
@@ -14,6 +19,13 @@ var loadSavedFlights = function() {
 
     console.log(storedFlights)
     return storedFlights
+}
+
+var loadSavedDestinations = function() {
+    var savedDestinations = JSON.parse(localStorage.getItem("savedDestinations"));
+    if (savedDestinations != null) {
+        savedFlightDestinationList = savedDestinations;
+    }
 }
 
 var renderTableRows = function(storedFlights) {
@@ -46,10 +58,30 @@ var renderTableRows = function(storedFlights) {
         tableRowEl.appendChild(flightPriceEl);
         var bookFlightButtonEl = document.createElement("button");
         bookFlightButtonEl.setAttribute("id", "book-flight-button");
+        bookFlightButtonEl.setAttribute("data-destination-city", destinationCityEl.textContent)
         bookFlightButtonEl.textContent = "Book Flight"
         tableRowEl.appendChild(bookFlightButtonEl)
         bookmarkedFlightsTableEl.appendChild(tableRowEl);
+
+        bookFlightButtonEl.addEventListener("click", saveDestination);
     }
 }
 
-init()
+var saveDestination = function(event) {
+    event.preventDefault();
+    let destinationCity = bookedFlightDestination(event.target);
+    savedFlightDestination["destinationCity"] = destinationCity;
+
+    savedFlightDestinationList.push(savedFlightDestination);
+    storeSavedDestinations();
+}
+
+var bookedFlightDestination = function(button) {
+    return button.dataset.destinationCity;
+}
+
+var storeSavedDestinations = function() {
+    localStorage.setItem("savedDestinations", JSON.stringify(savedFlightDestinationList))
+}
+
+init();
