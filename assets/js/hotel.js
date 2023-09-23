@@ -14,15 +14,15 @@ searchButton.addEventListener("click", (event) => {
 
     event.preventDefault();
 
-    fetchHotels();
+    fetchHotels(cityValue);
 })
 
 
-var fetchHotels = function (cityValue) {
+var fetchHotels = function (city) {
 
-    cityValue = city.name
 
-    var hotelLocationApiUrl = "https://booking-com.p.rapidapi.com/v1/hotels/locations?name="+ cityValue + "&locale=en-us";
+    var hotelLocationApiUrl = "https://booking-com.p.rapidapi.com/v1/hotels/locations?name=" + city + "&locale=en-us";
+
     fetch(hotelLocationApiUrl, {
         method: "GET",
         headers: {
@@ -39,5 +39,7 @@ var fetchHotels = function (cityValue) {
         
     })
 }
+
+
 
 
