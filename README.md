@@ -60,20 +60,13 @@ The **Travel Researcher** was our coding bootcamp first project and therefore it
 - [x] Create branches from developing for the implementations; feature-mainscreen, feature-searchscreen, feature-hover, feature-corrections, feature-historyscreen, feature-hotelbookmarks
 - [x] Test and Debug application
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/gusmiller/Travel_Researcher/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<!-- CONTACT Section -->
-## Contact
-
-In case you have any questions or would like me to help you in your IT needs, you may contact me at - gustavo.miller@miller-hs.com
-
-Project Link: [https://gusmiller.github.io/work_day_scheduler/](https://gusmiller.github.io/work_day_scheduler/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
