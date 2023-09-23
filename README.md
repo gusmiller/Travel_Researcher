@@ -47,6 +47,10 @@ Here are a few examples.
 * [![JQuery][JQuery.com]][JQuery-url]
 * [![Javascript]][Javascript-url]
 
+### Team
+
+The **Travel Researcher** was our coding bootcamp first project and therefore it had to be done in a team. Teams were created randomly by the teacher; team #2, our team was conformed by Sonja Gorin, Jacob Martin and Gustavo Miller. Among our team we distributed the workload and made the application possible, and had some coding fun in the process.
+
 <!-- ROADMAP -->
 ## Roadmap
 
