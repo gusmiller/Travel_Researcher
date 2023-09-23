@@ -132,6 +132,7 @@ var readFlightData = function(data) {
             "flightDuration": flightDuration,
             "flightPrice": flightPrice,
         })
+        console.log(allFlightData)
     }
     return allFlightData;
 }

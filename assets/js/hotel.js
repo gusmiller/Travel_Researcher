@@ -15,7 +15,6 @@ searchButton.addEventListener("click", (event) => {
 
 var fetchHotels = function (city) {
 
-
     var hotelLocationApiUrl = "https://booking-com.p.rapidapi.com/v1/hotels/locations?name=" + city + "&locale=en-us";
 
     fetch(hotelLocationApiUrl, {
@@ -25,43 +24,62 @@ var fetchHotels = function (city) {
             'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
         }
     })
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data){
-        
-        var cityId = data[0].dest_id
-
-        var searchHotel = "https://booking-com.p.rapidapi.com/v1/hotels/search?checkin_date=" + checkIn.value + "&dest_type=city&units=metric&checkout_date=" + checkOut.value + "&adults_number=2&order_by=popularity&dest_id=" + cityId + "&filter_by_currency=AED&locale=en-gb&room_number=1&children_number=2&children_ages=5%2C0&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&page_number=0&include_adjacency=true"
-
-        fetch(searchHotel, {
-            method: "GET",
-            headers: {
-                'X-RapidAPI-Key': '297373a073msh7b0598ca6341179p15ab78jsn93aac3e1c65e',
-                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
-            }
-        })
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data){
-            
-            
-            console.log(data);
-    
-    
-    
-            
+        .then(function (locationData) {
+
+            var cityId = locationData[0].dest_id
+
+            var searchHotel = "https://booking-com.p.rapidapi.com/v1/hotels/search?checkin_date=" + checkIn.value + "&dest_type=city&units=metric&checkout_date=" + checkOut.value + "&adults_number=2&order_by=price&dest_id=" + cityId + "&filter_by_currency=CAD&locale=en-us&room_number=1&%2C0&page_number=0&include_adjacency=true"
+
+            fetch(searchHotel, {
+                method: "GET",
+                headers: {
+                    'X-RapidAPI-Key': '297373a073msh7b0598ca6341179p15ab78jsn93aac3e1c65e',
+                    'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+                }
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+
+                    readHotelData(data);
+                    console.log(data);
+
+                })
+            console.log(locationData);
+
         })
-        console.log(data);
-
-
-
-        
-    })
 }
 
-console.log(checkIn.value)
+var readHotelData = function (data) {
+
+    var allHotelData = []
+
+    for (var i = 0; i < data.result[10]; i++) {
+        var cityName = data.result[i].city;
+        var hotelName = data.result[i].hotel_name;
+        var hotelAddress = data.result[i].address
+        var checkin = checkIn.value
+        var checkout = checkOut.value
+        var totalPrice = data.result[i].price_breakdown.gross_price
+        allHotelData.push({
+            "cityname": cityName,
+            "hotelname": hotelName,
+            "hoteladdress": hotelAddress,
+            "checkin": checkin,
+            "checkout": checkout,
+            "totalprice": totalPrice
+        })
+        console.log(allHotelData)
+    }
+return allHotelData
+    
+}
+
+
 
 
 
