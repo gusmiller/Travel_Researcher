@@ -1,27 +1,20 @@
-var savedFlightNumberEl = document.querySelector("#saved-flight-number")
-var savedDepartureCityEl = document.querySelector("#saved-departure-city")
-var savedDepartureDateEl = document.querySelector("#saved-departure-date")
-var savedDepartureTimeEl = document.querySelector("#saved-departure-time")
 var bookmarkedFlightsTableEl = document.querySelector(".bookmarked-flights-table")
 
-
-
-
-
-
+var init = function() {
+    var storedFlights = loadSavedFlights();
+    renderTableRows(storedFlights);
+}
 
 var loadSavedFlights = function() {
     var storedFlights = JSON.parse(localStorage.getItem("savedFlights"));
-    // if (storedFlights != null) {
-    //     return; 
+    if (storedFlights.length === 0) {
+        return; 
         // pop up shows
+    }
 
     console.log(storedFlights)
     return storedFlights
 }
-
-
-var storedFlights = loadSavedFlights()
 
 var renderTableRows = function(storedFlights) {
     for (var i =0; i < storedFlights.length; i++) {
@@ -51,8 +44,8 @@ var renderTableRows = function(storedFlights) {
         var flightPriceEl = document.createElement("td");
         flightPriceEl.textContent = storedFlights[i]["flightPrice"];
         tableRowEl.appendChild(flightPriceEl);
-        bookmarkedFlightsTableEl.appendChild(tableRowEl)
+        bookmarkedFlightsTableEl.appendChild(tableRowEl);
     }
 }
 
-renderTableRows(storedFlights)
+init()
