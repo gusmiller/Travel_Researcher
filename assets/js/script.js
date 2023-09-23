@@ -56,4 +56,4 @@ $(document).ready(function () {
                   });
       }
 
-});const aviationAPI = "bc62d3c507d8b552c56639324618f98b";
+});
