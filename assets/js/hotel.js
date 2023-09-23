@@ -21,7 +21,7 @@ searchButton.addEventListener("click", (event) => {
 var fetchHotels = function (city) {
 
 
-    var hotelLocationApiUrl = "https://booking-com.p.rapidapi.com/v1/hotels/locations?name=" + city + "&locale=en-us";
+    var hotelLocationApiUrl = "https://booking-com.p.rapidapi.com/v1/hotels/locations?name=" + cityValue + "&locale=en-us";
 
     fetch(hotelLocationApiUrl, {
         method: "GET",
