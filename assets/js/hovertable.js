@@ -10,7 +10,7 @@ $(document).ready(function () {
       function selectRow() {
 
             // Jquery selector using ID to retrieve the row element
-            const row = $("#" + this.parentElement.parentElement.id); 
+            const row = $("#" + this.parentElement.parentElement.id);
 
             // Retrieve items using JQuery traversing; moving though the html
             // https://www.w3schools.com/jquery/jquery_traversing.asp
@@ -31,7 +31,7 @@ $(document).ready(function () {
 
             // Remove all buttons from area - there is only 1 button
             // https://developer.mozilla.org/en-US/docs/Web/API/Element/remove
-            $("#selectFlight").remove(); 
+            $("#selectFlight").remove();
       }
 
       /**
@@ -43,7 +43,7 @@ $(document).ready(function () {
             var buttonArea = $("#" + this.id); // Create variable using JQuery selctor
 
             // Jquer to create new button
-            var newElement = $("<button></button>") 
+            var newElement = $("<button></button>")
             newElement.attr("id", "selectFlight"); // Assign an ID
             newElement.attr("type", "button"); // Assign an ID
             newElement.text("Select Flight"); // Add text to button
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
             // The button is added to section dynamically. Validate whether the button is are already existing
             if (buttonArea.children().eq(buttonArea.children().length - 1).children().length == 0) {
-                  
+
                   // Appends button using the append class
                   // https://developer.mozilla.org/en-US/docs/Web/API/Element/append
                   buttonArea.children().eq(buttonArea.children().length - 1).append(newElement); // Append new button      
@@ -63,6 +63,24 @@ $(document).ready(function () {
                   // https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
                   $("#selectFlight").on("click", selectRow);
             }
+      }
+
+      function retrieveIssues() {
+            var requestUrl = 'https://api.github.com/repos/gusmiller/Travel_Researcher/issues';
+            requestUrl = 'https://api.github.com/repos/gusmiller/Travel_Researcher/issues?state=closed';
+
+            fetch(requestUrl)
+                  .then(function (response) {
+                        return response.json();
+                  })
+                  .then(function (data) {
+                        var issues = data; // Instantiate Issues object
+
+                        issues.forEach(issue => {
+                              console.log(issue.title);
+                        })
+                  });
+
       }
 
       /**
@@ -79,6 +97,8 @@ $(document).ready(function () {
             $("#close-popup").on("click", function () {
                   popup.classList.add('hidden');
             });
+
+            retrieveIssues();
       }
 
       init();

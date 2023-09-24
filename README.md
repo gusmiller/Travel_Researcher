@@ -36,6 +36,12 @@ The Travel Researcher, same as all our previous challenges, was developed using 
 * <a href="https://tequila.kiwi.com/portal/login">api.tequila.kiwi.com</a> - this API provides flights information. This is the documentation for the HTTP API provided by KIWI.KI GmbH for remote unlocking and administration of doors.
 * <a href="https://developers.booking.com/api/index.html">dev.booking-com.p.rapidapi.com.net</a> - Hotels information, it searches for deals on hotels, homes, and much more...
 
+### API Bad calls
+It is innevitable that bad call will occure. To graciously fail the system we are using a Generic-purpose Modal (popup) form to communicate the error to the user. 
+
+<img src="./assets/images/API404Error.PNG" height="250">
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
@@ -60,14 +66,42 @@ The **Travel Researcher** was our coding bootcamp first project and therefore it
 - [x] Create branches from developing for the implementations; feature-mainscreen, feature-searchscreen, feature-hover, feature-corrections, feature-historyscreen, feature-hotelbookmarks
 - [x] Test and Debug application
 
-See the [open issues](https://github.com/gusmiller/Travel_Researcher/issues) for a full list of proposed features (and known issues).
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Issues
+During our development we have added a number of issues, some of them created at initial design and then we added issue on-demand. It was **important** to keep these issue with as much information as possible. This was done this way in order to document not just the feature but also the progress of the coding. 
+
+See the [open issues](https://github.com/gusmiller/Travel_Researcher/issues) for a full list of proposed features.
+
+**Open Issues**
+1. Feature-warningpopup
+2. Feature-searching - Styling bookmarks
+3. Feature-screen - CSS Styling
+4. Feature-search - bookmark
+5. Feature-hotels
+6. Feature-search
+7. Feature-mainscreen
+8. Initial Meetings
+
+**Closed issues**
+1. Flight-search-column-order
+2. Flight-search-no flights-edge-case
+3. Flight-search-saving-flights
+4. Flight-search-calendar
+5. Feature searchscreen
+6. Feature hover
+7. Feature-corrections
+8. Feature-hover
+9. Add additonal tailwind css
+
+**Bug**
+1. Aviationstack not returning future flights
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [product-screenshot]: ./assets/images/weather001.png
