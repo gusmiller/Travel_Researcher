@@ -178,7 +178,9 @@ var renderOneFlightRow = function(flightData) {
     saveFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
     saveFlightButtonEl.setAttribute("data-flight-number", flightNumber.textContent);
     saveFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent);
+    saveFlightButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     saveFlightButtonEl.textContent = "Save Flight";
+    console.log(saveFlightButtonEl)
     tableRowEl.appendChild(saveFlightButtonEl);
     saveFlightButtonEl.addEventListener("click", saveChosenFlight);
     return tableRowEl;
@@ -195,6 +197,7 @@ var renderAllRows = function(allFlightData) {
 
 var saveChosenFlight = function(event) {
     event.preventDefault();
+    console.log(event)
     let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
     var flight = {}
     flight["departureCity"] = departureCity;
@@ -223,6 +226,7 @@ var flightAlreadySaved = function(flight) {
 }
 
 var chosenFlightInfo = function(button) {
+    console.log(button)
     return [button.dataset.departureTime, button.dataset.arrivalTime, button.dataset.flightDuration, button.dataset.flightPrice, button.dataset.flightNumber, button.dataset.departureCity, button.dataset.destinationCity, button.dataset.departureDate];
 }
 
