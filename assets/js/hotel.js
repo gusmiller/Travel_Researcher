@@ -3,6 +3,7 @@ var checkIn = document.querySelector("#checkin-date-input")
 var checkOut = document.querySelector("#checkout-date-input")
 var city = document.querySelector("#city")
 var searchButton = document.querySelector("#searchbtn")
+var hotelsTable = document.querySelector("#hotel-table")
 
 
 searchButton.addEventListener("click", (event) => {
@@ -48,6 +49,7 @@ var fetchHotels = function (city) {
                     var newData = data.result.slice(0, 10)
                     readHotelData(newData);
                     console.log(data);
+                    renderAllRows(allHotelData);
                     
                 })
             console.log(locationData);
@@ -68,18 +70,64 @@ var readHotelData = function (newData) {
         var checkout = checkOut.value
         var totalPrice = newData[i].price_breakdown.gross_price
         allHotelData.push({
-            "cityname": cityName,
-            "hotelname": hotelName,
-            "hoteladdress": hotelAddress,
-            "checkin": checkin,
-            "checkout": checkout,
-            "totalprice": totalPrice
+            "cityName": cityName,
+            "hotelName": hotelName,
+            "hotelAddress": hotelAddress,
+            "checkIn": checkin,
+            "checkOut": checkout,
+            "totalPrice": totalPrice
         })
         
     }
     console.log(allHotelData)
 return allHotelData
     
+}
+
+
+var createRow = function (allHotelData) {
+
+    var hotelRowEl = document.createElement("tr");
+    hotelRowEl.setAttribute("class", "hotel-information-row");
+    var cityName1 = document.createElement("td")
+    cityName1.textContent = allHotelData.cityName
+    hotelRowEl.appendChild(cityname1)
+    var hotelName1 = document.createElement("td")
+    hotelName1.textContent = allHotelData.hotelName
+    hotelRowEl.appendChild(hotelname1)
+    var hotelAddress1 = document.createElement("td")
+    hotelAddress1.textContent = allHotelData.hotelAddress
+    hotelRowEl.appendChild(hotelAddress1)
+    var checkIn1 = document.createElement("td")
+    checkIn1.textContent = allHotelData.checkIn
+    hotelRowEl.appendChild(checkIn1)
+    var checkOut1 = document.createElement("td")
+    checkOut1.textContent = allHotelData.checkOut
+    hotelRowEl.appendChild(checkOut1)
+    var totalPrice1 = document.createElement("td")
+    totalPrice1.textContent = allHotelData.totalPrice
+    hotelRowEl.appendChild(totalPrice)
+    var saveHotelButtonEl = document.createElement("button");
+    saveHotelButtonEl.setAttribute("data-city-name", allHotelData.cityName);
+    saveHotelButtonEl.setAttribute("data-hotel-name", allHotelData.hotelName);
+    saveHotelButtonEl.setAttribute("data-hotel-address", allHotelData.hotelAddress);
+    saveHotelButtonEl.setAttribute("data-checkin-date", allHotelData.checkIn);
+    saveHotelButtonEl.setAttribute("data-checkout-date", allHotelData.checkOut);
+    saveHotelButtonEl.setAttribute("data-total-price", allHotelData.totalPrice);
+    saveHotelButtonEl.textContent = "Save Flight";
+    tableRowEl.appendChild(saveHotelButtonEl);
+    saveHotelButtonEl.addEventListener("click", saveChosenHotel);
+    return tableRowEl;
+}
+
+
+var renderAllRows = function(allHotelData) {
+    for (var i = 0; i < allHotelData.length; i++){
+        hotelsTable.appendChild(createRow(allHotelData[i]));
+    }
+    if (allHotelData.length === 0) {
+       
+    }
 }
 
 
