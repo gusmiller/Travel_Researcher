@@ -76,6 +76,19 @@ var searchFlights = function(event) {
     if (!departureCitySelect || !destinationCitySelect || !departureDateSelect) {
         return; 
         // pop up message will show
+        // Warning modal code
+            // Javascript: Reveal modal event listener, will show the modal form
+            openflightModal.addEventListener('click', () => {
+                $("#errorTitle").text("No data Found!");
+                $("#errorMessage").text("An error will be displayed here! please try again");
+                warning.classList.remove('hidden');
+          });
+
+          // Javascript: Close modal event listener, will close the modal form
+          closeflightModal.addEventListener('click', () => {
+                warning.classList.add('hidden');
+          });
+          // End of Warning modal code
     }
 
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect);
@@ -191,8 +204,21 @@ var saveChosenFlight = function(event) {
     flight["flightDuration"] = flightDuration;
     flight["flightNumber"] = flightNumber;
     flight["flightPrice"] = flightPrice;
+
+    if (flightAlreadySaved(flight)) {
+        return;
+    }
     searchedFlightsList.push(flight);
     storeSearchedFlights();
+}
+
+var flightAlreadySaved = function(flight) {
+    for (savedFlight of searchedFlightsList) {
+        if (savedFlight.flightNumber === flight.flightNumber && savedFlight.departureTime === flight.departureTime) {
+            return true;
+        }
+    }
+    return false;
 }
 
 var chosenFlightInfo = function(button) {
