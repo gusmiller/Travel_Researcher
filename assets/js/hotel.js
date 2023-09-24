@@ -57,6 +57,13 @@ var fetchHotels = function (city) {
         })
 }
 
+
+var storeHotels = function() {
+    var hotelList = saveChosenHotel()
+    localStorage.setItem("storedHotels", JSON.stringify(hotelList));
+}
+
+
 var readHotelData = function (newData) {
 
     var allHotelData = []
@@ -114,9 +121,9 @@ var createRow = function (allHotelData) {
     saveHotelButtonEl.setAttribute("data-checkin-date", allHotelData.checkIn);
     saveHotelButtonEl.setAttribute("data-checkout-date", allHotelData.checkOut);
     saveHotelButtonEl.setAttribute("data-total-price", allHotelData.totalPrice);
-    saveHotelButtonEl.textContent = "Save Flight";
+    saveHotelButtonEl.textContent = "Save Hotel";
     hotelRowEl.appendChild(saveHotelButtonEl);
-    // saveHotelButtonEl.addEventListener("click", saveChosenHotel);
+    saveHotelButtonEl.addEventListener("click", saveChosenHotel);
     return hotelRowEl;
 }
 
@@ -131,6 +138,28 @@ var renderAllRows = function(allHotelData) {
 }
 
 
+var saveChosenHotel = function(event) {
 
+    console.log(event)
+    var hotelList = JSON.parse(localStorage.getItem('hotelList')) || [];
+    let [cityName, hotelName, hotelAddress, checkinDate, checkoutDate, totalPrice] = chosenHotelInfo(event.target)
+    var hotel = {}
+    hotel.cityName = cityName;
+    hotel.hotelName = hotelName;
+    hotel.hotelAddress = hotelAddress;
+    hotel.checkinDate = checkinDate;
+    hotel.checkoutDate = checkoutDate;
+    hotel.totalPrice = totalPrice;
+    hotelList.push(hotel)
+    storeHotels();
+
+return hotelList
+
+}
+
+
+var chosenHotelInfo = function(button) {
+    return [button.dataset.cityName, button.dataset.hotelName, button.dataset.hotelAddress, button.dataset.checkinDate, button.dataset.checkoutDate, button.dataset.totalPrice];
+}
 
 
