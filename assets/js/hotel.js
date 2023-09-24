@@ -74,7 +74,7 @@ var fetchHotels = function (city) {
 
 
 var cleanUpHotels = function() {
-    $(hotelsTable).find("td").not("table-header-row").remove();
+    $(hotelsTable).find("tr").not(".table-header-row").remove();
 }
 
 
