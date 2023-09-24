@@ -5,7 +5,7 @@ window.onload = function () {
     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
     console.log(getHotels)
     createRows(getHotels)
-    // return getHotels
+   
     
     
 }

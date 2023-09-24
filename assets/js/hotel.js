@@ -12,7 +12,7 @@ var storeHotels = function() {
 }
 
 
-var loadSavedFlights = function() {
+window.onload = function() {
     var storedHotels = JSON.parse(localStorage.getItem("storedHotels"));
     if (storedHotels != null) {
         savedHotels = storedHotels;
@@ -63,6 +63,7 @@ var fetchHotels = function (city) {
                     var newData = data.result.slice(0, 10)
                    var allHotelData = readHotelData(newData);
                     console.log(data);
+                    cleanUpHotels()
                     renderAllRows(allHotelData);
                     
                 })
@@ -72,6 +73,9 @@ var fetchHotels = function (city) {
 }
 
 
+var cleanUpHotels = function() {
+    $(hotelsTable).find("td").not("table-header-row").remove();
+}
 
 
 
