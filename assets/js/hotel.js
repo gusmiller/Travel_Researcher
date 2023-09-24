@@ -4,8 +4,25 @@ var checkOut = document.querySelector("#checkout-date-input")
 var city = document.querySelector("#city")
 var searchButton = document.querySelector("#searchbtn")
 var hotelsTable = document.querySelector(".hotel-table")
+const openflightModal = document.getElementById('openModal');
+const closeflightModal = document.getElementById('closeModal');
+const closeModal = document.getElementById('close-popup');
+const warning = document.getElementById('warningModal');
+
+
+var displayWarningModal = function(title, message) {
+    $("#errorTitle").text(title);
+    $("#errorMessage").text(message);
+    warning.classList.remove('hidden');
+    closeflightModal.addEventListener('click', () => {
+        warning.classList.add('hidden');
+    });
+}
+
 
 var savedHotels = []
+
+
 
 var storeHotels = function() {
     localStorage.setItem("storedHotels", JSON.stringify(savedHotels));
@@ -46,7 +63,15 @@ var fetchHotels = function (city) {
 
             var cityId = locationData[0].dest_id
 
-            var searchHotel = "https://booking-com.p.rapidapi.com/v1/hotels/search?checkin_date=" + checkIn.value + "&dest_type=city&units=metric&checkout_date=" + checkOut.value + "&adults_number=2&order_by=price&dest_id=" + cityId + "&filter_by_currency=CAD&locale=en-us&room_number=1&%2C0&page_number=0&include_adjacency=true"
+
+            if (checkIn.value === null || checkOut.value === null || cityId === null) {
+                displayWarningModal("missing Input", "One or more fields are empty")
+                return;
+                } 
+            
+                var searchHotel = "https://booking-com.p.rapidapi.com/v1/hotels/search?checkin_date=" + checkIn.value + "&dest_type=city&units=metric&checkout_date=" + checkOut.value + "&adults_number=2&order_by=price&dest_id=" + cityId + "&filter_by_currency=CAD&locale=en-us&room_number=1&%2C0&page_number=0&include_adjacency=true"
+
+            
 
             fetch(searchHotel, {
                 method: "GET",
