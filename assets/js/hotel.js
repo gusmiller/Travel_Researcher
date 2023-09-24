@@ -12,6 +12,14 @@ var storeHotels = function() {
 }
 
 
+var loadSavedFlights = function() {
+    var storedHotels = JSON.parse(localStorage.getItem("storedHotels"));
+    if (storedHotels != null) {
+        savedHotels = storedHotels;
+    }
+}
+
+
 searchButton.addEventListener("click", (event) => {
 
     event.preventDefault();
