@@ -1,8 +1,20 @@
 var bookmarkedFlightsTableEl = document.querySelector(".bookmarked-flights-table")
+const openflightModal = document.getElementById('openModal');
+const closeflightModal = document.getElementById('closeModal');
+const closeModal = document.getElementById('close-popup');
+const warning = document.getElementById('warningModal');
 
 var savedFlightDestinationList = []
 
+var displayWarningModal = function(title, message) {
+    $("#errorTitle").text(title);
+    $("#errorMessage").text(message);
+    warning.classList.remove('hidden');
 
+    closeflightModal.addEventListener('click', () => {
+        warning.classList.add('hidden');
+    });
+}
 
 var init = function() {
     var storedFlights = loadSavedFlights();
@@ -12,9 +24,10 @@ var init = function() {
 
 var loadSavedFlights = function() {
     var storedFlights = JSON.parse(localStorage.getItem("savedFlights"));
-    if (storedFlights.length === 0) {
+    if (storedFlights == null) {
+        console.log(storedFlights)
+        displayWarningModal("No Bookmarked Flights", "There are currently no bookmarked flights");
         return; 
-        // pop up shows
     }
 
     console.log(storedFlights)
