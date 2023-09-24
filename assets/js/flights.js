@@ -8,6 +8,10 @@ var selectmenuDepartureEl = document.querySelector("#departure-city");
 var selectmenuDestinationEl = document.querySelector("#destination-city");
 var flightsTableEl = document.querySelector(".flights-table");
 var rowsTableSectionEl =  document.querySelector(".rows-table-section");
+const openflightModal = document.getElementById('openModal');
+const closeflightModal = document.getElementById('closeModal');
+const closeModal = document.getElementById('close-popup');
+const warning = document.getElementById('warningModal');
 
 var cityCodes = {
     "YYC": "Calgary",
@@ -28,6 +32,16 @@ var searchedFlightsList = [];
 
 var storeSearchedFlights = function() {
     localStorage.setItem("savedFlights", JSON.stringify(searchedFlightsList));
+}
+
+var displayWarningModal = function(title, message) {
+    $("#errorTitle").text(title);
+    $("#errorMessage").text(message);
+    warning.classList.remove('hidden');
+
+    closeflightModal.addEventListener('click', () => {
+        warning.classList.add('hidden');
+    });
 }
 
 var init = function() {
@@ -74,21 +88,8 @@ var searchFlights = function(event) {
     event.preventDefault();
     let [departureCitySelect, destinationCitySelect, departureDateSelect] = searchParameters();
     if (!departureCitySelect || !destinationCitySelect || !departureDateSelect) {
-        return; 
-        // pop up message will show
-        // Warning modal code
-            // Javascript: Reveal modal event listener, will show the modal form
-            openflightModal.addEventListener('click', () => {
-                $("#errorTitle").text("No data Found!");
-                $("#errorMessage").text("An error will be displayed here! please try again");
-                warning.classList.remove('hidden');
-          });
-
-          // Javascript: Close modal event listener, will close the modal form
-          closeflightModal.addEventListener('click', () => {
-                warning.classList.add('hidden');
-          });
-          // End of Warning modal code
+        displayWarningModal("Missing Input", "One or more fields are empty.")
+        return;
     }
 
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect);
@@ -188,7 +189,7 @@ var renderAllRows = function(allFlightData) {
         flightsTableEl.appendChild(renderOneFlightRow(allFlightData[i]));
     }
     if (allFlightData.length === 0) {
-        // pop up shows
+        displayWarningModal("No Flights", "Currently there are no flights that match your search criteria")
     }
 }
 
