@@ -2,10 +2,10 @@ var hotelTable = document.querySelector(".bookmark-table")
 
 window.onload = function () {
     
-    var getHotels = JSON.parse(localStorage.getItem("storedHotels")) || [];
+    var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
     console.log(getHotels)
     createRows(getHotels)
-    return getHotels
+    // return getHotels
     
     
 }
@@ -33,14 +33,15 @@ var hotelRowEl = document.createElement("tr");
     totalPrice1.textContent = getHotels.totalPrice
     hotelRowEl.appendChild(totalPrice1)
     renderAllRows(getHotels)
+    return hotelRowEl
 }
 
-function renderAllRows(hotels) {
+function renderAllRows(getHotels) {
 
-    var hotels = window.onload
+    
 
-    for (var i = 0; i < hotels.length; i++){
-        hotelTable.appendChild(createRows(hotels[i]));
+    for (var i = 0; i < getHotels.length; i++){
+        hotelTable.appendChild(createRows(getHotels[i]));
     }
     
 
