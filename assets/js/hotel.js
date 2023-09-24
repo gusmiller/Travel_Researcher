@@ -5,6 +5,12 @@ var city = document.querySelector("#city")
 var searchButton = document.querySelector("#searchbtn")
 var hotelsTable = document.querySelector(".hotel-table")
 
+var savedHotels = []
+
+var storeHotels = function() {
+    localStorage.setItem("storedHotels", JSON.stringify(savedHotels));
+}
+
 
 searchButton.addEventListener("click", (event) => {
 
@@ -58,10 +64,7 @@ var fetchHotels = function (city) {
 }
 
 
-var storeHotels = function() {
-    var hotelList = saveChosenHotel()
-    localStorage.setItem("storedHotels", JSON.stringify(hotelList));
-}
+
 
 
 var readHotelData = function (newData) {
@@ -141,7 +144,6 @@ var renderAllRows = function(allHotelData) {
 var saveChosenHotel = function(event) {
 
     console.log(event)
-    var hotelList = JSON.parse(localStorage.getItem('hotelList')) || [];
     let [cityName, hotelName, hotelAddress, checkinDate, checkoutDate, totalPrice] = chosenHotelInfo(event.target)
     var hotel = {}
     hotel.cityName = cityName;
@@ -150,10 +152,9 @@ var saveChosenHotel = function(event) {
     hotel.checkinDate = checkinDate;
     hotel.checkoutDate = checkoutDate;
     hotel.totalPrice = totalPrice;
-    hotelList.push(hotel)
+    savedHotels.push(hotel)
     storeHotels();
 
-return hotelList
 
 }
 
