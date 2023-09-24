@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Travel Researcher</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/hotelstyle.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+  <script>
+    $(function () {
+      $("#checkin-date-input").datepicker({
+        dateFormat: "yy-mm-dd"
+      });
+    });
+  </script>
+  <script>
+    $(function () {
+      $("#checkout-date-input").datepicker({
+        dateFormat: "yy-mm-dd"
+      });
+    });
+  </script>
+
+</head>
+
+
+<body>
+
+  <header class="w-screen mt-5 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
+    <div>
+      <p class="lobster title xl:text-4xl lg:text-3xl sm:text-3xl text-black text-center">Travel Researcher</p>
+    </div>
+    <div>
+      <nav class="flex items-center justify-center text-base md:ml-auto">
+        <a href="index.html"
+          class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Home</a>
+        <a href="index.html#our-team"
+          class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Our
+          Team</a>
+        <a href="#_"
+          class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Features</a>
+        <a href="flights-bookmarks.html"
+          class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
+          Flights</a>
+          <a href="hotelbookmarks.html"
+          class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
+          Flights</a>
+        <a href="#_"
+          class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="flex column items-center justify-center" id="search-form">
+    <form class="hotels-search-form" action="#">
+
+      <fieldset>
+        <label id="checkin-date-label">Check in date:</label>
+        <input name="checkin-date-name" type="text" id="checkin-date-input" placeholder="Enter check in date" />
+      </fieldset>
+
+      <fieldset>
+        <label id = "checkout-date-label">Check out date:</label>
+        <input name = "checkout-date-name" type="text" id="checkout-date-input" placeholder="Enter check out date" />
+      </fieldset>
+
+      <label for = "city">City:
+        <input type = "text" id = "city">
+        <button id="searchbtn"
+        class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">Search</button>
+      </label>
+
+    </form>
+
+  </section>
+
+
+
+  <div class=" flex justify-center -my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+    <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
+      <table class="hotel-table">
+        <tr class="border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 table-header-row">
+          <th class="px-6 py-3">City</th>
+          <th class="px-6 py-3">Hotel</th>
+          <th class="px-6 py-3">Address</th>
+          <th class="px-6 py-3">Checkin Date</th>
+          <th class="px-6 py-3">Checkout Date</th>
+          <th class="px-6 py-3">Total price</th>
+          <th class="px-6 py-3"></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <footer class="h-24 w-screen mt-5 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
+
+  </footer>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+  <script src="./assets/js/hotel.js"></script>
+</body>
+
+</html>
