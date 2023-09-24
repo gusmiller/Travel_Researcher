@@ -35,6 +35,7 @@
   <script>
     $(function () {
       $("#checkin-date-input").datepicker({
+        minDate: -0,
         dateFormat: "yy-mm-dd"
       });
     });
@@ -42,6 +43,7 @@
   <script>
     $(function () {
       $("#checkout-date-input").datepicker({
+        minDate: -0,
         dateFormat: "yy-mm-dd"
       });
     });
@@ -82,12 +84,12 @@
 
       <fieldset>
         <label id="checkin-date-label">Check in date:</label>
-        <input name="checkin-date-name" type="text" id="checkin-date-input" placeholder="Enter check in date" />
+        <input class = "m-5" name="checkin-date-name" type="text" id="checkin-date-input" placeholder="Enter check in date" autocomplete = "off" />
       </fieldset>
 
       <fieldset>
         <label id = "checkout-date-label">Check out date:</label>
-        <input name = "checkout-date-name" type="text" id="checkout-date-input" placeholder="Enter check out date" />
+        <input class = "m-5" name = "checkout-date-name" type="text" id="checkout-date-input" placeholder="Enter check out date"  autocomplete = "off"/>
       </fieldset>
 
       <label for = "city">City:
