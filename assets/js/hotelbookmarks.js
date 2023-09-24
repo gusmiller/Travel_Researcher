@@ -2,13 +2,18 @@ var hotelTable = document.querySelector(".bookmark-table")
 
 window.onload = function () {
     
-    var getHotels = JSONparse(localStorage.getItem("storedHotels"))
+    var getHotels = JSON.parse(localStorage.getItem("storedHotels")) || [];
+    console.log(getHotels)
+    createRows(getHotels)
+    return getHotels
     
-    for (var i = 0; i < getHotels.length; i++) {
-        
-    var hotelRowEl = document.createElement("tr");
+    
+}
+
+function createRows (getHotels) {
+
+var hotelRowEl = document.createElement("tr");
     hotelRowEl.setAttribute("class", "hotel-information-row");
-    hotelTable.appendChild(hotelRowEl)
     var cityName1 = document.createElement("td")
     cityName1.textContent = getHotels.cityName
     hotelRowEl.appendChild(cityName1)
@@ -27,5 +32,16 @@ window.onload = function () {
     var totalPrice1 = document.createElement("td")
     totalPrice1.textContent = getHotels.totalPrice
     hotelRowEl.appendChild(totalPrice1)
+    renderAllRows(getHotels)
+}
+
+function renderAllRows(hotels) {
+
+    var hotels = window.onload
+
+    for (var i = 0; i < hotels.length; i++){
+        hotelTable.appendChild(createRows(hotels[i]));
     }
+    
+
 }
