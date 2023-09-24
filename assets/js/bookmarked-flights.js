@@ -20,6 +20,10 @@ var init = function() {
     var storedFlights = loadSavedFlights();
     renderTableRows(storedFlights);
     loadSavedDestinations();
+    closeModal.addEventListener("click", function () {
+        const modal = document.getElementById('popup');
+        modal.classList.add('hidden')
+    });
 }
 
 var loadSavedFlights = function() {
@@ -72,6 +76,12 @@ var renderTableRows = function(storedFlights) {
         var bookFlightButtonEl = document.createElement("button");
         bookFlightButtonEl.setAttribute("id", "book-flight-button");
         bookFlightButtonEl.setAttribute("data-destination-city", destinationCityEl.textContent)
+        bookFlightButtonEl.setAttribute("data-departure-date", departureDateEl.textContent);
+        bookFlightButtonEl.setAttribute("data-departure-time", departureTimeEl.textContent);
+        bookFlightButtonEl.setAttribute("data-arrival-time", arrivalTimeEl.textContent);
+        bookFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
+        bookFlightButtonEl.setAttribute("data-flight-number", flightNumberEl.textContent);
+        bookFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent);
         bookFlightButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
         bookFlightButtonEl.textContent = "Book Flight"
         tableRowEl.appendChild(bookFlightButtonEl)
@@ -89,13 +99,26 @@ var saveDestination = function(event) {
 
     savedFlightDestinationList.push(savedFlightDestination);
     storeSavedDestinations();
+    var flight = event.target.dataset;
+    displayBookedFlightPopup(flight);
+}
+
+var displayBookedFlightPopup = function(flight) {
+    console.log(flight);
+    $("#departureTime").val(flight.departureTime);
+    $("#arrivalTime").val(flight.arrivalTime);
+    $("#airline").val("");
+    $("#flightDuration").val(flight.flightDuration);
+    $("#price").val(flight.flightPrice);
+    $("#flightNumber").val(flight.flightNumber);
+    $("#popup").removeClass("hidden");
 }
 
 var bookedFlightDestination = function(button) {
     return button.dataset.destinationCity;
 }
 
-var storeSavedDestinations = function() {
+var storeSavedDestinations = function(flight) {
     localStorage.setItem("savedDestinations", JSON.stringify(savedFlightDestinationList))
 }
 
