@@ -8,7 +8,7 @@ const openflightModal = document.getElementById('openModal');
 const closeflightModal = document.getElementById('closeModal');
 const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
-var getem = document.querySelector("#targetBtn")
+
 
 
 function showError(title, message){
@@ -17,13 +17,15 @@ function showError(title, message){
     $("#errorMessage").text(message);
     errModal.classList.remove('hidden');
 
-    closeflightModal.addEventListener('click', () => {
-        warning.classList.add('hidden');
-    });
-  }
+    
+    }
+
+  closeflightModal.addEventListener('click', () => {
+  warning.classList.add('hidden');
+  })
 
 
-getem.addEventListener("click", showError)
+
 
 var savedHotels = []
 
@@ -45,6 +47,10 @@ window.onload = function() {
 searchButton.addEventListener("click", (event) => {
 
     event.preventDefault();
+    if (!checkIn.value || !checkOut.value || !city) {
+        showError("Missing Input", "One or more fields are empty/Invalid data")
+        return;
+    }
 
     fetchHotels(city.value);
 })
