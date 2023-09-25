@@ -10,6 +10,20 @@ const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
 
 
+var pullFlightCity = function() {
+    var cityName = JSON.parse(localStorage.getItem("savedDestinations"))
+    var destination = cityName[0]
+    var travel = destination.destinationCity
+    
+    return travel
+    }
+
+pullFlightCity()
+
+let destinationCity = pullFlightCity()
+
+console.log(destinationCity)
+
 
 function showError(title, message){
     const errModal = document.getElementById('warningModal');
@@ -47,12 +61,12 @@ window.onload = function() {
 searchButton.addEventListener("click", (event) => {
 
     event.preventDefault();
-    if (!checkIn.value || !checkOut.value || !city) {
+    if (!checkIn.value || !checkOut.value) {
         showError("Missing Input", "One or more fields are empty/Invalid data")
         return;
     }
 
-    fetchHotels(city.value);
+    fetchHotels(destinationCity);
 })
 
 
