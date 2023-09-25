@@ -91,7 +91,7 @@ var renderTableRows = function(storedFlights) {
         bookFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
         bookFlightButtonEl.setAttribute("data-flight-number", flightNumberEl.textContent);
         bookFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent);
-        bookFlightButtonEl.setAttribute("class", "px-3 py-2 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
+        bookFlightButtonEl.setAttribute("class", "text-white px-3 py-2 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
         bookFlightButtonEl.textContent = "Book Flight"
         tableRowEl.appendChild(bookFlightButtonEl)
         bookmarkedFlightsTableEl.appendChild(tableRowEl);

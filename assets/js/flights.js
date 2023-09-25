@@ -192,7 +192,7 @@ var renderOneFlightRow = function(flightData) {
     saveFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
     saveFlightButtonEl.setAttribute("data-flight-number", flightNumber.textContent);
     saveFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent);
-    saveFlightButtonEl.setAttribute("class", "py-2 px-3 border border-slate-300 ... table-button transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
+    saveFlightButtonEl.setAttribute("class", "text-white py-2 px-3 border border-slate-300 ... table-button transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     saveFlightButtonEl.textContent = "Save Flight";
     console.log(saveFlightButtonEl)
     tableRowEl.appendChild(saveFlightButtonEl);
