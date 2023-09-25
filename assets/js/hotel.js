@@ -8,17 +8,22 @@ const openflightModal = document.getElementById('openModal');
 const closeflightModal = document.getElementById('closeModal');
 const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
+var getem = document.querySelector("#targetBtn")
 
 
-var displayWarningModal = function(title, message) {
+function showError(title, message){
+    const errModal = document.getElementById('warningModal');
     $("#errorTitle").text(title);
     $("#errorMessage").text(message);
-    warning.classList.remove('hidden');
+    errModal.classList.remove('hidden');
+
     closeflightModal.addEventListener('click', () => {
         warning.classList.add('hidden');
     });
-}
+  }
 
+
+getem.addEventListener("click", showError("error", "hello"))
 
 var savedHotels = []
 
