@@ -169,7 +169,8 @@ var createRow = function (allHotelData) {
     saveHotelButtonEl.setAttribute("data-hotel-name", allHotelData.hotelName);
     saveHotelButtonEl.setAttribute("data-hotel-address", allHotelData.hotelAddress);
     saveHotelButtonEl.setAttribute("data-total-price", allHotelData.totalPrice);
-    saveHotelButtonEl.setAttribute("style", "margin: 0 7px;")
+    saveHotelButtonEl.setAttribute("style", "margin: 0 7px; ")
+    saveHotelButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     saveHotelButtonEl.textContent = "Save Hotel";
     hotelRowEl.appendChild(saveHotelButtonEl);
     saveHotelButtonEl.addEventListener("click", saveChosenHotel);
