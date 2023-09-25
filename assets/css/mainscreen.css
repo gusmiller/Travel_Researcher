@@ -44,19 +44,6 @@
 }
 
 
-
-@media screen and (max-width: 640px) {
-    .links {
-        font-size: 14px;
-    }
-}
-
-@media screen and (max-width: 428px) {
-    .links {
-        font-size: 10px;
-    }
-}
-
 @media screen and (max-width: 1012px) {
     .about-me {
         display: flex;
@@ -75,8 +62,25 @@
     }
 }
 
+
 @media screen and (max-width: 640px) {
-.title {
-    font-size: 30px;
+    .links {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
 }
+
+@media screen and (max-width: 577px) {
+    .links {
+        font-size: 8px;
+    }
+}
+
+
+
+@media screen and (max-width: 6px) {
+
 }
