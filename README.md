@@ -27,6 +27,8 @@ For our first project, we decided to build an application that would allow us (u
 
 Hope you enjoy it and here is out product!
 
+[![Travel Researcher][product-screenshot]](https://github.com/gusmiller/Travel_Researcher/)
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -57,6 +59,8 @@ Here are a few examples.
 ### Team
 
 The **Travel Researcher** was our coding bootcamp first project and therefore it had to be done in a team. Teams were created randomly by the teacher; team #2, our team was conformed by Sonja Gorin, Jacob Martin and Gustavo Miller. Among our team we distributed the workload and made the application possible, and had some coding fun in the process.
+
+
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -105,8 +109,8 @@ See the [open issues](https://github.com/gusmiller/Travel_Researcher/issues) for
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: ./assets/images/weather001.png
-[weatherFirstTime]: ./assets/images/weather002.png
+[product-screenshot]: ./assets/images/heropage.png
+[product-navigation]: ./assets/images/Navigation.png
 [weatherError]: ./assets/images/weather003.png
 
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
