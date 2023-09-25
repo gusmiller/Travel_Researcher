@@ -160,7 +160,7 @@ var readFlightData = function(data) {
 var renderOneFlightRow = function(flightData) {
     var tableRowEl = document.createElement("tr");
     tableRowEl.setAttribute("class", "flight-information-row");
-    var departureDate = flightData["departureDate"][0].slice(0, 11);
+    var departureDate = dayjs(flightData["departureDate"][0].slice(0, 11)).format("DD/MM/YYYY");
     var flightNumber = document.createElement("td");
     flightNumber.textContent = flightData["flightNumber"].toString();
     tableRowEl.appendChild(flightNumber);
