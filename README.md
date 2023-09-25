@@ -37,10 +37,11 @@ The Travel Researcher, same as all our previous challenges, was developed using 
 * <a href="https://developers.booking.com/api/index.html">dev.booking-com.p.rapidapi.com.net</a> - Hotels information, it searches for deals on hotels, homes, and much more...
 
 ### API Bad calls
-It is innevitable that bad call will occure. To graciously fail the system we are using a Generic-purpose Modal (popup) form to communicate the error to the user. 
+APIs return a call status to the client which can be in the form of: a Success or Failure type call. In both the cases, it is necessary to let the client know so that they can proceed to the next step. It is innevitable that bad call would or will occure at some point, network connection, credentials, internet or even the API service status. Whatever the case we need to graciously fail the process. For that, we are using a Generic-purpose Modal (popup) form to communicate the error to the user. 
 
 <img src="./assets/images/API404Error.PNG" height="250">
 
+Depending on circumstances there may -or may not, be a solution to the failure.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
