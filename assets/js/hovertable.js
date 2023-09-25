@@ -72,6 +72,24 @@ $(document).ready(function () {
             }
       }
 
+      function retrieveIssues() {
+            var requestUrl = 'https://api.github.com/repos/gusmiller/Travel_Researcher/issues';
+            requestUrl = 'https://api.github.com/repos/gusmiller/Travel_Researcher/issues?state=closed';
+
+            fetch(requestUrl)
+                  .then(function (response) {
+                        return response.json();
+                  })
+                  .then(function (data) {
+                        var issues = data; // Instantiate Issues object
+
+                        issues.forEach(issue => {
+                              console.log(issue.title);
+                        })
+                  });
+
+      }
+
       /**
        * Initialize the page time-block elements, set their color and availability based in the time. We need t
        * build the HTML from scratch using text strings. I had in mind to CLONE a template row and add it but
@@ -92,6 +110,8 @@ $(document).ready(function () {
                   warning.classList.remove('hidden');
             });
 
+            retrieveIssues();
+        
             // Javascript: Close modal event listener, will close the modal form
             closeflightModal.addEventListener('click', () => {
                   warning.classList.add('hidden');
