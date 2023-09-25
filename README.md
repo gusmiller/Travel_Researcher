@@ -44,9 +44,7 @@ APIs return a call status to the client which can be in the form of: a Success o
 <img src="./assets/images/API404Error.PNG" height="250">
 
 Depending on circumstances there may -or may not, be a solution to the failure.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 The **Travel Researcher** has been built using plain *HTML* and several API and technologies. *Tailwind* CSS framework with it's large number of classes and pre-define elements such as cards and navbars. The application makes extensive use of Javascripts and JQuery.
@@ -60,7 +58,7 @@ Here are a few examples.
 
 The **Travel Researcher** was our coding bootcamp first project and therefore it had to be done in a team. Teams were created randomly by the teacher; team #2, our team was conformed by Sonja Gorin, Jacob Martin and Gustavo Miller. Among our team we distributed the workload and made the application possible, and had some coding fun in the process.
 
-
+[![Travel Researcher Team][ourteam]](https://github.com/gusmiller/Travel_Researcher/)
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -70,9 +68,7 @@ The **Travel Researcher** was our coding bootcamp first project and therefore it
 - [x] Create main branch: developing, all branches will be dependant from this.
 - [x] Create branches from developing for the implementations; feature-mainscreen, feature-searchscreen, feature-hover, feature-corrections, feature-historyscreen, feature-hotelbookmarks
 - [x] Test and Debug application
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Issues
 During our development we have added a number of issues, some of them created at initial design and then we added issue on-demand. It was **important** to keep these issue with as much information as possible. This was done this way in order to document not just the feature but also the progress of the coding. 
 
@@ -101,9 +97,7 @@ See the [open issues](https://github.com/gusmiller/Travel_Researcher/issues) for
 
 **Bug**
 1. Aviationstack not returning future flights
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
@@ -111,7 +105,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 [product-screenshot]: ./assets/images/heropage.png
 [product-navigation]: ./assets/images/Navigation.png
-[weatherError]: ./assets/images/weather003.png
+[ourteam]: ./assets/images/ourteam.png
 
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
