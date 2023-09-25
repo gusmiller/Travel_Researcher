@@ -1,7 +1,20 @@
-@media screen and (max-width: 1000px) {
+
+
+@media screen and (max-width: 800px) {
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #search-form,
+    .section {
+        margin-left: 20px;
+    }
+
     .table-data,
     .table-header {
         float:left; 
+        clear:both;
     }
 
     .table-data:nth-child(n) {

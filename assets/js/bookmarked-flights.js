@@ -50,27 +50,35 @@ var renderTableRows = function(storedFlights) {
         var tableRowEl = document.createElement("tr");
         tableRowEl.setAttribute("class", "saved-flight-information-row");
         var flightNumberEl = document.createElement("td");
+        flightNumberEl.setAttribute("class", "p-2 border border-slate-300 ...")
         flightNumberEl.textContent = storedFlights[i]["flightNumber"];
         tableRowEl.appendChild(flightNumberEl);
         var departureCityEl = document.createElement("td");
+        departureCityEl.setAttribute("class", "p-2 border border-slate-300 ...")
         departureCityEl.textContent = storedFlights[i]["departureCity"];
         tableRowEl.appendChild(departureCityEl);
         var departureDateEl = document.createElement("td");
+        departureDateEl.setAttribute("class", "p-2 border border-slate-300 ...")
         departureDateEl.textContent = storedFlights[i]["departureDate"];
         tableRowEl.appendChild(departureDateEl);
         var departureTimeEl = document.createElement("td");
+        departureTimeEl.setAttribute("class", "p-2 border border-slate-300 ...")
         departureTimeEl.textContent = storedFlights[i]["departureTime"];
         tableRowEl.appendChild(departureTimeEl);
         var destinationCityEl = document.createElement("td");
+        destinationCityEl.setAttribute("class", "p-2 border border-slate-300 ...")
         destinationCityEl.textContent = storedFlights[i]["destinationCity"];
         tableRowEl.appendChild(destinationCityEl);
         var arrivalTimeEl = document.createElement("td");
+        arrivalTimeEl.setAttribute("class", "p-2 border border-slate-300 ...")
         arrivalTimeEl.textContent = storedFlights[i]["arrivalTime"];
         tableRowEl.appendChild(arrivalTimeEl);
         var flightDurationEl = document.createElement("td");
+        flightDurationEl.setAttribute("class", "p-2 border border-slate-300 ...")
         flightDurationEl.textContent = storedFlights[i]["flightDuration"];
         tableRowEl.appendChild(flightDurationEl);
         var flightPriceEl = document.createElement("td");
+        flightPriceEl.setAttribute("class", "p-2 border border-slate-300 ...")
         flightPriceEl.textContent = storedFlights[i]["flightPrice"];
         tableRowEl.appendChild(flightPriceEl);
         var bookFlightButtonEl = document.createElement("button");
@@ -83,7 +91,7 @@ var renderTableRows = function(storedFlights) {
         bookFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
         bookFlightButtonEl.setAttribute("data-flight-number", flightNumberEl.textContent);
         bookFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent);
-        bookFlightButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
+        bookFlightButtonEl.setAttribute("class", "px-3 py-2 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
         bookFlightButtonEl.textContent = "Book Flight"
         tableRowEl.appendChild(bookFlightButtonEl)
         bookmarkedFlightsTableEl.appendChild(tableRowEl);
