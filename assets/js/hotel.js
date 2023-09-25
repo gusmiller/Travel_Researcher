@@ -166,9 +166,14 @@ var createRow = function (allHotelData) {
     saveHotelButtonEl.setAttribute("data-checkin-date", allHotelData.checkIn);
     saveHotelButtonEl.setAttribute("data-checkout-date", allHotelData.checkOut);
     saveHotelButtonEl.setAttribute("data-total-price", allHotelData.totalPrice);
+    saveHotelButtonEl.setAttribute("style", "margin: 0 7px;")
     saveHotelButtonEl.textContent = "Save Hotel";
     hotelRowEl.appendChild(saveHotelButtonEl);
     saveHotelButtonEl.addEventListener("click", saveChosenHotel);
+    var bookHotelButton = document.createElement("button")
+    bookHotelButton.textContent = "Book Hotel"
+    bookHotelButton.setAttribute("style", "margin: 0 7px;")
+    hotelRowEl.appendChild(bookHotelButton)
     return hotelRowEl;
 }
 
