@@ -162,21 +162,27 @@ var renderOneFlightRow = function(flightData) {
     tableRowEl.setAttribute("class", "flight-information-row");
     var departureDate = dayjs(flightData["departureDate"][0].slice(0, 11)).format("DD/MM/YYYY");
     var flightNumber = document.createElement("td");
+    flightNumber.setAttribute("class", "table-data")
     flightNumber.textContent = flightData["flightNumber"].toString();
     tableRowEl.appendChild(flightNumber);
     var departureTimeEl = document.createElement("td");
+    departureTimeEl.setAttribute("class", "table-data")
     departureTimeEl.textContent = flightData["departureTime"][1].slice(0, 5);
     tableRowEl.appendChild(departureTimeEl);
     var arrivalTimeEl = document.createElement("td");
+    arrivalTimeEl.setAttribute("class", "table-data")
     arrivalTimeEl.textContent = flightData["arrivalTime"][1].slice(0, 5);
     tableRowEl.appendChild(arrivalTimeEl);
     var flightDurationEl = document.createElement("td");
+    flightDurationEl.setAttribute("class", "table-data")
     flightDurationEl.textContent = flightData["flightDuration"];
     tableRowEl.appendChild(flightDurationEl);
     var flightPriceEl = document.createElement("td");
+    flightPriceEl.setAttribute("class", "table-data")
     flightPriceEl.textContent = flightData["flightPrice"].toString();
     tableRowEl.appendChild(flightPriceEl);
     var saveFlightButtonEl = document.createElement("button");
+    saveFlightButtonEl.setAttribute("class", "table-button")
     saveFlightButtonEl.setAttribute("data-departure-city", flightData["departureCity"]);
     saveFlightButtonEl.setAttribute("data-destination-city", flightData["destinationCity"]);
     saveFlightButtonEl.setAttribute("data-departure-date", departureDate);
@@ -185,7 +191,7 @@ var renderOneFlightRow = function(flightData) {
     saveFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
     saveFlightButtonEl.setAttribute("data-flight-number", flightNumber.textContent);
     saveFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent);
-    saveFlightButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
+    saveFlightButtonEl.setAttribute("class", "table-button transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     saveFlightButtonEl.textContent = "Save Flight";
     console.log(saveFlightButtonEl)
     tableRowEl.appendChild(saveFlightButtonEl);
