@@ -29,10 +29,34 @@
         <div class="flex items-center justify-center">
             <div class="grid grid-cols-2 grid-rows-3 gap-4">
             <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Number</label>
+                <input id="flightNumber"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text" placeholder="Flight Number" readonly>
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Departure City</label>
+                <input id="departureCity"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text" placeholder="Departure City" readonly>
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Departure Date</label>
+                <input id="departureDate"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text" placeholder="Departure Date" readonly>
+            </div>
+            <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Departure Time</label>
                 <input id="departureTime"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="text" placeholder="Departure Time" readonly>
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Destination City</label>
+                <input id="destinationCity"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text" placeholder="Destination City" readonly>
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Arrival Time</label>
@@ -41,29 +65,18 @@
                 type="text" placeholder="Arrival Time" readonly>
             </div>
             <div>
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Airline</label>
-                <input id="airline"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text" placeholder="Airline" readonly>
-            </div>
-            <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Duration</label>
                 <input id="flightDuration"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="text" placeholder="Duration Time" readonly>
             </div>
             <div>
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Price</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Price</label>
                 <input id="price"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text" placeholder="Price" readonly>
+                type="text" placeholder="Flight Price" readonly>
             </div>
-            <div>
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Number</label>
-                <input id="flightNumber"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text" placeholder="Flight Number" readonly>
-            </div>
+
             </div>
         </div>
 
@@ -72,7 +85,7 @@
         </div>
     </div>
     <!-- End of Modal flight container -->
-    
+
     <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
         <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
           <!-- Modal content -->

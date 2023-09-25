@@ -75,6 +75,7 @@ var renderTableRows = function(storedFlights) {
         tableRowEl.appendChild(flightPriceEl);
         var bookFlightButtonEl = document.createElement("button");
         bookFlightButtonEl.setAttribute("id", "book-flight-button");
+        bookFlightButtonEl.setAttribute("data-departure-city", departureCityEl.textContent)
         bookFlightButtonEl.setAttribute("data-destination-city", destinationCityEl.textContent)
         bookFlightButtonEl.setAttribute("data-departure-date", departureDateEl.textContent);
         bookFlightButtonEl.setAttribute("data-departure-time", departureTimeEl.textContent);
@@ -105,12 +106,15 @@ var saveDestination = function(event) {
 
 var displayBookedFlightPopup = function(flight) {
     console.log(flight);
+    $("#flightNumber").val(flight.flightNumber);
+    $("#departureCity").val(flight.departureCity);
+    $("#departureDate").val(flight.departureDate);
     $("#departureTime").val(flight.departureTime);
+    $("#destinationCity").val(flight.destinationCity);
     $("#arrivalTime").val(flight.arrivalTime);
-    $("#airline").val("");
     $("#flightDuration").val(flight.flightDuration);
     $("#price").val(flight.flightPrice);
-    $("#flightNumber").val(flight.flightNumber);
+    
     $("#popup").removeClass("hidden");
 }
 

@@ -110,13 +110,20 @@ var getFlightData = function(departureDateSelect, departureCode, destinationCode
         }
     })
     .then(function(response) {
-        return response.json();
+        console.log(response)
+        if(response.ok) {
+            response.json().then(function(data) {
+                var allFlightData = readFlightData(data);
+                renderAllRows(allFlightData);
+            })
+        } else {
+            response.text().then(function(text) {
+                displayWarningModal("Can't Get Flights", text)
+            })
+        }
     })
-    .then(function(data){
-        console.log(data);
-
-        var allFlightData = readFlightData(data);
-        renderAllRows(allFlightData);
+    .catch(function(error) {
+        displayWarningModal("Can't Get Flights", error)
     })
 }
 
@@ -130,8 +137,8 @@ var readFlightData = function(data) {
         var flightDurationData = data["data"][i]["duration"]["total"];
         var flightDurationHours = Math.trunc((flightDurationData/60)/60);
         var flightDurationMinutes = (flightDurationData/60) % 60;
-        var flightDuration = flightDurationHours.toString() + ":" + flightDurationMinutes.toString();
-        var flightPrice = data["data"][i]["price"];
+        var flightDuration = flightDurationHours.toString() + " hr " + flightDurationMinutes.toString() + " min";
+        var flightPrice = "CAD " + data["data"][i]["price"];
         var flightNumber = data["data"][i]["route"][0]["flight_no"];
         var departureCity = data["data"][i]["cityFrom"];
         var destinationCity = data["data"][i]["cityTo"];
