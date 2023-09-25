@@ -23,7 +23,7 @@ function showError(title, message){
   }
 
 
-getem.addEventListener("click", showError("error", "hello"))
+getem.addEventListener("click", showError)
 
 var savedHotels = []
 
