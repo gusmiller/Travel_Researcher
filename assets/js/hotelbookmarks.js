@@ -7,12 +7,6 @@ const warning = document.getElementById('warningModal');
 var arr = []
 
 
-// var loadData = window.addEventListener("load", () => {
-    
-//     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
-//     createRows(getHotels)
-// })
-
 
 var transformData = window.addEventListener("load", () => {
     
