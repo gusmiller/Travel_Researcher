@@ -56,15 +56,18 @@ var displayBookedHotelPopup = function(event) {
 function createRows (arr) {
 
 var hotelRowEl = document.createElement("tr");
-    hotelRowEl.setAttribute("class", "hotel-information-row");
+    hotelRowEl.setAttribute("class", "hotel-information-row flex flex-col mb-4 sm:table-row");
     var hotelName1 = document.createElement("td")
     hotelName1.textContent = arr.hotelName
+    hotelName1.setAttribute("class", "p-2 border border-slate-300 ...")
     hotelRowEl.appendChild(hotelName1)
     var hotelAddress1 = document.createElement("td")
     hotelAddress1.textContent = arr.hotelAddress
+    hotelAddres1.setAttribute("class", "p-2 border border-slate-300 ...")
     hotelRowEl.appendChild(hotelAddress1)
     var totalPrice1 = document.createElement("td")
     totalPrice1.textContent = arr.totalPrice
+    totalPrice1.setAttribute("class", "p-2 border border-slate-300 ...")
     hotelRowEl.appendChild(totalPrice1)
     renderAllRows(arr)
     var bookmarkHotels = document.createElement("button")
