@@ -8,6 +8,10 @@ var selectmenuDepartureEl = document.querySelector("#departure-city");
 var selectmenuDestinationEl = document.querySelector("#destination-city");
 var flightsTableEl = document.querySelector(".flights-table");
 var rowsTableSectionEl =  document.querySelector(".rows-table-section");
+const openflightModal = document.getElementById('openModal');
+const closeflightModal = document.getElementById('closeModal');
+const closeModal = document.getElementById('close-popup');
+const warning = document.getElementById('warningModal');
 
 var cityCodes = {
     "YYC": "Calgary",
@@ -28,6 +32,16 @@ var searchedFlightsList = [];
 
 var storeSearchedFlights = function() {
     localStorage.setItem("savedFlights", JSON.stringify(searchedFlightsList));
+}
+
+var displayWarningModal = function(title, message) {
+    $("#errorTitle").text(title);
+    $("#errorMessage").text(message);
+    warning.classList.remove('hidden');
+
+    closeflightModal.addEventListener('click', () => {
+        warning.classList.add('hidden');
+    });
 }
 
 var init = function() {
@@ -74,8 +88,8 @@ var searchFlights = function(event) {
     event.preventDefault();
     let [departureCitySelect, destinationCitySelect, departureDateSelect] = searchParameters();
     if (!departureCitySelect || !destinationCitySelect || !departureDateSelect) {
-        return; 
-        // pop up message will show
+        displayWarningModal("Missing Input", "One or more fields are empty.")
+        return;
     }
 
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect);
@@ -96,13 +110,20 @@ var getFlightData = function(departureDateSelect, departureCode, destinationCode
         }
     })
     .then(function(response) {
-        return response.json();
+        console.log(response)
+        if(response.ok) {
+            response.json().then(function(data) {
+                var allFlightData = readFlightData(data);
+                renderAllRows(allFlightData);
+            })
+        } else {
+            response.text().then(function(text) {
+                displayWarningModal("Can't Get Flights", text)
+            })
+        }
     })
-    .then(function(data){
-        console.log(data);
-
-        var allFlightData = readFlightData(data);
-        renderAllRows(allFlightData);
+    .catch(function(error) {
+        displayWarningModal("Can't Get Flights", error)
     })
 }
 
@@ -116,8 +137,8 @@ var readFlightData = function(data) {
         var flightDurationData = data["data"][i]["duration"]["total"];
         var flightDurationHours = Math.trunc((flightDurationData/60)/60);
         var flightDurationMinutes = (flightDurationData/60) % 60;
-        var flightDuration = flightDurationHours.toString() + ":" + flightDurationMinutes.toString();
-        var flightPrice = data["data"][i]["price"];
+        var flightDuration = flightDurationHours.toString() + " hr " + flightDurationMinutes.toString() + " min";
+        var flightPrice = "CAD " + data["data"][i]["price"];
         var flightNumber = data["data"][i]["route"][0]["flight_no"];
         var departureCity = data["data"][i]["cityFrom"];
         var destinationCity = data["data"][i]["cityTo"];
@@ -140,23 +161,29 @@ var readFlightData = function(data) {
 var renderOneFlightRow = function(flightData) {
     var tableRowEl = document.createElement("tr");
     tableRowEl.setAttribute("class", "flight-information-row");
-    var departureDate = flightData["departureDate"][0].slice(0, 11);
+    var departureDate = dayjs(flightData["departureDate"][0].slice(0, 11)).format("DD/MM/YYYY");
     var flightNumber = document.createElement("td");
+    flightNumber.setAttribute("class", "table-data")
     flightNumber.textContent = flightData["flightNumber"].toString();
     tableRowEl.appendChild(flightNumber);
     var departureTimeEl = document.createElement("td");
+    departureTimeEl.setAttribute("class", "table-data")
     departureTimeEl.textContent = flightData["departureTime"][1].slice(0, 5);
     tableRowEl.appendChild(departureTimeEl);
     var arrivalTimeEl = document.createElement("td");
+    arrivalTimeEl.setAttribute("class", "table-data")
     arrivalTimeEl.textContent = flightData["arrivalTime"][1].slice(0, 5);
     tableRowEl.appendChild(arrivalTimeEl);
     var flightDurationEl = document.createElement("td");
+    flightDurationEl.setAttribute("class", "table-data")
     flightDurationEl.textContent = flightData["flightDuration"];
     tableRowEl.appendChild(flightDurationEl);
     var flightPriceEl = document.createElement("td");
+    flightPriceEl.setAttribute("class", "table-data")
     flightPriceEl.textContent = flightData["flightPrice"].toString();
     tableRowEl.appendChild(flightPriceEl);
     var saveFlightButtonEl = document.createElement("button");
+    saveFlightButtonEl.setAttribute("class", "table-button")
     saveFlightButtonEl.setAttribute("data-departure-city", flightData["departureCity"]);
     saveFlightButtonEl.setAttribute("data-destination-city", flightData["destinationCity"]);
     saveFlightButtonEl.setAttribute("data-departure-date", departureDate);
@@ -165,7 +192,9 @@ var renderOneFlightRow = function(flightData) {
     saveFlightButtonEl.setAttribute("data-flight-duration", flightDurationEl.textContent);
     saveFlightButtonEl.setAttribute("data-flight-number", flightNumber.textContent);
     saveFlightButtonEl.setAttribute("data-flight-price", flightPriceEl.textContent);
+    saveFlightButtonEl.setAttribute("class", "table-button transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     saveFlightButtonEl.textContent = "Save Flight";
+    console.log(saveFlightButtonEl)
     tableRowEl.appendChild(saveFlightButtonEl);
     saveFlightButtonEl.addEventListener("click", saveChosenFlight);
     return tableRowEl;
@@ -176,12 +205,13 @@ var renderAllRows = function(allFlightData) {
         flightsTableEl.appendChild(renderOneFlightRow(allFlightData[i]));
     }
     if (allFlightData.length === 0) {
-        // pop up shows
+        displayWarningModal("No Flights", "Currently there are no flights that match your search criteria")
     }
 }
 
 var saveChosenFlight = function(event) {
     event.preventDefault();
+    console.log(event)
     let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
     var flight = {}
     flight["departureCity"] = departureCity;
@@ -192,11 +222,25 @@ var saveChosenFlight = function(event) {
     flight["flightDuration"] = flightDuration;
     flight["flightNumber"] = flightNumber;
     flight["flightPrice"] = flightPrice;
+
+    if (flightAlreadySaved(flight)) {
+        return;
+    }
     searchedFlightsList.push(flight);
     storeSearchedFlights();
 }
 
+var flightAlreadySaved = function(flight) {
+    for (savedFlight of searchedFlightsList) {
+        if (savedFlight.flightNumber === flight.flightNumber && savedFlight.departureTime === flight.departureTime) {
+            return true;
+        }
+    }
+    return false;
+}
+
 var chosenFlightInfo = function(button) {
+    console.log(button)
     return [button.dataset.departureTime, button.dataset.arrivalTime, button.dataset.flightDuration, button.dataset.flightPrice, button.dataset.flightNumber, button.dataset.departureCity, button.dataset.destinationCity, button.dataset.departureDate];
 }
 
