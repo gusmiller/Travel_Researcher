@@ -48,10 +48,10 @@ var displayBookedHotelPopup = function(event) {
     var setData = event.target.dataset
     
     console.log(setData);
-    $("#City").val(arr.destinationCity);
-    $("#Hotel").val(arr.hotelName);
-    $("#Address").val(arr.hotelAddress);
-    $("#Price").val(arr.totalPrice);
+    $("#city").val(setData.destinationCity);
+    $("#hotel").val(setData.hotelName);
+    $("#address").val(setData.hotelAddress);
+    $("#price").val(setData.totalPrice);
     $("#popup").removeClass("hidden");
     closeModal.addEventListener("click", () =>
     $("#popup").addClass("hidden")
