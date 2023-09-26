@@ -49,7 +49,7 @@ var loadSavedDestinations = function() {
 var renderTableRows = function(storedFlights) {
     for (var i =0; i < storedFlights.length; i++) {
         var tableRowEl = document.createElement("tr");
-        tableRowEl.setAttribute("class", "saved-flight-information-row");
+        tableRowEl.setAttribute("class", "saved-flight-information-row flex flex-col mb-4 sm:table-row");
         var flightNumberEl = document.createElement("td");
         flightNumberEl.setAttribute("class", "p-2 border border-slate-300 ...")
         flightNumberEl.textContent = storedFlights[i]["flightNumber"];

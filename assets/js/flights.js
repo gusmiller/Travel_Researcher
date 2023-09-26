@@ -160,7 +160,7 @@ var readFlightData = function(data) {
 
 var renderOneFlightRow = function(flightData) {
     var tableRowEl = document.createElement("tr");
-    tableRowEl.setAttribute("class", "flight-information-row");
+    tableRowEl.setAttribute("class", "flight-information-row flex flex-col mb-4 sm:table-row");
     var departureDate = dayjs(flightData["departureDate"][0].slice(0, 11)).format("DD/MM/YYYY");
     var flightNumber = document.createElement("td");
     flightNumber.setAttribute("class", "table-data p-2 border border-slate-300 ...")
