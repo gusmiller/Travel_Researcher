@@ -12,10 +12,9 @@ const warning = document.getElementById('warningModal');
 
 var pullFlightCity = function() {
     var cityName = JSON.parse(localStorage.getItem("savedDestinations"))
-    var destination = cityName[0]
-    var travel = destination.destinationCity
+    var destination = cityName.destinationCity
     
-    return travel
+    return destination
     }
 
 pullFlightCity()
