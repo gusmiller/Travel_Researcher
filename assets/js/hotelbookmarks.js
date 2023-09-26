@@ -4,16 +4,17 @@ const closeflightModal = document.getElementById('closeModal');
 const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
 
+var arr = []
 
-var loadData = window.addEventListener("load", () => {
+
+// var loadData = window.addEventListener("load", () => {
     
-    var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
-    createRows(getHotels)
-})
+//     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
+//     createRows(getHotels)
+// })
 
 
-var transformData = function(){
-    allHotelData = []
+var transformData = window.addEventListener("load", () => {
     
     var retrieveHotels = JSON.parse(localStorage.getItem("storedHotels"));
     var unpackedData = retrieveHotels.reduce((acc, [key, value]) => {
@@ -23,15 +24,19 @@ var transformData = function(){
     var getCity = JSON.parse(localStorage.getItem("savedDestinations"));
 
     unpackedData.destinationCity = getCity.destinationCity
+
+    arr.push(unpackedData)
     
-    console.log(unpackedData)
+    console.log(arr)
+
+    createRows(arr)
    
-    return unpackedData
-}
+    // return unpackedData
+})
 
-transformData()
 
-var setData = transformData()
+
+
 
 
 var displayBookedHotelPopup = function(event) {
@@ -43,10 +48,10 @@ var displayBookedHotelPopup = function(event) {
     var setData = event.target.dataset
     
     console.log(setData);
-    $("#City").val(setData.destinationCity);
-    $("#Hotel").val(setData.hotelName);
-    $("#Address").val(setData.hotelAddress);
-    $("#Price").val(setData.totalPrice);
+    $("#City").val(arr.destinationCity);
+    $("#Hotel").val(arr.hotelName);
+    $("#Address").val(arr.hotelAddress);
+    $("#Price").val(arr.totalPrice);
     $("#popup").removeClass("hidden");
     closeModal.addEventListener("click", () =>
     $("#popup").addClass("hidden")
@@ -54,27 +59,27 @@ var displayBookedHotelPopup = function(event) {
 }
 
 
-function createRows (getHotels) {
+function createRows (arr) {
 
 var hotelRowEl = document.createElement("tr");
     hotelRowEl.setAttribute("class", "hotel-information-row");
     var hotelName1 = document.createElement("td")
-    hotelName1.textContent = getHotels.hotelName
+    hotelName1.textContent = arr.hotelName
     hotelRowEl.appendChild(hotelName1)
     var hotelAddress1 = document.createElement("td")
-    hotelAddress1.textContent = getHotels.hotelAddress
+    hotelAddress1.textContent = arr.hotelAddress
     hotelRowEl.appendChild(hotelAddress1)
     var totalPrice1 = document.createElement("td")
-    totalPrice1.textContent = getHotels.totalPrice
+    totalPrice1.textContent = arr.totalPrice
     hotelRowEl.appendChild(totalPrice1)
-    renderAllRows(getHotels)
+    renderAllRows(arr)
     var bookmarkHotels = document.createElement("button")
     bookmarkHotels.textContent = "Book Hotel"
     bookmarkHotels.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
-    bookmarkHotels.setAttribute("data-destination-city", getHotels.destinationCity);
-    bookmarkHotels.setAttribute("data-hotel-name", getHotels.hotelName);
-    bookmarkHotels.setAttribute("data-hotel-address", getHotels.hotelAddress);
-    bookmarkHotels.setAttribute("data-total-price", getHotels.totalPrice);
+    bookmarkHotels.setAttribute("data-destination-city", arr.destinationCity);
+    bookmarkHotels.setAttribute("data-hotel-name", arr.hotelName);
+    bookmarkHotels.setAttribute("data-hotel-address", arr.hotelAddress);
+    bookmarkHotels.setAttribute("data-total-price", arr.totalPrice);
     
     hotelRowEl.appendChild(bookmarkHotels)
     
@@ -84,12 +89,12 @@ var hotelRowEl = document.createElement("tr");
 }
 
 
-function renderAllRows(getHotels) {
+function renderAllRows(arr) {
 
     
 
-    for (var i = 0; i < getHotels.length; i++){
-        hotelTable.appendChild(createRows(getHotels[i]));
+    for (var i = 0; i < arr.length; i++){
+        hotelTable.appendChild(createRows(arr[i]));
     }
     
 
