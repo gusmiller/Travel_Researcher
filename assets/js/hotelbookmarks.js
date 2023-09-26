@@ -4,7 +4,8 @@ const closeflightModal = document.getElementById('closeModal');
 const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
 
- var loadData = window.addEventListener("load", () => {
+
+var loadData = window.addEventListener("load", () => {
     
     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
     createRows(getHotels)
@@ -14,8 +15,8 @@ const warning = document.getElementById('warningModal');
 var transformData = function(){
     allHotelData = []
     
-    var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
-    var unpackedData = getHotels.reduce((acc, [key, value]) => {
+    var retrieveHotels = JSON.parse(localStorage.getItem("storedHotels"));
+    var unpackedData = retrieveHotels.reduce((acc, [key, value]) => {
         acc[key] = value
     })
 
@@ -23,25 +24,29 @@ var transformData = function(){
 
     unpackedData.destinationCity = getCity.destinationCity
     
-    
-    
     console.log(unpackedData)
    
-
     return unpackedData
 }
 
 transformData()
 
+var setData = transformData()
 
-var displayBookedHotelPopup = function(getHotels) {
+
+var displayBookedHotelPopup = function(event) {
     
-    var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
-    console.log(getHotels);
-    $("#City").val(getHotels.hotelName);
-    $("#Hotel").val(getHotels.hotelName);
-    $("#Address").val(getHotels.hotelAddress);
-    $("#Price").val(getHotels.totalPrice);
+    
+    console.log("click")
+     
+    
+    var setData = event.target.dataset
+    
+    console.log(setData);
+    $("#City").val(setData.destinationCity);
+    $("#Hotel").val(setData.hotelName);
+    $("#Address").val(setData.hotelAddress);
+    $("#Price").val(setData.totalPrice);
     $("#popup").removeClass("hidden");
     closeModal.addEventListener("click", () =>
     $("#popup").addClass("hidden")
@@ -66,6 +71,11 @@ var hotelRowEl = document.createElement("tr");
     var bookmarkHotels = document.createElement("button")
     bookmarkHotels.textContent = "Book Hotel"
     bookmarkHotels.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
+    bookmarkHotels.setAttribute("data-destination-city", getHotels.destinationCity);
+    bookmarkHotels.setAttribute("data-hotel-name", getHotels.hotelName);
+    bookmarkHotels.setAttribute("data-hotel-address", getHotels.hotelAddress);
+    bookmarkHotels.setAttribute("data-total-price", getHotels.totalPrice);
+    
     hotelRowEl.appendChild(bookmarkHotels)
     
     bookmarkHotels.addEventListener("click", displayBookedHotelPopup)
