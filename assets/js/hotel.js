@@ -154,22 +154,25 @@ return allHotelData
 var createRow = function (allHotelData) {
 
     var hotelRowEl = document.createElement("tr");
-    hotelRowEl.setAttribute("class", "hotel-information-row");
+    hotelRowEl.setAttribute("class", "hotel-information-row flex flex-col mb-4 sm:table-row");
     var hotelName1 = document.createElement("td")
     hotelName1.textContent = allHotelData.hotelName
+    hotelName1.setAttribute("class", "p-2 border border-slate-300 ...")
     hotelRowEl.appendChild(hotelName1)
     var hotelAddress1 = document.createElement("td")
     hotelAddress1.textContent = allHotelData.hotelAddress
+    hotelAddress1.setAttribute("class", "p-2 border border-slate-300 ...")
     hotelRowEl.appendChild(hotelAddress1)
     var totalPrice1 = document.createElement("td")
     totalPrice1.textContent = allHotelData.totalPrice
+    totalPrice1.setAttribute("class", "p-2 border border-slate-300 ...")
     hotelRowEl.appendChild(totalPrice1)
     var saveHotelButtonEl = document.createElement("button");
     saveHotelButtonEl.setAttribute("data-hotel-name", allHotelData.hotelName);
     saveHotelButtonEl.setAttribute("data-hotel-address", allHotelData.hotelAddress);
     saveHotelButtonEl.setAttribute("data-total-price", allHotelData.totalPrice);
     saveHotelButtonEl.setAttribute("style", "margin: 0 7px; ")
-    saveHotelButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
+    saveHotelButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... p-2 border border-slate-300 ...")
     saveHotelButtonEl.textContent = "Save Hotel";
     hotelRowEl.appendChild(saveHotelButtonEl);
     saveHotelButtonEl.addEventListener("click", saveChosenHotel);
