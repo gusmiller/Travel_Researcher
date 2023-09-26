@@ -8,13 +8,15 @@
 
 <body>
 
+  <!-- Modal flight container -->
   <div id="popup"
-    class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-    <div class="bg-white p-6 rounded shadow-lg">
+    class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
+    <div class="modal-dialog bg-gray-300 p-6 rounded shadow-lg">
       <div class="mb-4">
         <h2 class="text-2xl font-semibold">Selected Flight</h2>
       </div>
 
+      <!-- Inut boxes section -->
       <div class="flex items-center justify-center">
         <div class="grid grid-cols-2 grid-rows-3 gap-4">
           <div>
@@ -22,37 +24,37 @@
             <input id="departureTime"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text" placeholder="Departure Time" readonly>
-          </div>
+          </div><!-- Departure time input -->
           <div>
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Arrival Time</label>
             <input id="arrivalTime"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text" placeholder="Arrival Time" readonly>
-          </div>
+          </div><!-- Arrival time input -->
           <div>
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Airline</label>
             <input id="airline"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text" placeholder="Airline" readonly>
-          </div>
+          </div><!-- Airline input -->
           <div>
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Duration</label>
             <input id="flightDuration"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text" placeholder="Duration Time" readonly>
-          </div>
+          </div><!-- Flight Duration input -->
           <div>
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Price</label>
             <input id="price"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text" placeholder="Price" readonly>
-          </div>
+          </div><!-- Price input -->
           <div>
             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Number</label>
             <input id="flightNumber"
               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text" placeholder="Flight Number" readonly>
-          </div>
+          </div><!-- Flight number input -->
         </div>
       </div>
 
@@ -60,7 +62,27 @@
       <button id="close-popup" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Close Popup</button>
     </div>
   </div>
+  <!-- End of Modal flight container -->
 
+  <!-- Modal warning container -->
+  <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+    <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
+        <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
+        <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+      </div>
+    </div>
+  </div>
+  <!-- End of Modal warning container -->
+
+  <!-- Dummy trigger button for the modal. This can be deleted since the modal shpould be 
+       triggered on the right javascript code -->
+  <button id="openModal" class="bg-blue-500 text-white py-2 px-4 rounded">Open Modal</button>
+
+  <!-- This was the table used for the designing of the hover feature to add 
+       buttons dynamically but it was dropped -->
   <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
     <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
       <table class="">
