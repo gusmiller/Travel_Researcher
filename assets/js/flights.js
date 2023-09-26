@@ -232,7 +232,7 @@ var renderAllRows = function(allFlightData) {
     }
 }
 
-// function that returns all data attributes that wer set in the Save Flight button
+// function that returns all data attributes that were set in the Save Flight button
 // it uses parameter button that is event.target
 var chosenFlightInfo = function(button) {
     console.log(button)
