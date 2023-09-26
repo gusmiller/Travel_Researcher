@@ -7,22 +7,34 @@ const warning = document.getElementById('warningModal');
  var loadData = window.addEventListener("load", () => {
     
     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
-    console.log(getHotels)
     createRows(getHotels)
 })
 
 
 var transformData = function(){
+    allHotelData = []
+    
     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
+    var unpackedData = getHotels.reduce((acc, [key, value]) => {
+        acc[key] = value
+    })
+
     var getCity = JSON.parse(localStorage.getItem("savedDestinations"));
-    console.log
-    console.log(getHotels)
+
+    unpackedData.destinationCity = getCity.destinationCity
+    
+    
+    
+    console.log(unpackedData)
+   
+
+    return unpackedData
 }
 
 transformData()
 
 
-var displayBookedHotelPopup = function(flight) {
+var displayBookedHotelPopup = function(getHotels) {
     
     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
     console.log(getHotels);

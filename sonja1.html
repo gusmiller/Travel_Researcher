@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel Researcher - Flight Search</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./assets/css/mainscreen.css">
+    <!-- <link rel="stylesheet" href="./assets/css/flights.css" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        fieldset {
+          border: 0;
+        }
+        label {
+          display: block;
+          margin: 30px 0 0 0;
+        }
+        .overflow {
+          height: 200px;
+        }
+      </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#departure-city").selectmenu();
+            $("#destination-city").selectmenu();
+        })
+    </script>
+    <script>
+        $(function() {
+            $( "#departure-date-input").datepicker({
+                minDate:-0,
+                dateFormat: "dd/mm/yy",
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+        <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
+          <!-- Modal content -->
+            <div class="modal-content">
+                <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
+                <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
+                <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col h-screen justify-between">
+        <header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
+            <div>
+
+                
+                <p class="lobster title xl:text-4xl lg:text-3xl sm:text-3xl text-black text-center">Travel Researcher
+                </p>
+
+            </div>
+            <div>
+                <nav class="flex items-center justify-center text-base md:ml-auto">
+                    <a href="index.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Home</a>
+                    <a href="index.html#our-team"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Our
+                        Team</a>
+                    <a href="#_"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Features</a>
+                    <a href="flights-bookmarks.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
+                        Flights</a>
+                        <a href="hotelbookmarks.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
+                        Hotels</a>
+                    <a href="#_"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Login</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="flex column items-center justify-center" id="search-form">
+                <form class="flights-search-form" action="#">
+                    <fieldset>
+                        <label class="text-indigo-600 font-semibold mb-2" for="departure-city" id="departure-city-label">Departure City:</label>
+                        <select name="departure-city" id="departure-city">
+                            <option>Select city from the list:</option>
+                        </select>
+                        <label class="text-indigo-600 font-semibold mb-2" for="destination-city" id="destination-city-label">Destination City:</label>
+                        <select name="destination-city" id="destination-city">
+                            <option>Select city from the list:</option>
+                        </select>
+                    </fieldset>
+
+                    <label class="text-indigo-600 font-semibold mb-2" id="departure-date-label">Departure date:</label>
+                    <input name="departure-date-name" type="text" id="departure-date-input" placeholder="Enter departure date"/>
+                    <button id="search-flight-button" 
+                    class="text-white py-2 px-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">Search flights</button>
+                </form>
+            </section>
+
+            <section class="section ">
+                <div class="flex justify-center -my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+                    <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                        <table class="mt-5 flights-table table-auto border-colapse border border-slate-400 ... ">
+                            <tr class="table-header-row">
+                                <th class="table-header p-2 border border-slate-300 ..." id="flight-number">Flight Number</th>  
+                                <th class="table-header p-2 border border-slate-300 ..." id="departure-time">Departure</th>
+                                <th class="table-header p-2 border border-slate-300 ..." id="arrival-time">Arrival</th>
+                                <th class="table-header p-2 border border-slate-300 ..." id="flight-duration">Flight Duration</th>
+                                <th class="table-header p-2 border border-slate-300 ..." id="flight-price">Price</th>
+                                <th class="table-header p-2 border border-slate-300 ..." id="save-flight-button">Save Flight</th>
+                            </tr>
+                        </table> 
+                        <h2 class="overline decoration-5 font-semibold mt-5 mb-10 text-indigo-600">To see your saved flights go to the Bookmarked Flights section in the menu!</h2>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">
+            <div class="w-full max-w-screen-xl mx-auto">
+                <div class="sm:flex sm:items-center sm:justify-between pt-2">
+                    <span class="flex items-center mb-4 sm:mb-0 lobster title self-center text-2xl whitespace-nowrap">Travel Researcher</span>
+                    <ul class="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Log In</li>
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Contact Us</li>
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Language</li>
+                        <li class="hover:underline pl-3">Currency</li>
+                    </ul>
+                </div>
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
+                <span class="block text-sm text-gray-500 sm:text-center text-white pb-2">© 2023 Travel Researcher™ All Rights Reserved</span>
+            </div>
+        </footer>
+    </div>   
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/sonja1.js"></script>
+</body>
+</html>
