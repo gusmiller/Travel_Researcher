@@ -31,7 +31,7 @@ var transformData = window.addEventListener("load", () => {
 
     createRows(arr)
    
-    // return unpackedData
+    return unpackedData
 })
 
 
