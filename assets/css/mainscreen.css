@@ -34,6 +34,7 @@
 
 .descrip {
     height: 200px;
+    text-align: center;
 }
 
 .about-me {
@@ -60,7 +61,7 @@
     }
 
     .about-me {
-        height: 1200px;
+        height: 1400px;
     }
 }
 
