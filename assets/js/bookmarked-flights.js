@@ -13,13 +13,14 @@ var displayWarningModal = function(title, message) {
 
     closeflightModal.addEventListener('click', () => {
         warning.classList.add('hidden');
+        window.location.href = "./index.html"
     });
 }
 
 var init = function() {
     var storedFlights = loadSavedFlights();
     renderTableRows(storedFlights);
-    loadSavedDestinations();
+    // loadSavedDestinations();
     closeModal.addEventListener("click", function () {
         const modal = document.getElementById('popup');
         modal.classList.add('hidden')
@@ -106,8 +107,8 @@ var saveDestination = function(event) {
     let destinationCity = bookedFlightDestination(event.target);
     savedFlightDestination["destinationCity"] = destinationCity;
 
-    savedFlightDestinationList.push(savedFlightDestination);
-    storeSavedDestinations();
+    // savedFlightDestinationList.push(savedFlightDestination);
+    storeSavedDestinations(savedFlightDestination);
     var flight = event.target.dataset;
     displayBookedFlightPopup(flight);
 }
@@ -130,8 +131,8 @@ var bookedFlightDestination = function(button) {
     return button.dataset.destinationCity;
 }
 
-var storeSavedDestinations = function(flight) {
-    localStorage.setItem("savedDestinations", JSON.stringify(savedFlightDestinationList))
+var storeSavedDestinations = function(savedFlightDestination) {
+    localStorage.setItem("savedDestinations", JSON.stringify(savedFlightDestination))
 }
 
 init();
