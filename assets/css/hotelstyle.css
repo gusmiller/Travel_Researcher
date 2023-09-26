@@ -22,6 +22,10 @@
     height: 500px;
 }
 
+.bodysize {
+    height: 340px;
+}
+
 @media screen and (max-width: 772px) {
 
     .headers {
@@ -30,18 +34,3 @@
 
 }
 
-@media screen and (max-width: 640px) {
-    .links {
-        font-size: 14px;
-    }
-
-    .title {
-        font-size: 30px;
-    }
-}
-
-@media screen and (max-width: 577px) {
-    .links {
-        font-size: 8px;
-    }
-}
