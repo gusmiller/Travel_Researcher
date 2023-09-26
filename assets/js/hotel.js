@@ -10,6 +10,20 @@ const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
 
 
+var pullFlightCity = function() {
+    var cityName = JSON.parse(localStorage.getItem("savedDestinations"))
+    var destination = cityName[0]
+    var travel = destination.destinationCity
+    
+    return travel
+    }
+
+pullFlightCity()
+
+let destinationCity = pullFlightCity()
+
+console.log(destinationCity)
+
 
 function showError(title, message){
     const errModal = document.getElementById('warningModal');
@@ -47,12 +61,12 @@ window.onload = function() {
 searchButton.addEventListener("click", (event) => {
 
     event.preventDefault();
-    if (!checkIn.value || !checkOut.value || !city) {
+    if (!checkIn.value || !checkOut.value) {
         showError("Missing Input", "One or more fields are empty/Invalid data")
         return;
     }
 
-    fetchHotels(city.value);
+    fetchHotels(destinationCity);
 })
 
 
@@ -155,7 +169,8 @@ var createRow = function (allHotelData) {
     saveHotelButtonEl.setAttribute("data-hotel-name", allHotelData.hotelName);
     saveHotelButtonEl.setAttribute("data-hotel-address", allHotelData.hotelAddress);
     saveHotelButtonEl.setAttribute("data-total-price", allHotelData.totalPrice);
-    saveHotelButtonEl.setAttribute("style", "margin: 0 7px;")
+    saveHotelButtonEl.setAttribute("style", "margin: 0 7px; ")
+    saveHotelButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     saveHotelButtonEl.textContent = "Save Hotel";
     hotelRowEl.appendChild(saveHotelButtonEl);
     saveHotelButtonEl.addEventListener("click", saveChosenHotel);
