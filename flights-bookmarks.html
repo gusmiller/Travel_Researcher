@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
-<body>
+<body class="w-screen">
     <!-- Modal flight container -->
     <div id="popup"
         class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
@@ -85,35 +85,30 @@
         </div>
 
         <button id="searchHotels" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Search Hotels</button>
-        <button id="close-popup" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Close Popup</button>
+        <button id="close-popup" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Close</button>
         </div>
     </div>
-    <!-- End of Modal flight container -->
 
     <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
         <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
           <!-- Modal content -->
             <div class="modal-content">
-                <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
-                <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
+                <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2>
+                <p id="errorMessage" class="text-red-500 mb-4"></p>
                 <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
             </div>
         </div>
     </div>
 
-    <div>
-        <header class="w-screen mt-5 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
+    <div class="flex flex-col h-screen justify-between">
+        <header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
             <div>
-
-                
-                <p class="lobster title xl:text-4xl lg:text-3xl sm:text-3xl text-black text-center">Travel Researcher
-                </p>
-
+                <p class="lobster title text-4xl text-black text-center">Travel Researcher</p>
             </div>
-            <div>
-                <nav class="flex items-center justify-center text-base md:ml-auto">
+            <div >
+                <nav class="flex flex-col md:flex-row items-center justify-center  text-base md:m-auto">
                     <a href="index.html"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Home</a>
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Home</a>
                     <a href="index.html#our-team"
                         class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Our
                         Team</a>
@@ -131,23 +126,22 @@
             </div>
         </header>
     
-    
-
         <main>
-            <section>
-                <div class=" flex justify-center -my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
-                    <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
-                        <table class="bookmarked-flights-table">
-                            <caption>Saved Flights</caption>
-                            <tr class="bookmarked-flights-header">
-                                <th id="saved-flight-number">Flight Number</th>
-                                <th id="saved-departure-city">Departure City</th>
-                                <th id="saved-departure-date">Departure Date</th>
-                                <th id="saved-departure-time">Departure Time</th>
-                                <th id="saved-destination-city">Destination City</th>
-                                <th id="saved-arrival-time">Arrival Time</th>
-                                <th id="saved-flight-duration">Flight Duration</th>
-                                <th id="saved-flight-price">Flight Price</th>
+            <section >
+                <div class="w-screen flex justify-center py-2">
+                    <div class="align-middle inline-block overflow-hidden bg-white pt-3 rounded-bl-lg rounded-br-lg flex items-center sm:justify-center ml-4 sm:ml-0">
+                        <table class="mx-2 my-2 bookmarked-flights-table border-colapse border border-slate-400 ... ">
+                            <caption class="mx-5 mb-5 mt-0 text-indigo-600 font-semibold text-xl">Saved Flights</caption>
+                            <tr class="bookmarked-flights-header flex flex-col mb-4 sm:table-row">
+                                <th class="p-2 border border-slate-300 ..." id="saved-flight-number">Flight Number</th>
+                                <th class="p-2 border border-slate-300 ..." id="saved-departure-city">Departure City</th>
+                                <th class="p-2 border border-slate-300 ..." id="saved-departure-date">Departure Date</th>
+                                <th class="p-2 border border-slate-300 ..." id="saved-departure-time">Departure Time</th>
+                                <th class="p-2 border border-slate-300 ..." id="saved-destination-city">Destination City</th>
+                                <th class="p-2 border border-slate-300 ..." id="saved-arrival-time">Arrival Time</th>
+                                <th class="p-2 border border-slate-300 ..." id="saved-flight-duration">Flight Duration</th>
+                                <th class="p-2 border border-slate-300 ..." id="saved-flight-price">Flight Price</th>
+                                <th class="p-2 border border-slate-300 ..." id="bokk-flight-button">Book Flight</th>
                             </tr>
                         </table>
                     </div>
@@ -155,8 +149,20 @@
             </section>
         </main>
 
-        <footer class="h-24 w-screen mt-5 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
-
+        <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">
+            <div class="w-screen mx-auto">
+                <div class="md:flex sm:items-center sm:justify-between pt-2">
+                    <span class="md:flex items-center mb-4 sm:mb-0 lobster title self-center text-2xl whitespace-nowrap ml-7">Travel Researcher</span>
+                    <ul class="md:flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 mr-5 ml-5">
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Log In</li>
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Contact Us</li>
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Language</li>
+                        <li class="hover:underline pl-3">Currency</li>
+                    </ul>
+                </div>
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
+                <span class="block text-sm text-gray-500 sm:text-center text-white pb-2 ml-5">© 2023 Travel Researcher™ All Rights Reserved</span>
+            </div>
         </footer>
     </div>
 
