@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Travel Researcher - Bookmarked Flights</title>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="./assets/css/hotelbookmarks.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body class="w-screen">
@@ -87,8 +83,9 @@
         <button onclick="window.location.href='./hotels.html'" id="searchHotels" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Search Hotels</button>
         <button onclick = "window.location.href = './index.html'" id="close-popup" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Close</button>
         </div>
-    </div>
+    </div><!-- End Modal flight container -->
 
+    <!-- Modal Warning container -->
     <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
         <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
           <!-- Modal content -->
@@ -98,30 +95,21 @@
                 <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
             </div>
         </div>
-    </div>
+    </div><!-- End Modal Warning container -->
 
     <div class="flex flex-col h-screen justify-between">
         <header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
+            <div><p class="pb-2 lobster title text-4xl text-black text-center">Travel Researcher</p></div>
             <div>
-                <p class="lobster title text-4xl text-black text-center">Travel Researcher</p>
-            </div>
-            <div >
-                <nav class="flex flex-col md:flex-row items-center justify-center  text-base md:m-auto">
-                    <a href="index.html"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Home</a>
+                <nav class="flex flex-col md:flex-row items-center justify-center text-base md:m-auto">
+                    <a href="index.html" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Home</a>
                     <a href="index.html#our-team"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Our
-                        Team</a>
-                    <a href="#_"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Features</a>
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Our Team</a>
                     <a href="flights-bookmarks.html"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
-                        Flights</a>
-                        <a href="hotelbookmarks.html"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
-                        Hotels</a>
-                    <a href="#_"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Login</a>
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium" disabled>Bookmarked Flights</a>
+                    <a href="hotelbookmarks.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Bookmarked Hotels</a>
+                    <a href="#" class="futureFeatures text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Login</a>
                 </nav>
             </div>
         </header>
@@ -166,6 +154,15 @@
         </footer>
     </div>
 
+    
+    <!-- JQuery: fast, small, and feature-rich JavaScript library -->
+    <!-- https://jquery.com/ -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <!-- jQuery UI <script> tag -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script src="./assets/js/script.js"></script>
     <script src="./assets/js/bookmarked-flights.js"></script>
 </body>
 </html>
