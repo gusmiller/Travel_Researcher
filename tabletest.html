@@ -1,0 +1,151 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+
+<body>
+
+  <!-- Modal flight container -->
+  <div id="popup"
+    class="hidden fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
+    <div class="modal-dialog bg-gray-300 p-6 rounded shadow-lg">
+      <div class="mb-4">
+        <h2 class="text-2xl font-semibold">Selected Flight</h2>
+      </div>
+
+      <!-- Inut boxes section -->
+      <div class="flex items-center justify-center">
+        <div class="grid grid-cols-2 grid-rows-3 gap-4">
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Departure Time</label>
+            <input id="departureTime"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Departure Time" readonly>
+          </div><!-- Departure time input -->
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Arrival Time</label>
+            <input id="arrivalTime"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Arrival Time" readonly>
+          </div><!-- Arrival time input -->
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Airline</label>
+            <input id="airline"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Airline" readonly>
+          </div><!-- Airline input -->
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Duration</label>
+            <input id="flightDuration"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Duration Time" readonly>
+          </div><!-- Flight Duration input -->
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Price</label>
+            <input id="price"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Price" readonly>
+          </div><!-- Price input -->
+          <div>
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Flight Number</label>
+            <input id="flightNumber"
+              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text" placeholder="Flight Number" readonly>
+          </div><!-- Flight number input -->
+        </div>
+      </div>
+
+      <button id="searchHotels" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Search Hotels</button>
+      <button id="close-popup" class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Close Popup</button>
+    </div>
+  </div>
+  <!-- End of Modal flight container -->
+
+  <!-- Modal warning container -->
+  <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+    <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
+        <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
+        <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+      </div>
+    </div>
+  </div>
+  <!-- End of Modal warning container -->
+
+  <!-- Dummy trigger button for the modal. This can be deleted since the modal shpould be 
+       triggered on the right javascript code -->
+  <button id="openModal" class="bg-blue-500 text-white py-2 px-4 rounded">Open Modal</button>
+
+  <!-- This was the table used for the designing of the hover feature to add 
+       buttons dynamically but it was dropped -->
+  <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+    <div class="align-middle inline-block overflow-hidden bg-white px-8 pt-3 rounded-bl-lg rounded-br-lg">
+      <table class="">
+        <thead>
+          <tr class="border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500">
+            <th class="px-6 py-3">Departure Time</th>
+            <th class="px-6 py-3">Arrival Time</th>
+            <th class="px-6 py-3">Airline</th>
+            <th class="px-6 py-3">Flight Duration</th>
+            <th class="px-6 py-3">Flight Price</th>
+            <th class="px-6 py-3">Flight Number</th>
+            <th class="px-6 py-3"></th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <!-- Flight row -->
+          <tr id="AC234" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+            <td class="px-6 text-blue-900 text-sm leading-5">09/20/2023 08:00</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/21/2023 07:45</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">Air Canada</td>
+            <td class="px-6 text-blue-900 leading-5">12:45 hrs</td>
+            <td class="px-6 text-blue-900 leading-5">$1,1500</td>
+            <td class="px-6 text-blue-900 leading-5">AC234</td>
+            <td class="px-6 text-blue-900 leading-5"></td>
+          </tr><!-- End Flight row -->
+
+          <!-- Flight row -->
+          <tr id="2342" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+            <td class="px-6 text-blue-900 text-sm leading-5">09/20/2023 08:00</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/21/2023 07:45</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">Air Canada</td>
+            <td class="px-6 text-blue-900 leading-5">11:50 hrs</td>
+            <td class="px-6 text-blue-900 leading-5">$750</td>
+            <td class="px-6 text-blue-900 leading-5">2342</td>
+            <td class="px-6 text-blue-900 leading-5"></td>
+          </tr><!-- End Flight row -->
+
+          <!-- Flight row -->
+          <tr id="57858" class="tablerow border-gray-500 whitespace-no-wrap text-sm">
+            <td class="px-6 text-blue-900 text-sm leading-5">09/20/2023 08:00</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">09/21/2023 07:45</td>
+            <td class="px-6 text-blue-900 text-sm leading-5">Air Canada</td>
+            <td class="px-6 text-blue-900 leading-5">11:15 hrs</td>
+            <td class="px-6 text-blue-900 leading-5">$1,3500</td>
+            <td class="px-6 text-blue-900 leading-5">57858</td>
+            <td class="px-6 text-blue-900 leading-5"></td>
+          </tr><!-- End Flight row -->
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JQuery: fast, small, and feature-rich JavaScript library -->
+  <!-- https://jquery.com/ -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+  <!-- jQuery UI <script> tag -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- JQuery document for the tables -->
+  <script src="./assets/js/hovertable.js"></script>
+
+</body>
+
+</html>
