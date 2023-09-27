@@ -1,0 +1,35 @@
+.lobster {
+    font-family: "Lobster", "helvetica";
+}
+
+#search-form {
+    height: 200px;
+}
+
+#checkin {
+    height: 60px;
+}
+
+#checkout {
+    height: 60px;
+}
+
+#city {
+    height: 60px;
+}
+
+.height {
+    height: 500px;
+}
+
+.bodysize {
+    height: 340px;
+}
+
+@media screen and (max-width: 772px) {
+
+    .headers {
+        font-size: 10px;
+    }
+
+}
