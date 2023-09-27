@@ -261,6 +261,7 @@ var saveChosenFlight = function(event) {
     }
     searchedFlightsList.push(flight);
     storeSearchedFlights();
+    window.location.href = "./flights-bookmarks.html"
 }
 
 // if flight is already saved it cannot be saved again
