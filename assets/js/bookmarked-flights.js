@@ -116,7 +116,7 @@ var saveDestination = function(event) {
 
 // function that uses data from button/event.target and displays it in modal fields
 var displayBookedFlightPopup = function(flight) {
-    console.log(flight);
+
     $("#flightNumber").val(flight.flightNumber);
     $("#departureCity").val(flight.departureCity);
     $("#departureDate").val(flight.departureDate);

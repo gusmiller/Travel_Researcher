@@ -36,9 +36,9 @@ var transformData = function () {
 transformData()
 
 var displayBookedHotelPopup = function (event) {
-    console.log("click")
+
     var getHotels = event.target.dataset;
-    console.log(getHotels);
+
     $("#city").val(getHotels.city);
     $("#hotel").val(getHotels.hotelName);
     $("#address").val(getHotels.hotelAddress);

@@ -10,32 +10,30 @@ const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
 
 
-var pullFlightCity = function() {
+var pullFlightCity = function () {
     var cityName = JSON.parse(localStorage.getItem("savedDestinations"))
     var destination = cityName.destinationCity
-    
+
     return destination
-    }
+}
 
 pullFlightCity()
 
 let destinationCity = pullFlightCity()
 
-console.log(destinationCity)
 
-
-function showError(title, message){
+function showError(title, message) {
     const errModal = document.getElementById('warningModal');
     $("#errorTitle").text(title);
     $("#errorMessage").text(message);
     errModal.classList.remove('hidden');
 
-    
-    }
 
-  closeflightModal.addEventListener('click', () => {
-  warning.classList.add('hidden');
-  })
+}
+
+closeflightModal.addEventListener('click', () => {
+    warning.classList.add('hidden');
+})
 
 
 
@@ -44,12 +42,12 @@ var savedHotels = []
 
 
 
-var storeHotels = function() {
+var storeHotels = function () {
     localStorage.setItem("storedHotels", JSON.stringify(savedHotels));
 }
 
 
-window.onload = function() {
+window.onload = function () {
     var storedHotels = JSON.parse(localStorage.getItem("storedHotels"));
     if (storedHotels != null) {
         savedHotels = storedHotels;
@@ -87,15 +85,12 @@ var fetchHotels = function (city) {
 
             var cityId = locationData[0].dest_id
 
-
             if (checkIn.value === null || checkOut.value === null || cityId === null) {
                 displayWarningModal("missing Input", "One or more fields are empty")
                 return;
-                } 
-            
-                var searchHotel = "https://booking-com.p.rapidapi.com/v1/hotels/search?checkin_date=" + checkIn.value + "&dest_type=city&units=metric&checkout_date=" + checkOut.value + "&adults_number=2&order_by=price&dest_id=" + cityId + "&filter_by_currency=CAD&locale=en-us&room_number=1&%2C0&page_number=0&include_adjacency=true"
+            }
 
-            
+            var searchHotel = "https://booking-com.p.rapidapi.com/v1/hotels/search?checkin_date=" + checkIn.value + "&dest_type=city&units=metric&checkout_date=" + checkOut.value + "&adults_number=2&order_by=price&dest_id=" + cityId + "&filter_by_currency=CAD&locale=en-us&room_number=1&%2C0&page_number=0&include_adjacency=true"
 
             fetch(searchHotel, {
                 method: "GET",
@@ -110,19 +105,21 @@ var fetchHotels = function (city) {
                 .then(function (data) {
 
                     var newData = data.result.slice(0, 10)
-                   var allHotelData = readHotelData(newData);
-                    console.log(data);
+                    var allHotelData = readHotelData(newData);
+
+                    $("#hotelsarea").removeClass("hidden");
+
                     cleanUpHotels()
                     renderAllRows(allHotelData);
-                    
+
                 })
-            console.log(locationData);
-            
+
+                
         })
 }
 
 
-var cleanUpHotels = function() {
+var cleanUpHotels = function () {
     $(hotelsTable).find("tr").not(".table-header-row").remove();
 }
 
@@ -138,16 +135,16 @@ var readHotelData = function (newData) {
         var hotelAddress = newData[i].address
         var totalPrice = newData[i].price_breakdown.gross_price
         allHotelData.push({
-    
+
             "hotelName": hotelName,
             "hotelAddress": hotelAddress,
             "totalPrice": totalPrice
         })
-        
+
     }
-    console.log(allHotelData)
-return allHotelData
-    
+
+    return allHotelData
+
 }
 
 
@@ -180,19 +177,19 @@ var createRow = function (allHotelData) {
 }
 
 
-var renderAllRows = function(allHotelData) {
-    for (var i = 0; i < allHotelData.length; i++){
+var renderAllRows = function (allHotelData) {
+    for (var i = 0; i < allHotelData.length; i++) {
         hotelsTable.appendChild(createRow(allHotelData[i]));
     }
     if (allHotelData.length === 0) {
-       
+
     }
 }
 
 
-var saveChosenHotel = function(event) {
+var saveChosenHotel = function (event) {
 
-    console.log(event)
+
     let [cityName, hotelName, hotelAddress, checkinDate, checkoutDate, totalPrice] = chosenHotelInfo(event.target)
     var hotel = {}
     hotel.cityName = cityName;
@@ -208,6 +205,6 @@ var saveChosenHotel = function(event) {
 }
 
 
-var chosenHotelInfo = function(button) {
+var chosenHotelInfo = function (button) {
     return [button.dataset.cityName, button.dataset.hotelName, button.dataset.hotelAddress, button.dataset.checkinDate, button.dataset.checkoutDate, button.dataset.totalPrice];
 }

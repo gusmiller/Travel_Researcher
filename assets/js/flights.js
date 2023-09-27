@@ -125,7 +125,7 @@ var getFlightData = function (departureDateSelect, departureCode, destinationCod
         }
     })
         .then(function (response) {
-            console.log(response)
+
             if (response.ok) {
                 response.json().then(function (data) {
                     var allFlightData = readFlightData(data);
@@ -171,7 +171,7 @@ var readFlightData = function (data) {
             "flightDuration": flightDuration,
             "flightPrice": flightPrice,
         })
-        console.log(allFlightData)
+
     }
     return allFlightData;
 }
@@ -218,7 +218,7 @@ var renderOneFlightRow = function (flightData) {
     // adding styling to button
     saveFlightButtonEl.setAttribute("class", "text-white py-2 px-3 border border-slate-300 ... table-button transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     saveFlightButtonEl.textContent = "Save Flight";
-    console.log(saveFlightButtonEl)
+
     tableRowEl.appendChild(saveFlightButtonEl);
     // function saveChosenFlight will run when Save Flight button is clicked
     saveFlightButtonEl.addEventListener("click", saveChosenFlight);
@@ -238,7 +238,7 @@ var renderAllRows = function (allFlightData) {
 // function that returns all data attributes that were set in the Save Flight button
 // it uses parameter button that is event.target
 var chosenFlightInfo = function (button) {
-    console.log(button)
+
     return [button.dataset.departureTime, button.dataset.arrivalTime, button.dataset.flightDuration, button.dataset.flightPrice, button.dataset.flightNumber, button.dataset.departureCity, button.dataset.destinationCity, button.dataset.departureDate];
 }
 
@@ -247,7 +247,7 @@ var chosenFlightInfo = function (button) {
 // stores that array in local storage
 var saveChosenFlight = function (event) {
     event.preventDefault();
-    console.log(event)
+
     let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
     var flight = {}
     flight["departureCity"] = departureCity;
