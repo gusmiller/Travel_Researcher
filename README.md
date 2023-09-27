@@ -29,6 +29,8 @@ Hope you enjoy it and here is out product!
 
 [![Travel Researcher][product-screenshot]](https://github.com/gusmiller/Travel_Researcher/)
 
+Feel free to watch our <a href="https://docs.google.com/presentation/d/17FgfLwQEdM6l38Q6dybuOgesN3HEnYtaVq-G9r9wv9k/edit#slide=id.g1e81d7afb59_0_154" target="_blank">Travel Researcher Google Slides</a>
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -41,10 +43,11 @@ The Travel Researcher, same as all our previous challenges, was developed using 
 ### API Bad calls
 APIs return a call status to the client which can be in the form of: a Success or Failure type call. In both the cases, it is necessary to let the client know so that they can proceed to the next step. It is innevitable that bad call would or will occure at some point, network connection, credentials, internet or even the API service status. Whatever the case we need to graciously fail the process. For that, we are using a Generic-purpose Modal (popup) form to communicate the error to the user. 
 
-<img src="./assets/images/API404Error.PNG" height="250">
+<img src="./assets/images/TR-0003.PNG" height="250">
 
 Depending on circumstances there may -or may not, be a solution to the failure.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ### Built With
 
 The **Travel Researcher** has been built using plain *HTML* and several API and technologies. *Tailwind* CSS framework with it's large number of classes and pre-define elements such as cards and navbars. The application makes extensive use of Javascripts and JQuery.
@@ -103,9 +106,9 @@ See the [open issues](https://github.com/gusmiller/Travel_Researcher/issues) for
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: ./assets/images/heropage.png
+[product-screenshot]: ./assets/images/TR-0001.png
 [product-navigation]: ./assets/images/Navigation.png
-[ourteam]: ./assets/images/ourteam.png
+[ourteam]: ./assets/images/TR-0002.png
 
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
