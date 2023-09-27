@@ -1,0 +1,66 @@
+/*!
+ * Style.css - Module 06 -Project 01
+ *
+ * Copyright 2023 
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Carleton Bootcamp - https://courses.bootcampspot.com/courses/4027
+ * CARL-VIRT-FSF-PT-07-2023-U-LOLC-MTTH
+ * 
+ * Author: Jacob Martin, Sonja Gorin, Anthony Gooneratne and Gustavo Miller
+ * Date: September 2023
+ */
+ :root {
+    --main-height: 200px:
+}
+
+
+.lobster {
+    font-family: "Lobster", "helvetica";
+}
+
+.fatface {
+    font-family: "Abril-Fatface", "helvetica";
+}
+
+.infotainer {
+    height: 400px;
+}
+
+.our-team {
+    height: 200px;
+    margin-top: 100px;
+    
+}
+
+.descrip {
+    height: 200px;
+    text-align: center;
+}
+
+.about-me {
+    height: 500px;
+}
+
+.team-member {
+    width: 300px;
+    height: 300px;
+}
+
+
+@media screen and (max-width: 1012px) {
+    .about-me {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .flexor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-me {
+        height: 1400px;
+    }
+}
