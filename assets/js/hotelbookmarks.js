@@ -12,7 +12,9 @@ const warning = document.getElementById('warningModal');
 })
 var transformData = function(){
 }
+
 transformData()
+
 var displayBookedHotelPopup = function(event) {
     console.log("click")
     var getHotels = event.target.dataset;
@@ -22,9 +24,10 @@ var displayBookedHotelPopup = function(event) {
     $("#address").val(getHotels.hotelAddress);
     $("#price").val(getHotels.totalPrice);
     $("#popup").removeClass("hidden");
-    closeModal.addEventListener("click", () =>
-    $("#popup").addClass("hidden")
-    )
+    closeModal.addEventListener("click", () => {
+        $("#popup").addClass("hidden")
+        window.location.href = "./index.html"
+    })
     return getHotels
 }
 function createRows (getHotels) {

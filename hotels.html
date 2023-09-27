@@ -8,7 +8,7 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Travel Researcher</title>
+  <title>Travel Researcher - Hotel Search</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -54,104 +54,102 @@
 
 <body>
 
-  <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
-    <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
-      <!-- Modal content -->
-        <div class="modal-content">
-            <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
-            <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
-            <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+    <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+        <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
+        <!-- Modal content -->
+            <div class="modal-content">
+                <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
+                <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
+                <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+            </div>
         </div>
     </div>
-</div>
 
-<header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
-  <div>
-      <p class="lobster title text-4xl text-black text-center">Travel Researcher</p>
-  </div>
-  <div>
-      <nav class="flex flex-col md:flex-row items-center justify-center text-base md:m-auto">
-          <a href="index.html"
-              class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Home</a>
-          <a href="index.html#our-team"
-              class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Our
-              Team</a>
-          <a href="#_"
-              class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Features</a>
-          <a href="flights-bookmarks.html"
-              class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
-              Flights</a>
-              <a href="hotelbookmarks.html"
-              class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
-              Hotels</a>
-          <a href="#_"
-              class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Login</a>
-      </nav>
-  </div>
-</header>
-  <section class="flex column items-center justify-center" id="search-form">
-    <form class="hotels-search-form" action="#">
+    <div class="w-screen flex flex-col h-screen justify-between">
+        <header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
+            <div>
+                <p class="lobster title text-4xl text-black text-center">Travel Researcher</p>
+            </div>
+            <div>
+                <nav class="flex flex-col md:flex-row items-center justify-center text-base md:m-auto">
+                    <a href="index.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Home</a>
+                    <a href="index.html#our-team"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Our
+                        Team</a>
+                    <a href="#_"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Features</a>
+                    <a href="flights-bookmarks.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
+                        Flights</a>
+                        <a href="hotelbookmarks.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
+                        Hotels</a>
+                    <a href="#_"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Login</a>
+                </nav>
+            </div>
+        </header>
 
-      <fieldset>
-        <label id="checkin-date-label">Check in date:</label>
-        <input class = "m-5" name="checkin-date-name" type="text" id="checkin-date-input" placeholder="Enter check in date" autocomplete = "off" />
-      </fieldset>
+        <main>
+            <section class="w-screen flex column items-center justify-center" id="search-form">
+                <form class="hotels-search-form" action="#">
 
-      <fieldset>
-        <label id = "checkout-date-label">Check out date:</label>
-        <input class = "m-5" name = "checkout-date-name" type="text" id="checkout-date-input" placeholder="Enter check out date"  autocomplete = "off"/>
-      </fieldset>
+                    <fieldset>
+                        <label id="checkin-date-label">Check in date:</label>
+                        <input class = "m-5" name="checkin-date-name" type="text" id="checkin-date-input" placeholder="Enter check in date" autocomplete = "off" />
+                    </fieldset>
 
-      <div>
-        <button id="searchbtn"
-        class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">Search</button>
-      </div>
+                    <fieldset>
+                        <label id = "checkout-date-label">Check out date:</label>
+                        <input class = "m-5" name = "checkout-date-name" type="text" id="checkout-date-input" placeholder="Enter check out date"  autocomplete = "off"/>
+                    </fieldset>
 
-    </form>
+                    <div>
+                        <button id="searchbtn"
+                        class="text-white py-2 px-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">Search</button>
+                    </div>
 
-  </section>
+                </form>
 
+            </section>
 
+            <div class="w-screen flex justify-center py-2">
+                <div class="align-middle inline-block overflow-hidden bg-white pt-3 rounded-bl-lg rounded-br-lg flex flex-col items-center sm:justify-center ml-4 sm:ml-0">
+                    <table class="hotel-table flights-table border-colapse border border-slate-400 ... ">
+                        <tr class="table-header-row flex flex-col mb-4 sm:table-row">
+                            <th class="table-header p-2 border border-slate-300 ..." id="flight-number">Hotel</th>  
+                            <th class="table-header p-2 border border-slate-300 ..." id="departure-time">Address</th>
+                            <th class="table-header p-2 border border-slate-300 ..." id="arrival-time">Total Price</th>
+                        </tr>
+                    </table> 
+                    <h2 class="overline decoration-5 font-semibold mt-5 mb-10 text-indigo-600">To see your saved hotels, go to the Bookmarked Hotels section in the menu.</h2>
+                </div>
+            </div>
+        </main>
 
-  <div class="w-screen flex justify-center py-2 bodysize">
-    <div class="align-middle inline-block overflow-hidden bg-white pt-3 rounded-bl-lg rounded-br-lg flex flex-col items-center sm:justify-center ml-4 sm:ml-0">
-        <table class="hotel-table flights-table border-colapse border border-slate-400 ... ">
-            <tr class="table-header-row flex flex-col mb-4 sm:table-row">
-                <th class="table-header p-2 border border-slate-300 ..." id="flight-number">Hotel</th>  
-                <th class="table-header p-2 border border-slate-300 ..." id="departure-time">Address</th>
-                <th class="table-header p-2 border border-slate-300 ..." id="arrival-time">Total Price</th>
-            </tr>
-        </table> 
-        <h2 class="overline decoration-5 font-semibold mt-5 mb-10 text-indigo-600">To see your saved hotels, go to the Bookmarked Hotels section in the menu.</h2>
+        <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">
+            <div class="w-screen mx-auto">
+                <div class="md:flex sm:items-center sm:justify-between pt-2">
+                    <span class="md:flex items-center mb-4 sm:mb-0 lobster title self-center text-2xl whitespace-nowrap ml-7">Travel Researcher</span>
+                    <ul class="md:flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 mr-5 ml-5">
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Log In</li>
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Contact Us</li>
+                        <li class="mr-4 hover:underline md:mr-6 pl-3">Language</li>
+                        <li class="hover:underline pl-3">Currency</li>
+                    </ul>
+                </div>
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
+                <span class="block text-sm text-gray-500 sm:text-center text-white pb-2 ml-5">© 2023 Travel Researcher™ All Rights Reserved</span>
+            </div>
+        </footer>
     </div>
-</div>
 
- 
-
-  <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">
-    <div class="w-full max-w-screen-xl mx-auto">
-        <div class="sm:flex sm:items-center sm:justify-between pt-2">
-            <span class="flex items-center mb-4 sm:mb-0 lobster title self-center text-2xl whitespace-nowrap">Travel Researcher</span>
-            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 ">
-                <li class="mr-4 hover:underline md:mr-6 pl-3">Log In</li>
-                <li class="mr-4 hover:underline md:mr-6 pl-3">Contact Us</li>
-                <li class="mr-4 hover:underline md:mr-6 pl-3">Language</li>
-                <li class="hover:underline pl-3">Currency</li>
-            </ul>
-        </div>
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
-        <span class="block text-sm text-gray-500 sm:text-center text-white pb-2">© 2023 Travel Researcher™ All Rights Reserved</span>
-    </div>
-</footer>
-
-
-
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-  <script src="./assets/js/hotel.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script src="./assets/js/hotel.js"></script>
 </body>
 
 </html>
