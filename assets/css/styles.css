@@ -9,54 +9,66 @@
  * Author: Jacob Martin, Sonja Gorin, Anthony Gooneratne and Gustavo Miller
  * Date: September 2023
  */
- :root {
-      --main-height: 200px:
-  }
-  
-  
-  .lobster {
-      font-family: "Lobster", "helvetica";
-  }
-  
-  .fatface {
-      font-family: "Abril-Fatface", "helvetica";
-  }
-  
-  .our-team {
-      margin-top: 70px;
-      
-  }
-  
-  .descrip {
-      height: 200px;
-      font-size: 24px;
-      text-align: center;
-  }
-  
-  .about-me {
-      height: 500px;
-  }
-  
-  .team-member {
-      width: 300px;
-      height: 300px;
-  }
-  
-  
-  @media screen and (max-width: 1012px) {
-      .about-me {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-      }
-  
-      .flexor {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-      }
-  
-      .about-me {
-          height: 1400px;
-      }
-  }
+:root {
+    --main-height: 200px:
+}
+
+.lobster {
+    font-family: "Lobster", "helvetica";
+}
+
+.fatface {
+    font-family: "Abril-Fatface", "helvetica";
+}
+
+fieldset {
+    border: 0;
+}
+
+label {
+    display: block;
+    margin: 30px 0 0 0;
+}
+
+.overflow {
+    height: 200px;
+}
+
+.our-team {
+    margin-top: 70px;
+
+}
+
+.descrip {
+    height: 200px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.about-me {
+    height: 500px;
+}
+
+.team-member {
+    width: 300px;
+    height: 300px;
+}
+
+
+@media screen and (max-width: 1012px) {
+    .about-me {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .flexor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-me {
+        height: 1400px;
+    }
+}

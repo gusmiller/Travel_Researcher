@@ -5,10 +5,29 @@
  * Project 01 - Travel Researcher
  */
 
+$("#departure-city").selectmenu();
+$("#destination-city").selectmenu();
+$("#departure-date-input").datepicker({
+      minDate: -0,
+      dateFormat: "dd/mm/yy",
+});
+
 $(document).ready(function () {
 
       // Select warning modal screen
       const warning = document.getElementById('warningModal');
+
+      $(function () {
+            $("#departure-city").selectmenu();
+            $("#destination-city").selectmenu();
+      })
+
+      $(function () {
+            $("#departure-date-input").datepicker({
+                  minDate: -0,
+                  dateFormat: "dd/mm/yy",
+            });
+      });
 
       /**
        * This function will show the Future Feature option. Options that we have decided not to 
@@ -33,5 +52,5 @@ $(document).ready(function () {
       });
 
       //JQuery: trigger the Future Feature options
-      $(".futureFeatures").on("click", () => { shownFuture("Future Implementation","This options is not current being implemented in this version! Stay tuned",1) });
+      $(".futureFeatures").on("click", () => { shownFuture("Future Implementation", "This options is not current being implemented in this version! Stay tuned", 1) });      
 })
