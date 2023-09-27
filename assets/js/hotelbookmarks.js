@@ -66,9 +66,10 @@ function createRows(getHotels) {
     totalPrice1.setAttribute("class", "p-2 border border-slate-300 ...")
     hotelRowEl.appendChild(totalPrice1)
     renderAllRows(getHotels)
+    
     var bookmarkHotels = document.createElement("button")
     bookmarkHotels.textContent = "Book Hotel"
-    bookmarkHotels.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
+    bookmarkHotels.setAttribute("class", "transition p-2 text-white ease-in-out delay-150 bg-blue-400 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...")
     bookmarkHotels.setAttribute("data-hotel-name", getHotels.hotelName);
     bookmarkHotels.setAttribute("data-hotel-address", getHotels.hotelAddress);
     bookmarkHotels.setAttribute("data-total-price", getHotels.totalPrice);
