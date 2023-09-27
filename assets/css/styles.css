@@ -54,6 +54,9 @@ label {
     height: 300px;
 }
 
+.pagemain {
+    height: 100% !important;
+}
 
 @media screen and (max-width: 1012px) {
     .about-me {
