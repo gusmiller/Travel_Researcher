@@ -32,29 +32,6 @@ $(document).ready(function () {
             warning.classList.add('hidden');
       });
 
-<<<<<<< HEAD
-      function testingAPI() {
-            // We are using template literals to build strings (backtick + ${variable}
-            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-            const geocodingEndpoint = `https://api.aviationstack.com/v1/flights?access_key=${aviationAPI}`;
-
-            // Make an HTTP GET fetch request to the API
-            // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-            fetch(geocodingEndpoint)
-                  .then(response => response.json())
-                  .then((data) => {
-                        console.log(data);
-                  })
-                  .catch((error) => {
-
-                        displayErrorMessage(error, "Aviation Stack"); // Display error message
-                        return false;
-                  });
-      }
-
-});
-=======
       //JQuery: trigger the Future Feature options
       $(".futureFeatures").on("click", () => { shownFuture("Future Implementation","This options is not current being implemented in this version! Stay tuned") });
 })
->>>>>>> 81a7bad8f6856b83b4b701f165bff84b94d7fd3f
