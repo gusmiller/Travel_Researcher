@@ -7,11 +7,13 @@ var flightInformationRowsEl = document.querySelector(".flight-information-row");
 var selectmenuDepartureEl = document.querySelector("#departure-city");
 var selectmenuDestinationEl = document.querySelector("#destination-city");
 var flightsTableEl = document.querySelector(".flights-table");
-var rowsTableSectionEl =  document.querySelector(".rows-table-section");
+var rowsTableSectionEl = document.querySelector(".rows-table-section");
 const openflightModal = document.getElementById('openModal');
 const closeflightModal = document.getElementById('closeModal');
 const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
+
+var dropdown = document.getElementById("departure-city");
 
 var cityCodes = {
     "YYC": "Calgary",
@@ -30,11 +32,11 @@ var cityCodes = {
 }
 var searchedFlightsList = [];
 
-var storeSearchedFlights = function() {
+var storeSearchedFlights = function () {
     localStorage.setItem("savedFlights", JSON.stringify(searchedFlightsList));
 }
 
-var displayWarningModal = function(title, message) {
+var displayWarningModal = function (title, message) {
     $("#errorTitle").text(title);
     $("#errorMessage").text(message);
     warning.classList.remove('hidden');
@@ -45,13 +47,13 @@ var displayWarningModal = function(title, message) {
 }
 
 // function that runs when the page opens
-var init = function() {
+var init = function () {
     loadSavedFlights();
     renderSelectmenuOptions();
 }
 
 // makes sure local storage doesn't clear after reloading the page
-var loadSavedFlights = function() {
+var loadSavedFlights = function () {
     var storedFlights = JSON.parse(localStorage.getItem("savedFlights"));
     if (storedFlights != null) {
         searchedFlightsList = storedFlights;
@@ -59,20 +61,20 @@ var loadSavedFlights = function() {
 }
 
 // function to get key using value
-var getDepartureIataCodeByCityName = function(object, city) {
+var getDepartureIataCodeByCityName = function (object, city) {
     var departureCode = Object.keys(object).find(key => object[key] === city);
     return departureCode;
 }
 
 // function to get key using value
-var getDestinationIataCodeByCityName = function(object, city) {
+var getDestinationIataCodeByCityName = function (object, city) {
     var destinationCode = Object.keys(object).find(key => object[key] === city);
     return destinationCode;
 }
 
 // dinamicaly makes departure city and destination city options in selectmenu
 // using cityCodes object
-var renderSelectmenuOptions = function() {
+var renderSelectmenuOptions = function () {
     for (code in cityCodes) {
         var selectmenuDeparturesOptionEl = document.createElement("option");
         selectmenuDeparturesOptionEl.textContent = cityCodes[code];
@@ -81,10 +83,11 @@ var renderSelectmenuOptions = function() {
         selectmenuDestinationsOptionEl.textContent = cityCodes[code];
         selectmenuDestinationEl.appendChild(selectmenuDestinationsOptionEl);
     }
+
 }
 
 // returns parameters from user inputs
-var searchParameters = function() {
+var searchParameters = function () {
     var departureCitySelect = departureCitySelectEl.value;
     var destinationCitySelect = destinationCitySelectEl.value;
     var departureDateSelect = departureDateSelectEl.value;
@@ -92,7 +95,7 @@ var searchParameters = function() {
 }
 
 // function that runs on Search Flights button click
-var searchFlights = function(event) {
+var searchFlights = function (event) {
     event.preventDefault();
     let [departureCitySelect, destinationCitySelect, departureDateSelect] = searchParameters();
     // if one or more input fields are empty show warning modal
@@ -108,41 +111,41 @@ var searchFlights = function(event) {
 }
 
 // clear table data rows before rendering rows from new search
-var cleanupFlightsTable = function() {
+var cleanupFlightsTable = function () {
     $(flightsTableEl).find('tr').not('.table-header-row').remove();
 }
 
 // function that uses api and all required parameters fo fetch data
 // it also catches errors and displays warning modal
-var getFlightData = function(departureDateSelect, departureCode, destinationCode) {
+var getFlightData = function (departureDateSelect, departureCode, destinationCode) {
     var flightApiUrl = "https://api.tequila.kiwi.com/v2/search?" + "fly_from=" + departureCode + "&fly_to=" + destinationCode + "&date_from=" + departureDateSelect + "&date_to=" + departureDateSelect + "&limit=10" + "&curr=CAD";
     fetch(flightApiUrl, {
         headers: {
             "apikey": "28KlXgTIJqrzQn9w0jUTkn75Yvb2HwDH",
         }
     })
-    .then(function(response) {
-        console.log(response)
-        if(response.ok) {
-            response.json().then(function(data) {
-                var allFlightData = readFlightData(data);
-                renderAllRows(allFlightData);
-            })
-        } else {
-            response.text().then(function(text) {
-                displayWarningModal("Can't Get Flights", text)
-            })
-        }
-    })
-    .catch(function(error) {
-        displayWarningModal("Can't Get Flights", error)
-    })
+        .then(function (response) {
+            console.log(response)
+            if (response.ok) {
+                response.json().then(function (data) {
+                    var allFlightData = readFlightData(data);
+                    renderAllRows(allFlightData);
+                })
+            } else {
+                response.text().then(function (text) {
+                    displayWarningModal("Can't Get Flights", text)
+                })
+            }
+        })
+        .catch(function (error) {
+            displayWarningModal("Can't Get Flights", error)
+        })
 }
 
 // function that gets all needed data
 // and saves it as a value in an object
 // returns that object called allFlightData
-var readFlightData = function(data) {
+var readFlightData = function (data) {
     var allFlightData = []
     for (var i = 0; i < data["data"].length; i++) {
         var departureTimeData = data["data"][i]["local_departure"];
@@ -150,8 +153,8 @@ var readFlightData = function(data) {
         var arrivalTimeData = data["data"][i]["local_arrival"];
         var arrivalTime = arrivalTimeData.split("T");
         var flightDurationData = data["data"][i]["duration"]["total"];
-        var flightDurationHours = Math.trunc((flightDurationData/60)/60);
-        var flightDurationMinutes = (flightDurationData/60) % 60;
+        var flightDurationHours = Math.trunc((flightDurationData / 60) / 60);
+        var flightDurationMinutes = (flightDurationData / 60) % 60;
         var flightDuration = flightDurationHours.toString() + " hr " + flightDurationMinutes.toString() + " min";
         var flightPrice = "CAD " + data["data"][i]["price"];
         var flightNumber = data["data"][i]["route"][0]["flight_no"];
@@ -177,7 +180,7 @@ var readFlightData = function(data) {
 // creates one row with its data
 // adds styling to every table row and table data
 // creates button Save Flight
-var renderOneFlightRow = function(flightData) {
+var renderOneFlightRow = function (flightData) {
     var tableRowEl = document.createElement("tr");
     tableRowEl.setAttribute("class", "flight-information-row flex flex-col mb-4 sm:table-row");
     var departureDate = dayjs(flightData["departureDate"][0].slice(0, 11)).format("DD/MM/YYYY");
@@ -223,8 +226,8 @@ var renderOneFlightRow = function(flightData) {
 }
 
 // function that uses for loop and renderOneFlightRow function to create all rows
-var renderAllRows = function(allFlightData) {
-    for (var i = 0; i < allFlightData.length; i++){
+var renderAllRows = function (allFlightData) {
+    for (var i = 0; i < allFlightData.length; i++) {
         flightsTableEl.appendChild(renderOneFlightRow(allFlightData[i]));
     }
     if (allFlightData.length === 0) {
@@ -234,7 +237,7 @@ var renderAllRows = function(allFlightData) {
 
 // function that returns all data attributes that were set in the Save Flight button
 // it uses parameter button that is event.target
-var chosenFlightInfo = function(button) {
+var chosenFlightInfo = function (button) {
     console.log(button)
     return [button.dataset.departureTime, button.dataset.arrivalTime, button.dataset.flightDuration, button.dataset.flightPrice, button.dataset.flightNumber, button.dataset.departureCity, button.dataset.destinationCity, button.dataset.departureDate];
 }
@@ -242,7 +245,7 @@ var chosenFlightInfo = function(button) {
 // function that uses data from button/event.target to create an object with all the data about flight
 // that object is added to the array so it is not overwritten when new save is made
 // stores that array in local storage
-var saveChosenFlight = function(event) {
+var saveChosenFlight = function (event) {
     event.preventDefault();
     console.log(event)
     let [departureTime, arrivalTime, flightDuration, flightPrice, flightNumber, departureCity, destinationCity, departureDate] = chosenFlightInfo(event.target);
@@ -265,7 +268,7 @@ var saveChosenFlight = function(event) {
 }
 
 // if flight is already saved it cannot be saved again
-var flightAlreadySaved = function(flight) {
+var flightAlreadySaved = function (flight) {
     for (savedFlight of searchedFlightsList) {
         if (savedFlight.flightNumber === flight.flightNumber && savedFlight.departureTime === flight.departureTime) {
             return true;
