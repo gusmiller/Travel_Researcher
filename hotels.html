@@ -59,25 +59,31 @@
         </header>
 
         <main style="height: 100%;">
+
             <section class="w-screen flex column items-center justify-center" id="search-form">
-                <form class="flights-search-form" action="#">
+                <form class="mt-5 flights-search-form" action="#">
 
-                    <label class="text-indigo-600 font-semibold mb-2" id="departure-date-label">Check in date:</label>
-                    <input class="datefield" name="checkin-date-name" type="text" id="checkin-date-input"
-                        placeholder="Enter check in date" autocomplete="off" />
+                    <label class="text-indigo-600 font-semibold" id="departure-date-label">
+                        Check in date:
+                        <span class="ml-2">
+                            <input class="datefield" name="checkin-date-name" type="text" id="checkin-date-input"
+                                placeholder="Enter check in date" autocomplete="off" style="padding: 5px; border: 1px rgb(223, 218, 218) solid;" />
+                        </span>
+                    </label>
 
-                    <label class="text-indigo-600 font-semibold mb-2" id="departure-date-label">Check out date:</label>
-                    <input class="datefield" name="checkout-date-name" type="text" id="checkout-date-input"
-                        placeholder="Enter check out date" autocomplete="off" />
+                    <label class="text-indigo-600 font-semibold mb-2" id="departure-date-label">
+                        Check out date:
+                        <span><input class="datefield" name="checkout-date-name" type="text" id="checkout-date-input"
+                                placeholder="Enter check out date" autocomplete="off" style="padding: 5px; border: 1px rgb(223, 218, 218) solid;" /></span>
+                    </label>
 
                     <button id="searchbtn"
-                        class="text-white py-2 px-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">
-                        Search Hotels
+                        class="mt-5 text-white py-2 px-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">Search Hotels
                     </button>
                 </form>
             </section>
 
-            <div id="hotelsarea" class="hidden w-screen flex justify-center py-2" >
+            <div id="hotelsarea" class="hidden w-screen flex justify-center py-2">
                 <div
                     class="align-middle inline-block overflow-hidden bg-white pt-3 rounded-bl-lg rounded-br-lg flex flex-col items-center sm:justify-center ml-4 sm:ml-0">
                     <table class="hotel-table flights-table border-colapse border border-slate-400 ... ">
@@ -92,7 +98,6 @@
                 </div>
             </div>
 
-            
         </main>
 
         <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">

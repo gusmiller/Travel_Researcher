@@ -106,6 +106,9 @@ var searchFlights = function (event) {
 
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect);
     var destinationCode = getDestinationIataCodeByCityName(cityCodes, destinationCitySelect);
+
+    $("#flightsarea").removeClass("hidden");
+
     cleanupFlightsTable();
     getFlightData(departureDateSelect, departureCode, destinationCode);
 }
