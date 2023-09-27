@@ -22,18 +22,14 @@
     font-family: "Abril-Fatface", "helvetica";
 }
 
-.infotainer {
-    height: 400px;
-}
-
 .our-team {
-    height: 200px;
-    margin-top: 100px;
+    margin-top: 70px;
     
 }
 
 .descrip {
     height: 200px;
+    font-size: 24px;
     text-align: center;
 }
 

@@ -5,16 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Researcher</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./assets/css/mainscreen.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap">
 </head>
 
 <body>
+    <!-- Modal warning container -->
+    <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+        <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
+                <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
+                <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- End of Modal warning container -->
+    
     <header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
         <div>
             <p class="lobster title text-4xl text-black text-center">Travel Researcher</p>
@@ -26,16 +37,14 @@
                 <a href="index.html#our-team"
                     class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Our
                     Team</a>
-                <a href="#_"
-                    class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Features</a>
                 <a href="flights-bookmarks.html"
                     class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
                     Flights</a>
                 <a href="hotelbookmarks.html"
                     class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 hover:uppercase font-medium">Bookmarked
                     Hotels</a>
-                <a href="#_"
-                    class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Login</a>
+                <a href="#"
+                    class="futureFeatures text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 hover:uppercase font-medium">Login</a>
             </nav>
         </div>
     </header>
@@ -45,63 +54,67 @@
             <div class="bg-cover flex justify-center items-center"
                 style="background-image: url(https://i.ibb.co/28VPVCH/istockphoto-1288385045-612x612.jpg); height: 650px">
                 <div class="bg-gray-400 w-4/5 h-64 relative z-0 flex justify-center items-center">
-                    <div class="bg-white h-48 relative z-10 flex justify-center items-center mountain" style="width: 1150px;">
-                        <button onclick ="window.location.href='./search.html'" class="lobster text-2xl">Search</button>
+                    <div class="bg-white h-48 relative z-10 flex justify-center items-center mountain"
+                        style="width: 1150px;">
+                        <button onclick="window.location.href='./search.html'" class="lobster text-2xl">Search</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id = "our-team">
+        <section id="our-team">
             <div class="bg-white">
                 <div class="flex justify-center items-center our-team">
-                    <p class="fatface text-6xl">Our  Team</p>
+                    <p class="fatface text-6xl">Our Team</p>
                 </div>
-                <div class = "flex justify-center items-center descrip" style="height: 75px;">
+                <div class="flex justify-center items-center descrip" style="height: 85px;">
                     <p>Meet our team! We are eager to learn and to become web developers.</p>
                 </div>
             </div>
-            
+
             <div class="bg-white flex justify-evenly about-me">
-                <div class = "flexor max-[1012px]: m-3">
-                    <p>Jacob Martin</p>
-                    <img class = "team-member" src="https://i.ibb.co/Gk91pfy/342362033-187162297460906-3606454446866140483-n.jpg"
-                        alt = "Team member Jacob">
-                        <p>I am Jacob! I am beginner level code writer.<br>
-                           Currently enrolled in the coding bootcamp<br>
-                           class from Carleton University.</p>
+                <div class="flexor max-[1012px]: m-3 text-center">
+                    <h3 class="mb-3 text-lg"><strong>Jacob Martin</strong></h3>
+                    <img class="team-member"
+                        src="https://i.ibb.co/Gk91pfy/342362033-187162297460906-3606454446866140483-n.jpg"
+                        alt="Team member Jacob">
+                    <p>I am Jacob! I am beginner level code writer.<br>
+                        Currently enrolled in the coding bootcamp<br>
+                        class from Carleton University.</p>
                 </div>
-                <div class = "flexor max-[1012px]: m-3">
-                    <p>Sonja Gorin</p>
-                    <img class = "team-member" src = "https://i.ibb.co/yRGKfgd/sonja1.jpg" alt="Team member Sonja">
-                        <p>Even though I had a wonderful career in<br> education I'm looking forward to changing<br> it. I believe being a Software Developer is<br> my true calling.</p>
+                <div class="flexor max-[1012px]: m-3 text-center">
+                    <p class="mb-3 text-lg"><strong>Sonja Gorin</strong></p>
+                    <img class="team-member" src="https://i.ibb.co/yRGKfgd/sonja1.jpg" alt="Team member Sonja">
+                    <p>Even though I had a wonderful career in<br> education I'm looking forward to changing<br> it. I
+                        believe being a Software Developer is<br> my true calling.</p>
                 </div>
-                <div class = "flexor max-[1012px]: m-3">
-                    <p class = "justify-center">Gus Miller</p>
-                    <img class = "team-member" src = "https://i.ibb.co/nM1Sp4h/gustavomiller-11152022.jpg" alt="Team member Gus"> 
-                        <p>I have been a developer for the past 25<br> 
-                            years. My career has been exhilarating and<br> 
-                            look forward to retire!</p>
+                <div class="flexor max-[1012px]: m-3 text-center">
+                    <p class="mb-3 text-lg"><strong>Gustavo Miller</strong></p>
+                    <img class="team-member" src="https://i.ibb.co/nM1Sp4h/gustavomiller-11152022.jpg"
+                        alt="Team member Gus">
+                    <p>I have been a developer for the past 25<br>
+                        years. My career has been exhilarating and<br>
+                        look forward to retire!</p>
                 </div>
             </div>
         </section>
 
         <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">
             <div class="w-screen mx-auto">
-                <div class="md:flex sm:items-center sm:justify-between pt-2">
-                    <span class="md:flex items-center mb-4 sm:mb-0 lobster title self-center text-2xl whitespace-nowrap ml-7">Travel Researcher</span>
-                    <ul class="md:flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 mr-5 ml-5">
-                        <li class="mr-4 hover:underline md:mr-6 pl-3">Log In</li>
-                        <li class="mr-4 hover:underline md:mr-6 pl-3">Contact Us</li>
-                        <li class="mr-4 hover:underline md:mr-6 pl-3">Language</li>
-                        <li class="hover:underline pl-3">Currency</li>
-                    </ul>
-                </div>
-                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-2" />
-                <span class="block text-sm text-gray-500 sm:text-center text-white pb-2 ml-5">© 2023 Travel Researcher™ All Rights Reserved</span>
+                <span class="pt-3 block text-sm text-gray-500 sm:text-center text-white pb-2 ml-5">© 2023 Travel
+                    Researcher™ All Rights Reserved</span>
             </div>
         </footer>
 
+        <!-- JQuery: fast, small, and feature-rich JavaScript library -->
+        <!-- https://jquery.com/ -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+        <!-- jQuery UI <script> tag -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <!-- Core theme JS-->
+        <script src="./assets/js/script.js"></script>
 
 </body>
 

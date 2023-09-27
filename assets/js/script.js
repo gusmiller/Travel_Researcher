@@ -33,5 +33,5 @@ $(document).ready(function () {
       });
 
       //JQuery: trigger the Future Feature options
-      $(".futureFeatures").on("click", () => { shownFuture("Future Implementation","This options is not current being implemented in this version! Stay tuned") });
+      $(".futureFeatures").on("click", () => { shownFuture("Future Implementation","This options is not current being implemented in this version! Stay tuned",1) });
 })
