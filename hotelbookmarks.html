@@ -60,23 +60,43 @@
             </div>
         </div><!-- End Modal container -->
 
+        <!-- Modal Warning container -->
+        <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
+            <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2>
+                    <p id="errorMessage" class="text-red-500 mb-4"></p>
+                    <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
+                </div>
+            </div>
+        </div><!-- End Modal Warning container -->
+
         <div class="w-screen flex flex-col h-screen justify-between">
             <header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
-                <div><p class="pb-2 lobster title text-4xl text-black text-center">Travel Researcher</p></div>
+                <div>
+                    <p class="pb-2 lobster title text-4xl text-black text-center">Travel Researcher</p>
+                </div>
                 <div>
                     <nav class="flex flex-col md:flex-row items-center justify-center text-base md:m-auto">
-                        <a href="index.html" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Home</a>
-                        <a href="index.html#our-team" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Our Team</a>
-                        <a href="flights-bookmarks.html" 
-                            class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Bookmarked Flights</a>
+                        <a href="index.html"
+                            class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Home</a>
+                        <a href="index.html#our-team"
+                            class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Our
+                            Team</a>
+                        <a href="flights-bookmarks.html"
+                            class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Bookmarked
+                            Flights</a>
                         <a href="hotelbookmarks.html"
-                            class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium" disabled>Bookmarked Hotels</a>
-                        <a href="#" class="futureFeatures text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Login</a>
+                            class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium"
+                            disabled>Bookmarked Hotels</a>
+                        <a href="#"
+                            class="futureFeatures text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Login</a>
                     </nav>
                 </div>
-            </header>        
+            </header>
 
-            <div class="w-screen flex justify-center py-2 height">
+            <div id="pagemain" class="w-screen flex justify-center py-2 height">
                 <div
                     class="align-middle inline-block overflow-hidden bg-white pt-3 rounded-bl-lg rounded-br-lg flex flex-col items-center sm:justify-center ml-4 sm:ml-0">
                     <table class="bookmark-table flights-table border-colapse border border-slate-400 ... ">
@@ -91,10 +111,11 @@
 
             <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">
                 <div class="mx-auto">
-                    <span class="pt-3 block text-sm text-gray-500 sm:text-center text-white pb-2 ml-5">© 2023 Travel Researcher™ All Rights Reserved</span>
+                    <span class="pt-3 block text-sm text-gray-500 sm:text-center text-white pb-2 ml-5">© 2023 Travel
+                        Researcher™ All Rights Reserved</span>
                 </div>
             </footer>
-    
+
         </div>
     </div>
 

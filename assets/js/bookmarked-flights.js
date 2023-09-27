@@ -33,7 +33,7 @@ var init = function() {
 var loadSavedFlights = function() {
     var storedFlights = JSON.parse(localStorage.getItem("savedFlights"));
     if (storedFlights == null) {
-        console.log(storedFlights)
+        $("#pagemain").addClass("hidden");
         displayWarningModal("No Bookmarked Flights", "There are currently no bookmarked flights");
         return; 
     }

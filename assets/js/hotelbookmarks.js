@@ -5,17 +5,37 @@ const openflightModal = document.getElementById('openModal');
 const closeflightModal = document.getElementById('closeModal');
 const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
- var loadData = window.addEventListener("load", () => {
+
+var loadData = window.addEventListener("load", () => {
     var getHotels = JSON.parse(localStorage.getItem("storedHotels"));
-    console.log(getHotels)
+
+    if (getHotels == null) {
+        $("#pagemain").addClass("hidden");
+        var errordisplay = "There are currently no bookmarked hotels! Hotels are booked after the flight has been selected. Currently you have not selected a flights"
+        displayWarningModal("No Bookmarked Hotels", errordisplay);
+        return;
+    }
+
     createRows(getHotels)
 })
-var transformData = function(){
+
+var displayWarningModal = function (title, message) {
+    $("#errorTitle").text(title);
+    $("#errorMessage").text(message);
+    warning.classList.remove('hidden');
+
+    closeflightModal.addEventListener('click', () => {
+        warning.classList.add('hidden');
+        window.location.href = "./index.html"
+    });
+}
+
+var transformData = function () {
 }
 
 transformData()
 
-var displayBookedHotelPopup = function(event) {
+var displayBookedHotelPopup = function (event) {
     console.log("click")
     var getHotels = event.target.dataset;
     console.log(getHotels);
@@ -30,8 +50,8 @@ var displayBookedHotelPopup = function(event) {
     })
     return getHotels
 }
-function createRows (getHotels) {
-var hotelRowEl = document.createElement("tr");
+function createRows(getHotels) {
+    var hotelRowEl = document.createElement("tr");
     hotelRowEl.setAttribute("class", "hotel-information-row flex flex-col mb-4 sm:table-row");
     var hotelName1 = document.createElement("td")
     hotelName1.textContent = getHotels.hotelName
@@ -58,7 +78,7 @@ var hotelRowEl = document.createElement("tr");
     return hotelRowEl
 }
 function renderAllRows(getHotels) {
-    for (var i = 0; i < getHotels.length; i++){
+    for (var i = 0; i < getHotels.length; i++) {
         hotelTable.appendChild(createRows(getHotels[i]));
     }
 }
