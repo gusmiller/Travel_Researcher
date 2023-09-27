@@ -4,12 +4,13 @@
  * Licensed under MIT
  * Project 01 - Travel Researcher
  */
-$("#departure-city").selectmenu();
-$("#destination-city").selectmenu();
 
-$(".datefield").datepicker({
-      minDate: -0,
-      dateFormat: "yy-mm-dd"
+$(function () {
+      $(".dropdown").selectmenu();
+      $(".datefield").datepicker({
+            minDate: -0,
+            dateFormat: "yy-mm-dd"
+      });
 });
 
 $(document).ready(function () {
@@ -35,7 +36,7 @@ $(document).ready(function () {
       }
 
       // Javascript: Close modal event listener, will close the modal form
-      $("#closeModal").on("click", function(){
+      $("#closeModal").on("click", function () {
             warning.classList.add('hidden');
       })
 

@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Travel Researcher - Flight Search</title>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="./assets/css/styles.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap"
         rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
@@ -60,18 +60,18 @@
                     <fieldset>
                         <label class="text-indigo-600 font-semibold mb-2" for="departure-city"
                             id="departure-city-label">Departure City:</label>
-                        <select name="departure-city" id="departure-city">
+                        <select class="dropdown" name="departure-city" id="departure-city">
                             <option>Select city from the list:</option>
                         </select>
                         <label class="text-indigo-600 font-semibold mb-2" for="destination-city"
                             id="destination-city-label">Destination City:</label>
-                        <select name="destination-city" id="destination-city">
+                        <select class="dropdown" name="destination-city" id="destination-city">
                             <option>Select city from the list:</option>
                         </select>
                     </fieldset>
 
                     <label class="text-indigo-600 font-semibold mb-2" id="departure-date-label">Departure date:</label>
-                    <input name="departure-date-name" type="text" id="departure-date-input"
+                    <input class="datefield" name="departure-date-name" type="text" id="departure-date-input"
                         placeholder="Enter departure date" />
                     <button id="search-flight-button"
                         class="text-white py-2 px-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">Search
@@ -122,17 +122,6 @@
 
     <!-- jQuery UI <script> tag -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <script>
-        $(function () {
-            $("#departure-city").selectmenu();
-            $("#destination-city").selectmenu();
-            $("#departure-date-input").datepicker({
-                minDate: -0,
-                dateFormat: "dd/mm/yy",
-            });
-        });
-    </script>
 
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/flights.js"></script>
