@@ -9,7 +9,6 @@ const closeflightModal = document.getElementById('closeModal');
 const closeModal = document.getElementById('close-popup');
 const warning = document.getElementById('warningModal');
 
-
 var pullFlightCity = function () {
     var cityName = JSON.parse(localStorage.getItem("savedDestinations"))
     var destination = cityName.destinationCity
@@ -21,31 +20,22 @@ pullFlightCity()
 
 let destinationCity = pullFlightCity()
 
-
 function showError(title, message) {
     const errModal = document.getElementById('warningModal');
     $("#errorTitle").text(title);
     $("#errorMessage").text(message);
     errModal.classList.remove('hidden');
-
-
 }
 
 closeflightModal.addEventListener('click', () => {
     warning.classList.add('hidden');
 })
 
-
-
-
 var savedHotels = []
-
-
 
 var storeHotels = function () {
     localStorage.setItem("storedHotels", JSON.stringify(savedHotels));
 }
-
 
 window.onload = function () {
     var storedHotels = JSON.parse(localStorage.getItem("storedHotels"));
@@ -53,7 +43,6 @@ window.onload = function () {
         savedHotels = storedHotels;
     }
 }
-
 
 searchButton.addEventListener("click", (event) => {
 
@@ -65,7 +54,6 @@ searchButton.addEventListener("click", (event) => {
 
     fetchHotels(destinationCity);
 })
-
 
 var fetchHotels = function (city) {
 
@@ -86,7 +74,7 @@ var fetchHotels = function (city) {
             var cityId = locationData[0].dest_id
 
             if (checkIn.value === null || checkOut.value === null || cityId === null) {
-                displayWarningModal("missing Input", "One or more fields are empty")
+                showError("missing Input", "One or more fields are empty")
                 return;
             }
 
@@ -111,24 +99,17 @@ var fetchHotels = function (city) {
 
                     cleanUpHotels()
                     renderAllRows(allHotelData);
-
-                })
-
-                
+                })                
         })
 }
-
 
 var cleanUpHotels = function () {
     $(hotelsTable).find("tr").not(".table-header-row").remove();
 }
 
-
-
 var readHotelData = function (newData) {
 
     var allHotelData = []
-
 
     for (var i = 0; i < newData.length; i++) {
         var hotelName = newData[i].hotel_name;
@@ -140,13 +121,9 @@ var readHotelData = function (newData) {
             "hotelAddress": hotelAddress,
             "totalPrice": totalPrice
         })
-
     }
-
     return allHotelData
-
 }
-
 
 var createRow = function (allHotelData) {
 
@@ -172,24 +149,21 @@ var createRow = function (allHotelData) {
     saveHotelButtonEl.setAttribute("class", "transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... p-2 border border-slate-300 ...")
     saveHotelButtonEl.textContent = "Save Hotel";
     hotelRowEl.appendChild(saveHotelButtonEl);
+
     saveHotelButtonEl.addEventListener("click", saveChosenHotel);
     return hotelRowEl;
 }
-
 
 var renderAllRows = function (allHotelData) {
     for (var i = 0; i < allHotelData.length; i++) {
         hotelsTable.appendChild(createRow(allHotelData[i]));
     }
     if (allHotelData.length === 0) {
-
+        showError("No Information found!", "Hotels API returned no match!")
     }
 }
 
-
 var saveChosenHotel = function (event) {
-
-
     let [cityName, hotelName, hotelAddress, checkinDate, checkoutDate, totalPrice] = chosenHotelInfo(event.target)
     var hotel = {}
     hotel.cityName = cityName;
@@ -199,11 +173,11 @@ var saveChosenHotel = function (event) {
     hotel.checkoutDate = checkoutDate;
     hotel.totalPrice = totalPrice;
     savedHotels.push(hotel)
+
     storeHotels();
 
-
+    window.location.href = "./hotelbookmarks.html"
 }
-
 
 var chosenHotelInfo = function (button) {
     return [button.dataset.cityName, button.dataset.hotelName, button.dataset.hotelAddress, button.dataset.checkinDate, button.dataset.checkoutDate, button.dataset.totalPrice];
