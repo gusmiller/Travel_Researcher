@@ -39,6 +39,10 @@ label {
 
 }
 
+.larger-font {
+    font-size: 20px;
+}
+
 .descrip {
     height: 200px;
     font-size: 24px;

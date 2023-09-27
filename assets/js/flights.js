@@ -104,10 +104,13 @@ var searchFlights = function (event) {
         return;
     }
 
+    if (departureCitySelect === destinationCitySelect) {
+        displayWarningModal("Invalid information!", "Destination and Departure cities cannot be the same. Please try again entering different cities.")
+        return;
+    }
+
     var departureCode = getDepartureIataCodeByCityName(cityCodes, departureCitySelect);
     var destinationCode = getDestinationIataCodeByCityName(cityCodes, destinationCitySelect);
-
-    $("#flightsarea").removeClass("hidden");
 
     cleanupFlightsTable();
     getFlightData(departureDateSelect, departureCode, destinationCode);
@@ -235,7 +238,9 @@ var renderAllRows = function (allFlightData) {
     }
     if (allFlightData.length === 0) {
         displayWarningModal("No Flights", "Currently there are no flights that match your search criteria")
+        return;
     }
+    $("#flightsarea").removeClass("hidden");
 }
 
 // function that returns all data attributes that were set in the Save Flight button
