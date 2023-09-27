@@ -3,74 +3,78 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Travel Researcher - Hotel Search</title>
-
+    <title>Travel Researcher - Flight Search</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Noto+Sans+JP:wght@100;200&family=Raleway:ital,wght@1,500&display=swap"
         rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./assets/css/hotelstyle.css">
-
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
-
 
 <body>
 
+    <!-- Modal warning container -->
     <div id="warningModal" class="hidden fixed inset-0 flex items-center justify-center z-50">
         <div class="modal-dialog bg-gray-300 w-96 p-4 shadow-lg rounded-lg small-size">
             <!-- Modal content -->
             <div class="modal-content">
-                <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2><!-- Modal title -->
-                <p id="errorMessage" class="text-red-500 mb-4"></p><!-- Modal message -->
+                <h2 id="errorTitle" class="text-xl font-bold mb-4"></h2>
+                <p id="errorMessage" class="text-red-500 mb-4"></p>
                 <button id="closeModal" class="px-6 bg-red-500 text-white py-2 px-4 rounded">Close</button>
             </div>
         </div>
-    </div>
+    </div><!-- End of Modal warning container -->
 
-    <div class="w-screen flex flex-col h-screen justify-between">
+    <div class="w-screen flex flex-col h-screen justify-between ">
+
         <header class="w-screen py-2 text-gray-700 bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm body-font">
-            <div><p class="pb-2 lobster title text-4xl text-black text-center">Travel Researcher</p></div>
+            <div>
+                <p class="pb-2 lobster title text-4xl text-black text-center">Travel Researcher</p>
+            </div>
             <div>
                 <nav class="flex flex-col md:flex-row items-center justify-center text-base md:m-auto">
-                    <a href="index.html" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Home</a>
-                    <a href="search.html" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Flights</a>
-                    <a href="index.html#our-team" class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Our Team</a>
+                    <a href="index.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Home</a>
+                    <a href="search.html"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium"
+                        disabled>Flights</a>
+                    <a href="index.html#our-team"
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Our
+                        Team</a>
                     <a href="flights-bookmarks.html"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Bookmarked Flights</a>
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Bookmarked
+                        Flights</a>
                     <a href="hotelbookmarks.html"
-                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Bookmarked Hotels</a>
-                    <a href="#" class="futureFeatures text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Login</a>
+                        class="text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links mr-5 font-medium">Bookmarked
+                        Hotels</a>
+                    <a href="#"
+                        class="futureFeatures text-white xl:text-base lg:text-sm md:text-sm sm:text-sm links  mr-5 font-medium">Login</a>
                 </nav>
             </div>
         </header>
 
-        <main>
+        <main style="height: 100%;">
             <section class="w-screen flex column items-center justify-center" id="search-form">
-                <form class="hotels-search-form" action="#">
+                <form class="flights-search-form" action="#">
 
-                    <fieldset>
-                        <label id="checkin-date-label">Check in date:</label>
-                        <input class="datefield m-5" name="checkin-date-name" type="text" id="checkin-date-input" placeholder="Enter check in date" autocomplete="off" />
-                    </fieldset>
+                    <label class="text-indigo-600 font-semibold mb-2" id="departure-date-label">Check in date:</label>
+                    <input class="datefield" name="checkin-date-name" type="text" id="checkin-date-input"
+                        placeholder="Enter check in date" autocomplete="off" />
 
-                    <fieldset>
-                        <label id="checkout-date-label">Check out date:</label>
-                        <input class="datefield m-5" name="checkout-date-name" type="text" id="checkout-date-input" placeholder="Enter check out date" autocomplete="off" />
-                    </fieldset>
+                    <label class="text-indigo-600 font-semibold mb-2" id="departure-date-label">Check out date:</label>
+                    <input class="datefield" name="checkout-date-name" type="text" id="checkout-date-input"
+                        placeholder="Enter check out date" autocomplete="off" />
 
-                    <div>
-                        <button id="searchbtn"
-                            class="text-white py-2 px-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">Search</button>
-                    </div>
-
+                    <button id="searchbtn"
+                        class="text-white py-2 px-3 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ...">
+                        Search Hotels
+                    </button>
                 </form>
-
             </section>
 
             <div class="w-screen flex justify-center py-2">
@@ -87,6 +91,8 @@
                         go to the Bookmarked Hotels section in the menu.</h2>
                 </div>
             </div>
+
+            
         </main>
 
         <footer class="bg-gradient-to-r from-blue-800 to-sky-300 shadow-sm">
@@ -108,7 +114,8 @@
     <!-- jQuery UI <script> tag -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script src="./assets/js/hotel.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/flights.js"></script>
 </body>
 
 </html>
